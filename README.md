@@ -49,7 +49,7 @@ The development package allows you to configure :
 
  -  Open a new command line window
 
- -  cd to the project base directory (<your-drive-letter>:\**\**\primo-explore-devenv)
+ -  cd to the project base directory (your-drive-letter:\**\**\primo-explore-devenv)
 
  -  Run `npm install`. This should install all node modules needed for gulp
 
@@ -58,7 +58,7 @@ The development package allows you to configure :
  -  In the command line run : `gulp run` - This will start your local server
  -  Open a browser and type in the following url:
 
-        localhost:8003/primo-explore/?vid=<your view code>
+        localhost:8003/primo-explore/?vid=your-view-code
  -  Now you can perform searches on your browser and recieve results from your actual defined proxy server
  -  Go to your custom package folder and start your customizations
  -  You can get immediate feedback on your changes by refreshing the browser
