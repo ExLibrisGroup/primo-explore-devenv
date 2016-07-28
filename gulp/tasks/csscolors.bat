@@ -1,0 +1,1 @@
+css-color-extractor ./primo-explore/tmp --format=css --without-grey --without-monochrome
