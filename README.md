@@ -35,6 +35,7 @@ The development package allows you to configure :
 
  ##Installation
 
+ -  Download the project from this repository and place it on your pc
 
  -  Download and install nodejs version 4.2.x
 
