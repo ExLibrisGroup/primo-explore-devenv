@@ -30,7 +30,7 @@ The development package allows you to configure :
 - javascript
 
 
-- For each configuration type there is a specified folder in the custom package folder (that can be downloaded from your Primo Back Office)
+- For each configuration type there is a specified folder in the custom package folder (that can be downloaded from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"))
 - In each folder you will find a specific README.md file with recipes/examples.
 
 ##Installation
