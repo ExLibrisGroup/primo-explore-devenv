@@ -71,21 +71,22 @@ The development package allows you to configure :
 
 -  Edit the proxy server under /gulp/config.js: `var PROXY_SERVER = http://your-server:your-port`
 -  Note that for SSL environments (https) define the server as: `var PROXY_SERVER = https://your-server:443`
+-  Go to your custom package folder and start your customizations:
+    1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder, or take your existing package folder
+    2.  Save the package folder(the VIEW_CODE folder) into your development environment under the primo-explore/custom directory
+
+    your directory tree should look similar to this:
+
+    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
+
 -  In the command line run : `gulp run` - This will start your local server
 -  Open a browser and type in the following url:
 
         `localhost:8003/primo-explore/?vid=your-view-code`
 
        example: http://localhost:8003/primo-explore/search?vid=Auto1
+
 -  Now you can perform searches on your browser and receive results from your actual defined proxy server
--  Go to your custom package folder and start your customizations:
-    1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder, or take you existing package folder
-    2.  Save the package folder into your development environment under the primo-explore/custom directory
-
-
-
-
-
 
 -  You can get immediate feedback on your changes by refreshing the browser
 
