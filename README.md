@@ -72,7 +72,9 @@ The development package allows you to configure :
 -  Edit the proxy server under /gulp/config.js: `var PROXY_SERVER = http://your-server:your-port`
 -  Note that for SSL environments (https) define the server as: `var PROXY_SERVER = https://your-server:443`
 -  Go to your custom package folder and start your customizations:
-    1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder, or take your existing package folder
+    1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder.
+    In case you already defined a package and loaded it to the BO - make sure you download it or else you will not see your previous changes.
+
     2.  Save the package folder(the VIEW_CODE folder) into your development environment under the primo-explore/custom directory
 
     your directory tree should look similar to this:
@@ -88,5 +90,16 @@ The development package allows you to configure :
 
 -  Now you can perform searches on your browser and receive results from your actual defined proxy server
 
+    Note: Once you start working with the environment you will discover that the best results are achived by working in incognito mode, or clearing your browser cache before you start the server
+
 -  You can get immediate feedback on your changes by refreshing the browser
 
+-  perform your changes according to the documentation/examples in:
+
+    [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
+
+    [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")
+
+    [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
+
+    [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
