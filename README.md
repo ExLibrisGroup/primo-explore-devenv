@@ -33,13 +33,15 @@ The development package allows you to configure :
 - For each configuration type there is a specified folder in the custom package folder (that can be downloaded from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"))
 - In each folder you will find a specific README.md file with recipes/examples.
 
-[CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
+- Follow the links below to learn more about the different customization options:
 
-[HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")
+    [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
 
-[Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
+    [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")
 
-[JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
+    [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
+
+    [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
 
 
 ##Installation
@@ -73,7 +75,17 @@ The development package allows you to configure :
 -  Open a browser and type in the following url:
 
         `localhost:8003/primo-explore/?vid=your-view-code`
+
+       example: http://localhost:8003/primo-explore/search?vid=Auto1
 -  Now you can perform searches on your browser and receive results from your actual defined proxy server
--  Go to your custom package folder and start your customizations
+-  Go to your custom package folder and start your customizations:
+    1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder, or take you existing package folder
+    2.  Save the package folder into your development environment under the primo-explore/custom directory
+
+
+
+
+
+
 -  You can get immediate feedback on your changes by refreshing the browser
 
