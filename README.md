@@ -81,12 +81,19 @@ The development package allows you to configure :
 
     ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
 
--  In the command line run : `gulp run` - This will start your local server
+-  In the command line run : `gulp run --view <the VIEW_CODE folder>` - This will start your local server
+
+    example:
+
+    `gulp run --view Auto1`
+
+     will start the environment taking the customizations from the Auto1 folder
+
 -  Open a browser and type in the following url:
 
-        `localhost:8003/primo-explore/?vid=your-view-code`
+   `localhost:8003/primo-explore/?vid=your-view-code`
 
-       example: http://localhost:8003/primo-explore/search?vid=Auto1
+    example: http://localhost:8003/primo-explore/search?vid=Auto1
 
 -  Now you can perform searches on your browser and receive results from your actual defined proxy server
 
