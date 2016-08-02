@@ -47,35 +47,13 @@ function customNpmCssPath() {
 
 
 var SERVERS = {
-    local: 'http://localhost:8002',
-    primo15: 'http://il-primo15:1703',
-    primo16: 'http://il-primo16:1701'
+    local: 'http://localhost:8002'
 };
 
-/*var PROXY_SERVER = 'http://primo-demo.exlibrisgroup.com:1701';*/
-/*var PROXY_SERVER = 'http://il-primo15:1703';*/
-
-/*var PROXY_SERVER = 'http://primosb-pmtna.hosted.exlibrisgroup.com';*/
-
-/*var PROXY_SERVER = 'https://primo-qa.hosted.exlibrisgroup.com:443';*/
-
-/*var PROXY_SERVER = 'https://cam-primo.hosted.exlibrisgroup.com:443';*/
+/*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
+var PROXY_SERVER = 'http://your-server:your-port';
 
 
-/*
-var PROXY_SERVER = 'http://fe0101.qa.pmt.dc04.hosted.exlibrisgroup.com:1701';
-*/
-
-
-/*var PROXY_SERVER = 'http://primo4alma.dc04.hosted.exlibrisgroup.com:1701';*/
-
-/*var PROXY_SERVER = 'https://carleton-primo.hosted.exlibrisgroup.com:443';*/
-
-//var PROXY_SERVER = 'http://lib.uva.nl';
-
-/*var PROXY_SERVER = 'http://uba-primo.hosted.exlibrisgroup.com:1701';*/
-
-var PROXY_SERVER = 'http://il-primoqa02:1701';
 
 let buildParams = {
     customFile: customFile,
