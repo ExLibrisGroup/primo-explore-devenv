@@ -46,6 +46,8 @@ The development package allows you to configure :
 
 -  Download the project from this repository and place it on your pc
 
+-  Unzip the file you downloaded
+
 -  Download and install nodejs version 4.2.x
 
 > https://nodejs.org/en/download/
@@ -59,9 +61,11 @@ The development package allows you to configure :
 
 -  Open a new command line window
 
--  cd to the project base directory (`your-drive-letter:\**\**\primo-explore-devenv`)
+-  cd to the project base directory (`your-drive-letter:\**\**\primo-explore-devenv`/`your-drive-letter:\**\**\primo-explore-devenv-master`)
 
 -  Run `npm install`. This should install all node modules needed for gulp
+
+    ![npm install image](./help_files/npmInstall.png "Running npm install")
 
 -  Edit the proxy server under /gulp/config.js: `var PROXY_SERVER = http://your-server:your-port`
 -  Note that for SSL environments (https) define the server as: `var PROXY_SERVER = https://your-server:443`
