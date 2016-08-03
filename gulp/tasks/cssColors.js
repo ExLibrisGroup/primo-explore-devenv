@@ -17,7 +17,11 @@ gulp.task('css-colors', function () {
 
     var cssFileName ='';
     let url = proxyServer + "/primo-explore/index.html";
-    http.get(url, function(res1) {
+    var requestObject = http;
+    if(method === 'https') {
+        requestObject = https;
+    }
+    requestObject.get(url, function(res1) {
         let body = '';
         res1.setEncoding('utf8');
 
@@ -31,10 +35,7 @@ gulp.task('css-colors', function () {
             cssFileName = result[1];
 
             var cssFile = proxyServer +'/primo-explore/' + cssFileName;
-            var requestObject = http;
-            if(method === 'https') {
-                requestObject = https;
-            }
+
             requestObject.get(cssFile, function(res1) {
                 let body = '';
                 res1.setEncoding('utf8');
