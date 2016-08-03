@@ -9,7 +9,7 @@ var extractor = require('css-color-extractor');
 var spawn = require('child_process').spawn;
 var exec = require('child_process').exec;
 var shell = require("shelljs");
-var fs = require('fs')
+var fs = require('fs');
 
 gulp.task('css-colors', function () {
     var proxyServer = config.PROXY_SERVER;
@@ -21,14 +21,14 @@ gulp.task('css-colors', function () {
     if(method === 'https') {
         requestObject = https;
     }
-    console.log('11111 ' + url);
+
     requestObject.get(url, function(res1) {
         let body = '';
         res1.setEncoding('utf8');
 
         res1.on("data", function(chunk) {
             body = body + chunk;
-            console.log('body: ' + body);
+
         });
 
         res1.on("end", function(){
