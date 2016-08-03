@@ -21,16 +21,18 @@ gulp.task('css-colors', function () {
     if(method === 'https') {
         requestObject = https;
     }
+    console.log('11111 ' + url);
     requestObject.get(url, function(res1) {
         let body = '';
         res1.setEncoding('utf8');
 
         res1.on("data", function(chunk) {
             body = body + chunk;
+            console.log('body: ' + body);
         });
 
         res1.on("end", function(){
-            var regEx = new RegExp('<link href="(lib/app-.*\.css)','g');
+            var regEx = new RegExp('<link href="(lib/app-.*?\.css)"','g');
             var result = regEx.exec(body);
             cssFileName = result[1];
 
@@ -69,45 +71,45 @@ gulp.task('css-colors', function () {
 
 
     /*var cssFile = glob.sync(proxyServer + "/primo-explore/lib/app**.css", {});
-    console.log('11111: ' + proxyServer);*/
+     console.log('11111: ' + proxyServer);*/
 
     /*console.log("1111: " + css-color-extractor http://il-primo17:1703/primo-explore/lib/app-fdcb4c32c9.css --format=css )*/
 
 
 
     /*var basedir = 'primo-explore/custom/';
-    var customFolderExp = basedir+'*!/';
-    console.log('Please Choose a package to create:');
-    glob(customFolderExp, {}, function (er, files) {
-        // Note elision, there is no member at 2 so it isn't visited
-        console.log('\r\n');
-        files.forEach(function(element, index, array){
-            console.log(index+1 + ': '+ element.replace(basedir,'').replace('/',''));
-            console.log('\r\n');
-        });
-        prompt.start();
-        var property = {
-            name: 'package',
-            message: 'Please Choose the level you want to create the package for'
-        };
-        prompt.get(property, function (err, result) {
+     var customFolderExp = basedir+'*!/';
+     console.log('Please Choose a package to create:');
+     glob(customFolderExp, {}, function (er, files) {
+     // Note elision, there is no member at 2 so it isn't visited
+     console.log('\r\n');
+     files.forEach(function(element, index, array){
+     console.log(index+1 + ': '+ element.replace(basedir,'').replace('/',''));
+     console.log('\r\n');
+     });
+     prompt.start();
+     var property = {
+     name: 'package',
+     message: 'Please Choose the level you want to create the package for'
+     };
+     prompt.get(property, function (err, result) {
 
-            console.log('\r\n');
-            var code = result.package;
+     console.log('\r\n');
+     var code = result.package;
 
-            if(files[result.package - 1]){
-                code = files[result.package - 1].replace(basedir,'').replace('/','');
-            }
-            console.log('Creating package for : ('+code+'.zip)');
-            console.log(code);
-            console.log(' in  : /packages');
-            console.log('\r\n');
-            console.log('............................................................................................................................................');
-            return gulp.src('./primo-explore/custom/'+code+'/!**')
-                .pipe(zip(code+'.zip'))
-                .pipe(gulp.dest('./packages/'));
-        });
+     if(files[result.package - 1]){
+     code = files[result.package - 1].replace(basedir,'').replace('/','');
+     }
+     console.log('Creating package for : ('+code+'.zip)');
+     console.log(code);
+     console.log(' in  : /packages');
+     console.log('\r\n');
+     console.log('............................................................................................................................................');
+     return gulp.src('./primo-explore/custom/'+code+'/!**')
+     .pipe(zip(code+'.zip'))
+     .pipe(gulp.dest('./packages/'));
+     });
 
-    })*/
+     })*/
 
 });
