@@ -89,6 +89,8 @@ The development package allows you to configure :
 
      will start the environment taking the customizations from the Auto1 folder
 
+    ![Server Startup Image](./help_files/serverStartup.png "Server Startup")
+
 -  Open a browser and type in the following url:
 
    `localhost:8003/primo-explore/?vid=your-view-code`
@@ -98,6 +100,8 @@ The development package allows you to configure :
 -  Now you can perform searches on your browser and receive results from your actual defined proxy server
 
     Note: Once you start working with the environment you will discover that the best results are achived by working in incognito mode, or clearing your browser cache before you start the server
+
+    ![Env up Image](./help_files/searchResults.png "Env up")
 
 -  You can get immediate feedback on your changes by refreshing the browser
 
