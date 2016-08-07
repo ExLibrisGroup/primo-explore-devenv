@@ -92,13 +92,45 @@ module.exports.getCustimazationObject = function (vid) {
 
 
     //html
+    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
+    if(paths && paths.length > 0){ // for August 2016 version
+        customizationObject.homepageHtml = {};
+        for (path of paths) {
+            var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+            customizationObject.homepageHtml[pathFixed] = path;
+        }
 
+
+        if (isInherited) {
+            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:'primo-explore'});
+
+            for (path of paths) {
+                var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+                if (!customizationObject.homepageHtml[pathFixed]) {
+                    customizationObject.homepageHtml[pathFixed] = path;
+                }
+
+            }
+
+
+        }
+
+    }else{ // starting November 2016 version
+        var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:'primo-explore'});
+        var staticHtmlRes = {};
+        staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
+
+        if (isInherited) {
+            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:'primo-explore'});
+            staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
+        }
+        customizationObject.staticHtml = staticHtmlRes;
+    }
     function getLanguage(entry) {
         var start = entry.indexOf('.html')-5;
         var res = entry.substring(start,start+5);
         return res;
     }
-
     function getHtmlCustomizations(paths,path,staticDict){
         var patternString = path+'/html/.*/';
 
@@ -125,23 +157,7 @@ module.exports.getCustimazationObject = function (vid) {
     }
 
 
-    var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:'primo-explore'});
-    var staticHtmlRes = {};
-    staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
 
-    if (isInherited) {
-        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:'primo-explore'});
-        staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
-    }
-    customizationObject.staticHtml = staticHtmlRes;
-
-    /*var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
-
-     customizationObject.homepageHtml = {};
-     for (path of paths) {
-     var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
-     customizationObject.homepageHtml[pathFixed] = path;
-     }*/
 
 
 
