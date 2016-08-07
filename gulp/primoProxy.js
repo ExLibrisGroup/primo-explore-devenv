@@ -62,11 +62,9 @@ module.exports.getCustimazationObject = function (vid) {
     if (isInherited && customizationObject.favIcon === '') {
         customizationObject.favIcon = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/favicon.ico", {cwd:'primo-explore'})
     }
-
     customizationObject.libraryLogo = glob.sync(viewPackage + "/img/library-logo.png", {cwd:'primo-explore'})[0];
-
-    if (isInherited && customizationObject.logo === '') {
-        customizationObject.libraryLogo = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/library-logo.png", {cwd:'primo-explore'});
+    if (isInherited && (!customizationObject.libraryLogo || customizationObject.libraryLogo === '')) {
+        customizationObject.libraryLogo = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/library-logo.png", {cwd:'primo-explore'})[0];
     }
 
     var paths = glob.sync(viewPackage + "/img/icon_**.png", {cwd:'primo-explore'});
