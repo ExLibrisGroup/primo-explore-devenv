@@ -90,48 +90,82 @@ module.exports.getCustimazationObject = function (vid) {
 
     }
 
-    //html
-    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
 
-    customizationObject.homepageHtml = {};
-    for (path of paths) {
-        var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
-        customizationObject.homepageHtml[pathFixed] = path;
+    //html
+
+    function getLanguage(entry) {
+        var start = entry.indexOf('.html')-5;
+        var res = entry.substring(start,start+5);
+        return res;
     }
 
+    function getHtmlCustomizations(paths,path,staticDict){
+        var patternString = path+'/html/.*/';
 
-    if (isInherited) {
-        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:'primo-explore'});
+        var re = new RegExp(patternString, "g");
+        var res =  paths
+            .map(e => e.replace(re,''));
 
-        for (path of paths) {
-            var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
-            if (!customizationObject.homepageHtml[pathFixed]) {
-                customizationObject.homepageHtml[pathFixed] = path;
+
+        res.forEach((e)=> {
+            var lang = getLanguage(e);
+            var dirName = e.replace('_'+lang+'.html','');
+            if(!staticDict[dirName]) {
+                staticDict[dirName] = {};
+            }
+            staticDict[dirName][lang] = path+ '/html/'+dirName+'/'+e;
+            if(lang ==='en_US') {
+                staticDict[dirName]['default'] = path+ '/html/'+dirName+'/'+e;
             }
 
-        }
 
+        });
 
+        return staticDict;
     }
 
+
+    var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:'primo-explore'});
+    var staticHtmlRes = {};
+    staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
+
+    if (isInherited) {
+        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:'primo-explore'});
+        staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
+    }
+    customizationObject.staticHtml = staticHtmlRes;
+
+    /*var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
+
+     customizationObject.homepageHtml = {};
+     for (path of paths) {
+     var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+     customizationObject.homepageHtml[pathFixed] = path;
+     }*/
+
+
+
+
     return customizationObject;
+
+
 }
 
 
 module.exports.proxy_function = function () {
     var proxyServer = config.PROXY_SERVER;
     var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
-    
 
 
-    
+
+
     return modRewrite([
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [PL]',
         '/primo-explore/index.html ' + proxyServer + '/primo-explore/index.html [PL]',
         /*'/primo-explore/img/library-logo.png ' + customizationObject.libraryLogo[0].replace('primo-explore', '') + ' [L]',
-        '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',
-        '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',*/
+         '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',
+         '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',*/
         '/primo-explore/custom/(.*) /custom/$1 [L]',
         '/primo-explore/(.*) ' + proxyServer + '/primo-explore/$1 [PL]',
         '.*primoExploreJwt=.* /index.html [L]',
