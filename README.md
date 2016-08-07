@@ -69,7 +69,8 @@ The development package allows you to configure :
 
     ![npm install image](./help_files/npmInstall.png "Running npm install")
 
--  Edit the proxy server under /gulp/config.js: `var PROXY_SERVER = http://your-server:your-port`
+-  Edit the proxy server (Your Primo Front-End Url) under /gulp/config.js: `var PROXY_SERVER = http://your-server:your-port`,
+
 -  Note that for SSL environments (https) define the server as: `var PROXY_SERVER = https://your-server:443`
 -  Go to your custom package folder and start your customizations:
     1.  Download from your Primo Back Office, or from the [GitHub Repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) a new package folder.
