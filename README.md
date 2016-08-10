@@ -115,3 +115,14 @@ The development package allows you to configure :
     [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
 
     [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
+
+
+
+##Publishing packages
+-   Once you finish customizing the package , you can zip it and upload it via the Primo BackOffice
+-   Run the command (from command line) `gulp create-package`
+-   You will be prompted with a menu specifing all of the possible packages you can build:
+
+
+    ![Create Package Image](./help_files/createPackage.png "Create Package up")
+
