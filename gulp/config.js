@@ -1,6 +1,7 @@
 'use strict';
 
 let customFile =  'custom.js';
+let customModuleFile =  'custom.module.js';
 let customCssFile =  'custom1.css';
 let mainFile = 'main.js';
 
@@ -15,6 +16,10 @@ function getView(){
 
 function customPath() {
     return viewJsDir()+'/'+customFile;
+}
+
+function customModulePath() {
+    return viewJsDir()+'/'+customModuleFile;
 }
 
 function viewJsDir() {
@@ -59,6 +64,7 @@ let buildParams = {
     customFile: customFile,
     customCssFile: customCssFile,
     customPath: customPath,
+    customModulePath: customModulePath,
     mainPath: mainPath,
     viewJsDir: viewJsDir,
     viewCssDir: viewCssDir,
