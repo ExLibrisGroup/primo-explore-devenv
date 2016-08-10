@@ -126,3 +126,4 @@ The development package allows you to configure :
 
     ![Create Package Image](./help_files/createPackage.png "Create Package up")
 
+    ![Package Image](./help_files/packages.png "Package up")
