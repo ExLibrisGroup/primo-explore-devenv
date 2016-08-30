@@ -38,12 +38,7 @@
     "request": "2.72.0",
     "require-dir": "0.3.0",
     "run-sequence": "1.2.1",
-    "tar-fs": "1.13.0",
-    "primo-explore-prmSearchBarAfter": "1.0.0",
-    "primo-explore-prmLogoAfter": "1.0.0",
-    "primo-explore-prmFullViewAfter": "1.0.0",
-    "primo-explore-LinkedData": "1.0.1",
-    "primo-explore-prmFacetsToLeft": "1.0.1"
+    "tar-fs": "1.13.0"
   }
 }
 
