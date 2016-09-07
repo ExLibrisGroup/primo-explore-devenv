@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72ad2419-a400-45db-8be7-1f46c187a703" name="Default" comment="" />
+    <list default="true" id="72ad2419-a400-45db-8be7-1f46c187a703" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/primo_explore_devenv_node_modules.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/primo-explore-devenv.iml" afterPath="$PROJECT_DIR$/.idea/primo-explore-devenv.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="primo-explore-devenv.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,7 +16,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -21,112 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="custom1.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/css/custom1.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="linkedData.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/linkedData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-              <folding>
-                <marker date="1469602091345" expanded="true" signature="3975:5063" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4046:5063" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4069:5048" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4116:4486" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4236:4459" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4533:5020" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4600:4996" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4642:4658" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4691:4969" ph="..." />
-                <marker date="1469602091345" expanded="true" signature="4773:4938" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom1.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/css/custom1.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding>
-                <marker date="1469535147189" expanded="true" signature="693:1832" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="784:1069" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="855:957" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1000:1038" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1125:1805" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1193:1774" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1294:1740" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1372:1701" ph="..." />
-                <marker date="1469535147189" expanded="true" signature="1583:1658" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="44" selection-start-line="6" selection-start-column="4" selection-end-line="10" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://C:/okc/custom/Auto1/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="35" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="colors.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="colors.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/colors.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+            <state relative-caret-position="136">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,6 +39,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -172,7 +76,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/primo-explore/custom/WHITESHORE/js/linkedData.js" />
         <option value="$PROJECT_DIR$/primo-explore/custom/WHITESHORE/js/custom.js" />
-        <option value="$PROJECT_DIR$/colors.json" />
         <option value="$PROJECT_DIR$/primo-explore/custom/linkedData/css/custom1.css" />
         <option value="$PROJECT_DIR$/primo-explore/custom/linkedData/package.json" />
         <option value="$PROJECT_DIR$/primo-explore/custom/facetsToLeft/package.json" />
@@ -191,6 +94,7 @@
         <option value="$PROJECT_DIR$/primo-explore/custom/Auto1/js/custom.js" />
         <option value="$PROJECT_DIR$/primo-explore/custom/Auto1/css/custom1.css" />
         <option value="$PROJECT_DIR$/primo-explore/custom/linkedData/js/linkedData.js" />
+        <option value="$PROJECT_DIR$/colors.json" />
       </list>
     </option>
   </component>
@@ -235,9 +139,12 @@
     </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-1511" />
+    <option name="y" value="8" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
   </component>
@@ -266,8 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,6 +207,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,28 +242,10 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -435,11 +324,12 @@
       <workItem from="1469599101553" duration="9000" />
       <workItem from="1469600278119" duration="906000" />
       <workItem from="1469694720878" duration="10000" />
+      <workItem from="1473256056757" duration="227000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237933000" />
+    <option name="totallyTimeSpent" value="238160000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -451,16 +341,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-1511" y="8" width="1696" height="1026" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38392857" sideWeight="0.37513632" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18455972" sideWeight="0.6248637" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18455972" sideWeight="0.6248637" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36601308" sideWeight="0.50595236" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66557914" sideWeight="0.48511904" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6655481" sideWeight="0.48511904" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521059" sideWeight="0.5292865" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -494,13 +384,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/custom.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/custom.module.js" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/facetsToLeft/js/custom.module.js" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/facetsToLeft/README.md" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/facetsToLeft/css/README.md" />
@@ -509,20 +393,8 @@
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/WHITESHORE1/js/linkedData.js" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/facetsToLeft/js/custom.js" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto11/css/custom1.css" />
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/tasks/buildCustomCss.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/package.json" />
+    <entry file="file://$PROJECT_DIR$/gulp/tasks/buildCustomCss.js" />
     <entry file="file://$PROJECT_DIR$/gulp/tasks/build-scss.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="623">
@@ -531,59 +403,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/css/app-colors.css" />
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/html/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/VOLCANO/js/linkedData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="96" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1129">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-789">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/html/README.md" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/VOLCANO/js/linkedData.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/Auto1/css/custom1.css" />
     <entry file="file://$PROJECT_DIR$/primo-explore/custom/facetsToLeft/package.json" />
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/js/custom.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/js/custom.module.js" />
     <entry file="file://$PROJECT_DIR$/gulp/tasks/buildCustomJs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -591,20 +418,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/NEWUI_N/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/NEWUI_N/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/NEWUI_N/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/NEWUI_N/js/custom.js" />
     <entry file="file://$PROJECT_DIR$/gulp/tasks/servers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -613,93 +428,18 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/custom.js" />
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/tmp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="309" column="10" selection-start-line="309" selection-start-column="10" selection-end-line="309" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/01BRC_CCO/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="104" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="39" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/UVA/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/tmp.html" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/01BRC_CCO/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/README.md" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/tmp/WHITESHORE/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/UVA/js/custom.js" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_01BRC_CCO.zip/01BRC_CCO/js/custom.js" />
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/01BRC_CCO/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/okc/custom/Auto1/css/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/okc/cheetsheet.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="117">
-            <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto11111/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/01BRC_CCO/js/custom.js" />
+    <entry file="file://C:/okc/custom/Auto1/css/README.md" />
+    <entry file="file://C:/okc/cheetsheet.md" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto11111/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/js/main.js" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -723,97 +463,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/colors.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_template_package (15).zip/VIEW_CODE/js/custom.js" />
-    <entry file="file://C:/okc/custom/Auto1/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <marker date="1469535147189" expanded="true" signature="693:1832" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="784:1069" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="855:957" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1000:1038" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1125:1805" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1193:1774" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1294:1740" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1372:1701" ph="..." />
-            <marker date="1469535147189" expanded="true" signature="1583:1658" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="44" selection-start-line="6" selection-start-column="4" selection-end-line="10" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/css/custom1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/linkedData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <marker date="1469602091345" expanded="true" signature="3975:5063" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4046:5063" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4069:5048" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4116:4486" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4236:4459" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4533:5020" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4600:4996" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4642:4658" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4691:4969" ph="..." />
-            <marker date="1469602091345" expanded="true" signature="4773:4938" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/okc/custom/Auto1/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/package.json" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/package.json" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/REEF/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/Auto1/css/custom1.css" />
+    <entry file="file://$PROJECT_DIR$/primo-explore/custom/linkedData/js/linkedData.js" />
   </component>
 </project>
