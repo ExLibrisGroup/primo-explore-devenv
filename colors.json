@@ -3,6 +3,8 @@
   "secondary" : "#A9CDD6",
   "backgroundColor" : "white",
   "links": "#5C92BD",
-  "warning": "tomato"
+  "warning": "tomato",
+  "positive": "#0f7d00",
+  "negative": "gray",
+  "notice": "#e08303"
 }
-
