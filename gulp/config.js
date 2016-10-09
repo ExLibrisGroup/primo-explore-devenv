@@ -33,7 +33,9 @@ function mainPath() {
 function customCssMainPath() {
     return viewCssDir()+'/*.css';
 }
-
+function customColorsPath(){
+    return `colors.json`;
+}
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
 }
@@ -42,9 +44,20 @@ function customCssPath() {
 }
 
 
+function customNpmJsCustomPath() {
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.js`;
+}
+
+function customNpmJsModulePath() {
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.module.js`;
+}
+
+
 function customNpmJsPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/*.js`;
 }
+
+
 function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
 }
@@ -70,8 +83,11 @@ let buildParams = {
     viewCssDir: viewCssDir,
     customCssPath: customCssPath,
     customNpmJsPath: customNpmJsPath,
+    customNpmJsCustomPath: customNpmJsCustomPath,
+    customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
-    customCssMainPath: customCssMainPath
+    customCssMainPath: customCssMainPath,
+    customColorsPath: customColorsPath
 };
 
 module.exports = {
