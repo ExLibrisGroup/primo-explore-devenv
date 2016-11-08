@@ -15,6 +15,7 @@ module.exports.getCustimazationObject = function (vid) {
     var base_path = 'custom/';
     var customizationObject = {
         viewJs: '',
+        centralJs: '',
         viewCss: '',
         centralCss: '',
         favIcon: '',
@@ -51,7 +52,8 @@ module.exports.getCustimazationObject = function (vid) {
     customizationObject.viewCss = glob.sync(viewPackage + "/css/custom1.css", {cwd:'primo-explore'});
 
     if (isInherited) {
-        customizationObject.centralCss = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/css/custom1.css", {cwd:'primo-explore'})
+        customizationObject.centralCss = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/css/custom1.css", {cwd:'primo-explore'});
+        customizationObject.centralJs = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/js/custom.js", {cwd:'primo-explore'});
     }
 
     //images
