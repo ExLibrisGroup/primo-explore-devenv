@@ -43,8 +43,11 @@ module.exports.getCustimazationObject = function (vid) {
     }
     //js
 
-    if(viewPackage !== '') {
+    if(viewPackage !== '' && viewPackage !== 'CENTRAL_PACKAGE') {
         customizationObject.viewJs = glob.sync(viewPackage + "/js/custom.js", {cwd: 'primo-explore'});
+    }
+    if (isInherited) {
+        customizationObject.centralJs = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/js/custom.js", {cwd:'primo-explore'});
     }
 
     //css
@@ -54,7 +57,6 @@ module.exports.getCustimazationObject = function (vid) {
 
     if (isInherited) {
         customizationObject.centralCss = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/css/custom1.css", {cwd:'primo-explore'});
-        customizationObject.centralJs = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/js/custom.js", {cwd:'primo-explore'});
     }
 
     //images
