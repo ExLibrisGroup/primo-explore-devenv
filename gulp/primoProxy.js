@@ -22,6 +22,7 @@ module.exports.getCustimazationObject = function (vid) {
         resourceIcons: '',
         homepageHtml: ''
     };
+
     var promises = [];
     var packages = glob.sync(base_path + "*", {cwd:'primo-explore',ignore:'**/README.md'});
 
@@ -91,9 +92,11 @@ module.exports.getCustimazationObject = function (vid) {
 
     //html
     var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
+
     if(paths && paths.length > 0){ // for August 2016 version
         customizationObject.homepageHtml = {};
         for (path of paths) {
+
             var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
             customizationObject.homepageHtml[pathFixed] = path;
         }
@@ -115,6 +118,9 @@ module.exports.getCustimazationObject = function (vid) {
 
     }else{ // starting November 2016 version
         var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:'primo-explore'});
+        if(!paths || paths.length ===0){
+            paths = glob.sync(viewPackage + "/html/*.html", {cwd:'primo-explore'});
+        }
         var staticHtmlRes = {};
         staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
 
@@ -130,7 +136,7 @@ module.exports.getCustimazationObject = function (vid) {
         return res;
     }
     function getHtmlCustomizations(paths,path,staticDict){
-        var patternString = path+'/html/.*/';
+        var patternString = path+'/html/';
 
         var re = new RegExp(patternString, "g");
         var res =  paths
@@ -143,9 +149,9 @@ module.exports.getCustimazationObject = function (vid) {
             if(!staticDict[dirName]) {
                 staticDict[dirName] = {};
             }
-            staticDict[dirName][lang] = path+ '/html/'+dirName+'/'+e;
+            staticDict[dirName][lang] = path+ '/html/'+e;
             if(lang ==='en_US') {
-                staticDict[dirName]['default'] = path+ '/html/'+dirName+'/'+e;
+                staticDict[dirName]['default'] = path+ '/html/'+e;
             }
 
 
