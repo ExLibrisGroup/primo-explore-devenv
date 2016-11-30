@@ -41,25 +41,3 @@ gulp.task('custom-js', () => {
         .pipe(gulp.dest(buildParams.viewJsDir()));
 
 });
-
-// gulp.task('custom-js', () => {
-//     return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
-//         .pipe(concat(buildParams.customFile))
-//         .pipe(babel({
-//             presets: ['es2015']
-//         }))
-//         .on('error', (e) => {
-//             console.error(e);
-//             this.emit('end');
-//         })
-//         .pipe(wrap('(function(){\n"use strict";\n<%= contents %>\n})();'))
-//         .pipe(gulp.dest(buildParams.viewJsDir()));
-
-
-
-
-
-// });
-
-
-
