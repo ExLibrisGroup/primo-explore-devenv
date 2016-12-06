@@ -4,6 +4,7 @@ var browserSync = require('browser-sync');
 module.exports = {
     closeServer: closeServer,
     reloadServer: reloadServer,
+    streamToServer: streamToServer,
     startServer: startServer,
 };
 
@@ -13,6 +14,10 @@ function closeServer(label) {
 
 function reloadServer(label) {
     return browserSync.get('production').reload();
+}
+
+function streamToServer() {
+    return browserSync.get('production').stream();
 }
 
 function startServer(args) {
