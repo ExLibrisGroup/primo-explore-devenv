@@ -14,9 +14,13 @@ let prompt = require('prompt');
 
 
 
-gulp.task('setup_watchers', ['watch-js'], () => {
+gulp.task('setup_watchers', ['watch-js', 'watch-css'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
         return browserSyncManager.reloadServer();
+    });
+    gulp.watch(config.buildParams.customCssPath(),() => {
+        return gulp.src(config.buildParams.customCssPath())
+            .pipe(browserSyncManager.streamToServer());
     });
 });
 
