@@ -32,7 +32,7 @@ module.exports.getCustimazationObject = function (vid) {
         var viewPackage = base_path + vid;
     }
     if(vid === '') {
-        var viewPackage = packages.filter((package) => package !== base_path + 'CENTRAL_PACKAGE');
+        var viewPackage = packages.filter((pkg) => pkg !== base_path + 'CENTRAL_PACKAGE');
     }
 
 
@@ -109,7 +109,7 @@ module.exports.getCustimazationObject = function (vid) {
         if (isInherited) {
             var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:'primo-explore'});
 
-            for (path of paths) {
+            for (let path of paths) {
                 var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
                 if (!customizationObject.homepageHtml[pathFixed]) {
                     customizationObject.homepageHtml[pathFixed] = path;
