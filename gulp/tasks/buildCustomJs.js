@@ -19,8 +19,7 @@ gulp.task('watch-js', () => {
 
 
 gulp.task('custom-js', () => {
-
-    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath()])
+    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
         .pipe(concat(buildParams.customFile))
         .pipe(babel({
             presets: ['es2015']
