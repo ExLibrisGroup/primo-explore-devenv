@@ -39,6 +39,7 @@
     "run-sequence": "1.2.1",
     "shelljs": "0.6.0",
     "tar-fs": "1.13.0"
-  }
+  },
+  "engines" : { "node" : ">=4.2" }
 }
 
