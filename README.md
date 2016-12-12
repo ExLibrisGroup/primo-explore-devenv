@@ -50,7 +50,7 @@ The development package allows you to configure :
 
 -  Unzip the file you downloaded
 
--  Download and install nodejs version 4.2.x
+-  Download and install the latest LTS version of Node from: 
 
 > https://nodejs.org/en/download/
 
