@@ -21,7 +21,7 @@ module.exports.getCustimazationObject = function (vid) {
         favIcon: '',
         libraryLogo: '',
         resourceIcons: '',
-        homepageHtml: ''
+        staticHtml: ''
     };
 
     var promises = [];
@@ -98,11 +98,12 @@ module.exports.getCustimazationObject = function (vid) {
     var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
 
     if(paths && paths.length > 0){ // for August 2016 version
-        customizationObject.homepageHtml = {};
+        customizationObject.staticHtml = {};
+        customizationObject.staticHtml.homepage = {};
         for (path of paths) {
 
             var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
-            customizationObject.homepageHtml[pathFixed] = path;
+            customizationObject.staticHtml.homepage[pathFixed] = path;
         }
 
 
@@ -111,8 +112,8 @@ module.exports.getCustimazationObject = function (vid) {
 
             for (path of paths) {
                 var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
-                if (!customizationObject.homepageHtml[pathFixed]) {
-                    customizationObject.homepageHtml[pathFixed] = path;
+                if (!customizationObject.staticHtml.homepage[pathFixed]) {
+                    customizationObject.staticHtml.homepage[pathFixed] = path;
                 }
 
             }
@@ -186,6 +187,7 @@ module.exports.proxy_function = function () {
     return modRewrite([
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [PL]',
+
         '/primo-explore/index.html ' + proxyServer + '/primo-explore/index.html [PL]',
         /*'/primo-explore/img/library-logo.png ' + customizationObject.libraryLogo[0].replace('primo-explore', '') + ' [L]',
          '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',
