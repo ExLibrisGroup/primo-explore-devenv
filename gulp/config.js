@@ -5,9 +5,18 @@ let customModuleFile =  'custom.module.js';
 let customCssFile =  'custom1.css';
 let mainFile = 'main.js';
 
+let browserify;
 let view ;
 function setView(_view) {
     view = _view;
+}
+
+function getBrowserify() {
+    return browserify;
+}
+
+function setBrowserify(_browserify) {
+    browserify = _browserify;
 }
 
 function getView(){
@@ -28,6 +37,10 @@ function viewJsDir() {
 
 function mainPath() {
     return viewJsDir()+'/*.js';
+}
+
+function mainJsPath() {
+    return viewJsDir()+'/main.js';
 }
 
 function customCssMainPath() {
@@ -79,6 +92,7 @@ let buildParams = {
     customPath: customPath,
     customModulePath: customModulePath,
     mainPath: mainPath,
+    mainJsPath: mainJsPath,
     viewJsDir: viewJsDir,
     viewCssDir: viewCssDir,
     customCssPath: customCssPath,
@@ -94,6 +108,8 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
-    view: getView
+    view: getView,
+    getBrowserify: getBrowserify,
+    setBrowserify: setBrowserify
 };
 
