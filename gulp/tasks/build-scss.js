@@ -38,7 +38,7 @@ gulp.task('extract-scss-files', () => {
         .pipe(tar.extract('.'))
 });
 gulp.task('color-variables',() => {
-    let colorVariables =JSON.parse(fs.readFileSync('colors.json', 'utf8'));
+    let colorVariables =JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
     console.log(colorVariables.links);
     return gulp.src(templateFile)
         .pipe(template(colorVariables))
