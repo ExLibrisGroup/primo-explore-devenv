@@ -19,10 +19,12 @@ let  zlib = require('zlib');
 let tar = require('tar-fs');
 let stylesBaseDir = 'www/styles/partials';
 let templateFile = stylesBaseDir+'/_variables.tmpl.scss';
+let OTBColorsFile = stylesBaseDir+'/../colors.json';
 let scssFile = '_variables.scss';
 var runSequence = require('run-sequence');
 let  fs = require('fs');
 let del = require('del');
+let lodashMerge = require('lodash/merge');
 
 gulp.task('cleanup',()=> del(['www']));
 
@@ -38,10 +40,11 @@ gulp.task('extract-scss-files', () => {
         .pipe(tar.extract('.'))
 });
 gulp.task('color-variables',() => {
-    let colorVariables =JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
-    console.log(colorVariables.links);
+    let colorVariables = JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
+    let colorVariablesOTB =JSON.parse(fs.readFileSync(OTBColorsFile, 'utf8'));
+    let colorsMeregd = lodashMerge(colorVariablesOTB, colorVariables);
     return gulp.src(templateFile)
-        .pipe(template(colorVariables))
+        .pipe(template(colorsMeregd))
         .pipe(rename(scssFile))
         .pipe(gulp.dest(stylesBaseDir));
 });
