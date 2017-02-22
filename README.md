@@ -59,7 +59,7 @@ The development package allows you to configure :
 
 -  Restart the computer
 
--  Run `npm install -g gulp` from the command line
+-  Run `npm install -g gulp-cli` from the command line
 
 -  Open a new command line window
 
