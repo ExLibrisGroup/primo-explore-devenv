@@ -84,7 +84,7 @@ function customNpmCssPath() {
 }
 
 function customNpmImgPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.png`;
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.{png, ico, gif, jpg}`;
 }
 
 
@@ -127,4 +127,3 @@ module.exports = {
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify
 };
-
