@@ -48,7 +48,7 @@ function mainJsPath() {
 }
 
 function mainImgPath() {
-    return viewImgDir()+'/*.{png, ico, gif, jpg}';
+    return viewImgDir()+'/*.{png, ico, gif, jpg, svg}';
 }
 
 function customCssMainPath() {
@@ -84,7 +84,7 @@ function customNpmCssPath() {
 }
 
 function customNpmImgPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.{png, ico, gif, jpg}`;
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.{png, ico, gif, jpg, svg}`;
 }
 
 
