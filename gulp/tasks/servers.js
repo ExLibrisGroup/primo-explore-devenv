@@ -14,13 +14,16 @@ let prompt = require('prompt');
 
 
 
-gulp.task('setup_watchers', ['watch-js', 'watch-css'], () => {
+gulp.task('setup_watchers', ['watch-js', 'watch-css', 'watch-img'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
         return browserSyncManager.reloadServer();
     });
     gulp.watch(config.buildParams.customCssPath(),() => {
         return gulp.src(config.buildParams.customCssPath())
             .pipe(browserSyncManager.streamToServer());
+    });
+    gulp.watch(config.buildParams.mainImgPath(),() => {
+        return browserSyncManager.reloadServer();
     });
 });
 
@@ -67,7 +70,7 @@ gulp.task('connect:primo_explore', function() {
                         let hostname = parts[0];
                         let port = parts[1];
 
-                        
+
                         let options = {
                             hostname: hostname,
                             port: port,
@@ -104,4 +107,4 @@ gulp.task('connect:primo_explore', function() {
     });
 });
 
-gulp.task('run', ['connect:primo_explore','setup_watchers','custom-js','custom-css']); //watch
+gulp.task('run', ['connect:primo_explore','setup_watchers','custom-js','custom-css', 'custom-img']); //watch

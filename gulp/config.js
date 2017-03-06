@@ -35,12 +35,20 @@ function viewJsDir() {
     return `primo-explore/custom/${view}/js`;
 }
 
+function viewImgDir() {
+    return `primo-explore/custom/${view}/img`;
+}
+
 function mainPath() {
     return viewJsDir()+'/*.js';
 }
 
 function mainJsPath() {
     return viewJsDir()+'/main.js';
+}
+
+function mainImgPath() {
+    return viewImgDir()+'/*.{png, ico, gif, jpg, svg}';
 }
 
 function customCssMainPath() {
@@ -75,6 +83,10 @@ function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
 }
 
+function customNpmImgPath() {
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.{png, ico, gif, jpg, svg}`;
+}
+
 
 
 var SERVERS = {
@@ -93,13 +105,16 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
+    mainImgPath: mainImgPath,
     viewJsDir: viewJsDir,
     viewCssDir: viewCssDir,
+    viewImgDir: viewImgDir,
     customCssPath: customCssPath,
     customNpmJsPath: customNpmJsPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
+    customNpmImgPath: customNpmImgPath,
     customCssMainPath: customCssMainPath,
     customColorsPath: customColorsPath
 };
@@ -112,4 +127,3 @@ module.exports = {
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify
 };
-
