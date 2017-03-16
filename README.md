@@ -57,9 +57,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 10. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
 
-   - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this:
-
-    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
+   - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this: 
+   ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
     
 11. Start your code customizations : 
 
@@ -68,18 +67,18 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
    - From command line, run the command : `gulp run --view <the VIEW_CODE folder>` (This will start your local server.)
    
      (For example, running `gulp run --view Auto1` will start the environment taking the customizations from the <b>Auto1</b> folder.)
-
-    ![Server Startup Image](./help_files/serverStartup.png "Server Startup")
+     
+     ![Server Startup Image](./help_files/serverStartup.png "Server Startup")
 
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
 
    -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser's incognito mode; or you can clear your browser cache before you start the Gulp server.
-
-    ![Env up Image](./help_files/searchResults.png "Env up")
+   
+   ![Env up Image](./help_files/searchResults.png "Env up")
 
    -  You can get immediate feedback on your code changes by refreshing the browser.
 
-   -  perform your changes according to the documentation/examples in:
+   -  Perform your changes according to the documentation/examples in:
 
       - [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
 
@@ -97,14 +96,16 @@ Once you finish customizing the package, you can zip up that directory and uploa
 
 1. In a command line window, navigate to the project base directory : `cd \path\to\your\project\folder\primo-explore-devenv`
 
-2. From command line, run the command : `gulp create-package` You will be prompted with a menu specifing all of the possible packages you can build, such as :
+2. From command line, run the command : `gulp create-package` You will be prompted with a menu specifying all of the possible packages you can build, such as :
 
     ![Create Package Image](./help_files/createPackage.png "Create Package up")
 
     ![Package Image](./help_files/packages.png "Package up")
 
-    ![BO Image](./help_files/bo.png "BO up")
-
 3. Log into Primo Back Office and navigate to the <b>UI customization Package manager</b> section : `Primo Home > Primo Utilities > UI customization Package Manager`
 
 4. Use the file <b>browse</b> button to find and upload the new zipped package file. (Located in the "\path\to\your\project\folder\primo-explore-devenv\package" directory.)
+
+    ![BO Image](./help_files/bo.png "BO up")
+
+5. Don't forget to <b>deploy</b> your changes
