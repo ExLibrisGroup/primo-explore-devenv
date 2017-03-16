@@ -59,6 +59,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
    - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this: 
    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
+   
+   - <b>IMPORTANT:</b> The name of your custom view package folder must match an <i>existing</i> view on the proxy server being referenced or the Gulp server will not function properly. For development from scratch, be sure to first create (or copy) a view using the Primo Back Office View Wizard; then you can accomplish your customizations locally using this document.
     
 11. Start your code customizations : 
 
