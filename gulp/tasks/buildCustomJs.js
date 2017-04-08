@@ -20,7 +20,7 @@ gulp.task('watch-js', () => {
 });
 
 
-gulp.task('custom-js', () => {
+gulp.task('custom-js', ['custom-html-templates'],() => {
    if(config.getBrowserify()) {
        buildByBrowserify();
    }
