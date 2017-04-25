@@ -45,5 +45,11 @@
   },
   "engines": {
     "node": ">=4.2"
-  }
+  },
+  "name": "primo-explore-devenv",
+  "version": "1.0.0",
+  "description": "The Exlibris Primo Open Discovery Framework",
+  "author": "noamamit92",
+  "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv"
+
 }
