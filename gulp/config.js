@@ -11,6 +11,13 @@ let ve ;
 function setView(_view) {
     view = _view;
 }
+
+function setProxy(_proxy) {
+    this.PROXY_SERVER = _proxy;
+}
+function getProxy(){
+    return PROXY_SERVER;
+}
 function getVe() {
     return ve;
 }
@@ -25,6 +32,7 @@ function getBrowserify() {
 function setBrowserify(_browserify) {
     browserify = _browserify;
 }
+
 
 function getView(){
     return view;
@@ -89,8 +97,7 @@ var SERVERS = {
 };
 
 /*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://your-server:your-port';
-
+var PROXY_SERVER = 'http://il-primo17:1703';
 
 
 let buildParams = {
@@ -115,6 +122,8 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+    setProxy: setProxy,
+    proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify,
