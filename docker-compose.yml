@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    build: .
+    environment:
+      PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
+      VIEW: NYU
+    ports:
+      - 8003:8003
+      - 3001:3001
+    volumes:
+      - ./primo-explore/custom:/home/app/primo-explore/custom
