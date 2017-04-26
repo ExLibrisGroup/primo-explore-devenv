@@ -19,9 +19,6 @@ EXPOSE 8003 3001
 RUN npm install gulp -g
 RUN sed -ie 's@http:\/\/your-server:your-port@'"$PROXY_SERVER"'@g' $INSTALL_PATH/gulp/config.js
 
-VOLUME $INSTALL_PATH/primo-explore/custom
-
-RUN git clone git@github.com:NYULibraries/primo-explore-nyu.git $INSTALL_PATH/primo-explore/custom
 RUN gulp --gulpfile=nyu-gulpfile.js nyu-watch --view $VIEW &
 
 CMD [ "/bin/bash", "-c", "gulp run --view $VIEW" ]
