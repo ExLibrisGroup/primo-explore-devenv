@@ -7,4 +7,4 @@ server:
     - 8003:8003
     - 3001:3001
   volumes:
-    - ./views:/home/app/primo-explore/custom
+    - ./primo-explore/custom:/home/app/primo-explore/custom

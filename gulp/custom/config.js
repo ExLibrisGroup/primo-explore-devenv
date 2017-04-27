@@ -13,4 +13,5 @@ let nyuConfig = {
   handleError: handleError
 };
 
+// Merge configs
 module.exports = Object.assign(config, nyuConfig);
