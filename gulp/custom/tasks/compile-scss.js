@@ -12,15 +12,15 @@ let concat = require('gulp-concat');
 // Override custom-css from buildCustomCss.js
 // to compile SCSS down to CSS first and then
 // create the custom1.css file
-gulp.task('custom-css', () => {
-  gutil.log("Writing to file " + buildParams.viewCssDir() + "/" + view.toLowerCase() + ".css");
-  let srcFile = buildParams.viewCssDir() + "/sass/" + view.toLowerCase() + ".scss";
-  gulp.src(srcFile)
+gulp.task('custom-css', ['compile-scss', 'default-custom-css']);
+
+gulp.task('compile-scss', () => {
+  gutil.log("Writing to file " + config.viewCssMainFilename());
+  gulp.src(config.viewScssMainFilename())
     .pipe(plumber())
     .pipe(sass({errLogToConsole: true}))
     .on('error', config.handleError)
     .pipe(gulp.dest(buildParams.viewCssDir()));
-  gulp.start('default-custom-css');
 });
 
 // Copied from buildCustomCss.js task
