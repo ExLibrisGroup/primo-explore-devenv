@@ -2,10 +2,20 @@
 
 ## Setting up the dev environments
 
+Assuming you have node and npm installed locally you'll have to install the dependencies and install gulp globally:
+
 ```
-docker-compose up
+npm install
+npm install gulp -g
+```
+
+Then to start the server up with Docker:
+
+```
 # Setup your views
-git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU
+git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU-NUI
+...
+docker-compose up
 ```
 
 To run on your local machine and not on Docker you can use the following customized gulp task:
@@ -23,6 +33,12 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 ## Building JS
 
 When developing or creating a package the Primo gulp watchers will compile a `custom.js` file from all the files in `js/*.js`
+
+## Build a package
+
+```
+gulp create-package
+```
 
 ## Resources
 
