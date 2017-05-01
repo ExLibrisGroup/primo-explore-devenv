@@ -2,7 +2,7 @@ FROM node:7.7.2
 
 ENV INSTALL_PATH /home/app
 ENV PROXY_SERVER http://bobcatdev.library.nyu.edu:80
-ENV VIEW NYU
+ENV VIEW NYU-NUI
 ENV PATH $INSTALL_PATH/node_modules/.bin:$PATH
 
 RUN apt-get update -qq && apt-get install -y vim

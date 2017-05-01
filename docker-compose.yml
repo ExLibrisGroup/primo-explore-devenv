@@ -2,7 +2,7 @@ server:
   build: .
   environment:
     PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
-    VIEW: NYU
+    VIEW: NYU-NUI
   ports:
     - 8003:8003
     - 3001:3001
