@@ -15,8 +15,7 @@ const browserify = require("browserify");
 let buildParams = config.buildParams;
 
 gulp.task('watch-js', () => {
-
-    gulp.watch([buildParams.mainPath(),'!'+buildParams.customPath()],['custom-js']);
+    gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],['custom-js']);
 });
 
 
@@ -54,6 +53,7 @@ function buildByConcatination() {
 
 function buildByBrowserify() {
     return browserify({
+        debug: true,
         entries: buildParams.mainJsPath(),
         paths:[
             buildParams.viewJsDir()+'/node_modules'
