@@ -7,10 +7,10 @@ var glob = require('glob');
 Promise.promisifyAll(glob);
 var Response = require('http-response-object');
 
-module.exports.getCustimazationObject = function (vid) {
+module.exports.getCustimazationObject = function (vid,appName) {
 
 
-    var basedir = 'primo-explore/custom';
+    var basedir = appName+'/custom';
     var ignored = ['img', 'css', 'custom'];
     var base_path = 'custom/';
     var customizationObject = {
@@ -25,7 +25,7 @@ module.exports.getCustimazationObject = function (vid) {
     };
 
     var promises = [];
-    var packages = glob.sync(base_path + "*", {cwd:'primo-explore',ignore:'**/README.md'});
+    var packages = glob.sync(base_path + "*", {cwd:appName,ignore:'**/README.md'});
 
     var isInherited = packages.indexOf(base_path + 'CENTRAL_PACKAGE') > -1;
     if(vid !== ''){
@@ -44,35 +44,35 @@ module.exports.getCustimazationObject = function (vid) {
     //js
 
     if(viewPackage !== '' && viewPackage !== 'CENTRAL_PACKAGE') {
-        customizationObject.viewJs = glob.sync(viewPackage + "/js/custom.js", {cwd: 'primo-explore'});
+        customizationObject.viewJs = glob.sync(viewPackage + "/js/custom.js", {cwd: appName});
     }
     if (isInherited) {
-        customizationObject.centralJs = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/js/custom.js", {cwd:'primo-explore'});
+        customizationObject.centralJs = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/js/custom.js", {cwd:appName});
     }
 
     //css
 
 
-    customizationObject.viewCss = glob.sync(viewPackage + "/css/custom1.css", {cwd:'primo-explore'});
+    customizationObject.viewCss = glob.sync(viewPackage + "/css/custom1.css", {cwd:appName});
 
     if (isInherited) {
-        customizationObject.centralCss = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/css/custom1.css", {cwd:'primo-explore'});
+        customizationObject.centralCss = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/css/custom1.css", {cwd:appName});
     }
 
     //images
 
-    customizationObject.favIcon = glob.sync(viewPackage + "/img/favicon.ico", {cwd:'primo-explore'});
+    customizationObject.favIcon = glob.sync(viewPackage + "/img/favicon.ico", {cwd:appName});
 
 
     if (isInherited && customizationObject.favIcon === '') {
-        customizationObject.favIcon = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/favicon.ico", {cwd:'primo-explore'})
+        customizationObject.favIcon = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/favicon.ico", {cwd:appName})
     }
-    customizationObject.libraryLogo = glob.sync(viewPackage + "/img/library-logo.png", {cwd:'primo-explore'})[0];
+    customizationObject.libraryLogo = glob.sync(viewPackage + "/img/library-logo.png", {cwd:appName})[0];
     if (isInherited && (!customizationObject.libraryLogo || customizationObject.libraryLogo === '')) {
-        customizationObject.libraryLogo = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/library-logo.png", {cwd:'primo-explore'})[0];
+        customizationObject.libraryLogo = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/library-logo.png", {cwd:appName})[0];
     }
 
-    var paths = glob.sync(viewPackage + "/img/icon_**.png", {cwd:'primo-explore'});
+    var paths = glob.sync(viewPackage + "/img/icon_**.png", {cwd:appName});
     customizationObject.resourceIcons = {};
     for (path of paths) {
         var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
@@ -81,7 +81,7 @@ module.exports.getCustimazationObject = function (vid) {
 
 
     if (isInherited) {
-        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:'primo-explore'});
+        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:appName});
 
         for (path of paths) {
             var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
@@ -95,7 +95,7 @@ module.exports.getCustimazationObject = function (vid) {
 
 
     //html
-    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:'primo-explore'});
+    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:appName});
 
     if(paths && paths.length > 0){ // for August 2016 version
         customizationObject.staticHtml = {};
@@ -108,7 +108,7 @@ module.exports.getCustimazationObject = function (vid) {
 
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:'primo-explore'});
+            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:appName});
 
             for (path of paths) {
                 var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
@@ -122,15 +122,15 @@ module.exports.getCustimazationObject = function (vid) {
         }
 
     }else{ // starting November 2016 version
-        var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:'primo-explore'});
+        var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:appName});
         if(!paths || paths.length ===0){
-            paths = glob.sync(viewPackage + "/html/*.html", {cwd:'primo-explore'});
+            paths = glob.sync(viewPackage + "/html/*.html", {cwd:appName});
         }
         var staticHtmlRes = {};
         staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:'primo-explore'});
+            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:appName});
             staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
         }
         customizationObject.staticHtml = staticHtmlRes;
@@ -186,14 +186,16 @@ module.exports.proxy_function = function () {
 
     return modRewrite([
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
+        '/primaws/rest/(.*) ' + proxyServer + '/primaws/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [PL]',
+        '/primaws/suprimaLogin ' + proxyServer + '/primaws/suprimaLogin [PL]',
 
         '/primo-explore/index.html ' + proxyServer + '/primo-explore/index.html [PL]',
-        /*'/primo-explore/img/library-logo.png ' + customizationObject.libraryLogo[0].replace('primo-explore', '') + ' [L]',
-         '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',
-         '/primo-explore/img/favicon.ico ' + customizationObject.favIcon[0].replace('primo-explore', '') + ' [L]',*/
+        '/discovery/index.html ' + proxyServer + '/discovery/index.html [PL]',
         '/primo-explore/custom/(.*) /custom/$1 [L]',
+        '/discovery/custom/(.*) /custom/$1 [L]',
         '/primo-explore/(.*) ' + proxyServer + '/primo-explore/$1 [PL]',
+        '/discovery/(.*) ' + proxyServer + '/discovery/$1 [PL]',
         '.*primoExploreJwt=.* /index.html [L]',
         '^[^\\.]*$ /index.html [L]'
     ]);

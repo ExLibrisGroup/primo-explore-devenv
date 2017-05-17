@@ -7,10 +7,24 @@ let mainFile = 'main.js';
 
 let browserify;
 let view ;
+let ve ;
 function setView(_view) {
     view = _view;
 }
 
+function setProxy(_proxy) {
+    this.PROXY_SERVER = _proxy;
+}
+function getProxy(){
+    return PROXY_SERVER;
+}
+function getVe() {
+    return ve;
+}
+
+function setVe(_ve) {
+    ve = _ve;
+}
 function getBrowserify() {
     return browserify;
 }
@@ -18,6 +32,7 @@ function getBrowserify() {
 function setBrowserify(_browserify) {
     browserify = _browserify;
 }
+
 
 function getView(){
     return view;
@@ -35,24 +50,12 @@ function viewJsDir() {
     return `primo-explore/custom/${view}/js`;
 }
 
-function viewImgDir() {
-    return `primo-explore/custom/${view}/img`;
-}
-
-function viewHtmlDir() {
-    return `primo-explore/custom/${view}/html`;
-}
-
 function mainPath() {
     return viewJsDir()+'/*.js';
 }
 
 function mainJsPath() {
     return viewJsDir()+'/main.js';
-}
-
-function mainImgPath() {
-    return viewImgDir()+'/*.{png, ico, gif, jpg, svg}';
 }
 
 function customCssMainPath() {
@@ -87,10 +90,6 @@ function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
 }
 
-function customNpmImgPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/img/*.{png, ico, gif, jpg, svg}`;
-}
-
 
 
 var SERVERS = {
@@ -98,8 +97,7 @@ var SERVERS = {
 };
 
 /*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://your-server:your-port';
-
+var PROXY_SERVER = 'http://il-primo17:1703';
 
 
 let buildParams = {
@@ -109,17 +107,13 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-    mainImgPath: mainImgPath,
     viewJsDir: viewJsDir,
     viewCssDir: viewCssDir,
-    viewImgDir: viewImgDir,
-    viewHtmlDir: viewHtmlDir,
     customCssPath: customCssPath,
     customNpmJsPath: customNpmJsPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
-    customNpmImgPath: customNpmImgPath,
     customCssMainPath: customCssMainPath,
     customColorsPath: customColorsPath
 };
@@ -128,7 +122,12 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+    setProxy: setProxy,
+    proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
-    setBrowserify: setBrowserify
+    setBrowserify: setBrowserify,
+    getVe: getVe,
+    setVe: setVe
 };
+

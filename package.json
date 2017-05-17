@@ -1,6 +1,6 @@
 {
   "name": "primo-explore-devenv",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "",
   "author": "",
   "devDependencies": {
@@ -42,9 +42,18 @@
     "require-dir": "0.3.0",
     "run-sequence": "1.2.1",
     "shelljs": "0.6.0",
-    "tar-fs": "1.13.0"
+    "tar-fs": "1.13.0",
+    "protractor": "5.0.0",
+    "fs-extra": "2.1.2",
+    "protractor-image-comparison": "1.2.3"
   },
   "engines": {
     "node": ">=4.2"
-  }
+  },
+  "name": "primo-explore-devenv",
+  "version": "1.0.1",
+  "description": "The Exlibris Primo Open Discovery Framework",
+  "author": "noamamit92",
+  "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv"
+
 }
