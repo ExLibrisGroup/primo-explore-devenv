@@ -46,6 +46,10 @@ function customModulePath() {
     return viewJsDir()+'/'+customModuleFile;
 }
 
+function viewHtmlDir() {
+    return `primo-explore/custom/${view}/html`;
+}
+
 function viewJsDir() {
     return `primo-explore/custom/${view}/js`;
 }
@@ -108,6 +112,7 @@ let buildParams = {
     mainPath: mainPath,
     mainJsPath: mainJsPath,
     viewJsDir: viewJsDir,
+    viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
     customCssPath: customCssPath,
     customNpmJsPath: customNpmJsPath,
@@ -130,4 +135,3 @@ module.exports = {
     getVe: getVe,
     setVe: setVe
 };
-
