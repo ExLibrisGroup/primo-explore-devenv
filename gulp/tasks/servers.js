@@ -27,7 +27,7 @@ gulp.task('setup_watchers', ['watch-js', 'watch-css'], () => {
 
 
 gulp.task('connect:primo_explore', function() {
-    let appName = config.getVe() ? 'discovery' : 'primo-explore';
+    let appName = 'primo-explore';
     browserSyncManager.startServer({
         label: 'production',
         middleware:[
