@@ -10,6 +10,10 @@ prm-search > md-content.md-primoExplore-theme .main {
     flex-flow: row-reverse wrap;
 
 }
+
+a:hover {
+  text-decoration: none;
+}
 .screen-gt-sm .sidebar {
     webkit-flex: 0 0 15%;
     flex: 0 0 15%;
