@@ -1,0 +1,49 @@
+
+
+/*Uncomment the follwoing lines to move facets to the left*/
+
+
+prm-search > md-content.md-primoExplore-theme .main {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+
+}
+.screen-gt-sm .sidebar {
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+
+
+.icon {
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  padding-bottom: 17px;
+  padding-top: 18px;
+}
+
+.icon-book {  
+  background-image: url('/custom/matt1/img/Book-PNG.png');
+}
+
+.icon-download { 
+  background-image: url('/custom/matt1/img/Download_PNG.png');  
+}
+
+.icon-print {
+  background-image: url('/custom/matt1/img/Printing-PNG.png');  
+}
+
+.icon-mobile {
+  background-image: url('/custom/matt1/img/Mobile-with-Plymouth-PNG.png');  
+}
+
+.icon-copy-and-email {
+  background-image: url('/custom/matt1/img/Copy-&-Email-PNG.png'); 
+}
+
+#live-chat {
+  background-color: #999 !important; 
+}
