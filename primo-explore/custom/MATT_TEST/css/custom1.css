@@ -11,14 +11,19 @@ prm-search > md-content.md-primoExplore-theme .main {
 
 }
 
-a:hover {
-  text-decoration: none;
-}
 .screen-gt-sm .sidebar {
     webkit-flex: 0 0 15%;
     flex: 0 0 15%;
 }
 
+.default-card a {
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  &:hover{
+    border-color: #5c92bd;
+  }
+}
 
 .icon {
   background-position: left center;
