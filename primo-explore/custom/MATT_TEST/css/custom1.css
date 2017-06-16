@@ -17,9 +17,10 @@ prm-search > md-content.md-primoExplore-theme .main {
 }
 
 .default-card a {
-  border-width: 1px;
+  border-width: 3px;
   border-style: solid;
   border-color: white;
+  border-radius: 6px;
   &:hover{
     border-color: #5c92bd;
   }
