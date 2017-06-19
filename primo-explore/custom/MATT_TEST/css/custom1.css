@@ -73,3 +73,29 @@ prm-logo div.product-logo-local {
  display: flex;
 }
 
+md-fab-actions.md-toolbar-tools {
+  background-color: red;
+}
+
+div.hide-xs.flex-50 {
+  background-color: blue;
+}
+
+div.flex-xs-100.flex-50:nth-of-type(2):not(.flex-xs) {
+  background-color: green;
+}
+
+/*button.user-menu-button.md-button.md-primoExplore-theme.md-ink-ripple.hide-xs{
+  display: none;
+}*/
+
+button.button-with-icon:not(.switch-to-advanced) {
+  background-color: yellow;
+}
+
+prm-search-bookmark-filter {
+  background-color: cyan;
+}
+
+/*
+
