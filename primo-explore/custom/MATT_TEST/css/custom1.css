@@ -57,3 +57,19 @@ prm-search > md-content.md-primoExplore-theme .main {
 #live-chat {
   background-color: #999 !important; 
 }
+
+/* Top Bar */
+
+/* hide labguage selection */
+prm-change-lang {
+  display: none;
+}
+
+prm-logo div.product-logo {
+    display:none;
+}
+ 
+prm-logo div.product-logo-local {
+ display: flex;
+}
+
