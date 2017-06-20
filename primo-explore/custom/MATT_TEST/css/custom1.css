@@ -34,24 +34,28 @@ prm-search > md-content.md-primoExplore-theme .main {
   padding-top: 18px;
 }
 
-.icon-book {  
-  background-image: url('/primo-explore/custom/MATT_TEST/img/Book-PNG.png');
+.icon-renew {  
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-renew.png');
 }
 
-.icon-download { 
-  background-image: url('/primo-explore/custom/MATT_TEST/img/Download_PNG.png');  
+.icon-ask { 
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-ask.png');  
 }
 
-.icon-print {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/Printing-PNG.png');  
+.icon-libweb {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-libweb.png');  
 }
 
-.icon-mobile {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/Mobile-with-Plymouth-PNG.png');  
+.icon-databases {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-databases.png');  
 }
 
-.icon-copy-and-email {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/Copy-&-Email-PNG.png'); 
+.icon-eJournals {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-eJournals.png'); 
+}
+
+.icon-libguides {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-libguides.png');  
 }
 
 #live-chat {
@@ -65,6 +69,7 @@ prm-change-lang {
   display: none;
 }
 
+/* Logo clickable changes */
 prm-logo div.product-logo {
     display:none;
 }
@@ -73,6 +78,7 @@ prm-logo div.product-logo-local {
  display: flex;
 }
 
+/* scratch pad */
 md-fab-actions.md-toolbar-tools {
   background-color: red;
 }
