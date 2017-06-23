@@ -27,31 +27,66 @@
     bindings: {parentCtrl: '<'},
     controller:"prmMainMenuAfterController",
     template: '<pu-main-nav></pu-main-nav>'
+    // template: '{{$ctrl.myMenu()}}'
   });
 
   app.controller('prmMainMenuAfterController', [function(){
     var mm = this;
+    // mm.myMenu = myMenu
+    // function myMenu(){
+    //   return mm.parentCtrl.mainView;
+    // }
   }]);
 
-})();
+  app.provider('myMenuProvider', function(){
+    var provider = {};
 
-angular.module('puMainNavApp', []).
-  component('puMainNav', {
-    template :
-      `<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">
-        <p ng-repeat='item in $ctrl.menuItems' class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column">{{item.label}}</p>
-      </div>`,
-    controller: function puMainNavController(){
-      this.menuItems = [
-        {
-          label: "ill requests"
-        },
-        {
-          label: "fly fishing"
-        }
-      ];
+    provider.$get = function() {
+      var service = {};
+
+      service.doService = function(){
+        return app.myMenu;
+      }
+      return service
     }
+    return provider
+  })
+
+  app.myMenu = [
+    {
+      label: 'Fly Fishing'
+    },
+    {
+      label: 'Fly Fishing'
+    },
+    {
+      label: 'Fly Fishing'
+    },
+    {
+      label: 'Fly Fishing'
+    },
+  ]
+
+  var MainNav = angular.module('puMainNavApp', ['viewCustom']);
+
+  MainNav.component('puMainNav', {
+      template :
+    `<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">
+      <p ng-repeat='item in $ctrl.menuItems' class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column">{{item.label}}</p>
+    </div>`,
+    controller: 'puMainNavController'
   });
+
+  MainNav.controller('puMainNavController', function($scope, myMenu) {
+    var ss = this;
+    ss.menuItems = menuItems;
+    function menuItems() {
+      return myMenu;
+    }
+
+  });
+
+})();
 
 (function() {
   var x = document.createElement("script"); x.type = "text/javascript"; x.async = true;
