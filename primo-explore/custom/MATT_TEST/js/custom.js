@@ -3,7 +3,7 @@
   'use strict';
 
 
-  var app = angular.module('viewCustom', ['angularLoad']);
+  var app = angular.module('viewCustom', ['angularLoad', 'puMainNavApp']);
 
   app.component('prmLogoAfter',{
     bindings: {parentCtrl: '<'},
@@ -23,9 +23,36 @@
     }
   }]);
 
+  app.component('prmMainMenuAfter', {
+    bindings: {parentCtrl: '<'},
+    controller:"prmMainMenuAfterController",
+    template: '<pu-main-nav></pu-main-nav>'
+  });
+
+  app.controller('prmMainMenuAfterController', [function(){
+    var mm = this;
+  }]);
+
 })();
 
- 
+angular.module('puMainNavApp', []).
+  component('puMainNav', {
+    template :
+      `<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">
+        <p ng-repeat='item in $ctrl.menuItems' class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column">{{item.label}}</p>
+      </div>`,
+    controller: function puMainNavController(){
+      this.menuItems = [
+        {
+          label: "ill requests"
+        },
+        {
+          label: "fly fishing"
+        }
+      ];
+    }
+  });
+
 (function() {
   var x = document.createElement("script"); x.type = "text/javascript"; x.async = true;
   x.src = (document.location.protocol === "https:" ? "https://" : "http://") + "us.refchatter.net/js/libraryh3lp.js?310";

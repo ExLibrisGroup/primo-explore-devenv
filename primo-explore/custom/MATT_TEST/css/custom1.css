@@ -103,5 +103,11 @@ prm-search-bookmark-filter {
   background-color: cyan;
 }
 
-/*
+prm-main-menu div.top-nav-bar-links {
+  display: none;
+}
 
+prm-main-menu div.top-nav-bar-links-local {
+  display:flex;
+  background-color: #ccf;
+}
