@@ -3,7 +3,7 @@
   'use strict';
 
 
-  var app = angular.module('viewCustom', ['angularLoad', 'puMainNavApp']);
+  var app = angular.module('viewCustom', ['angularLoad']);
 
   app.component('prmLogoAfter',{
     bindings: {parentCtrl: '<'},
@@ -26,65 +26,61 @@
   app.component('prmMainMenuAfter', {
     bindings: {parentCtrl: '<'},
     controller:"prmMainMenuAfterController",
-    template: '<pu-main-nav></pu-main-nav>'
+    // template: '<pu-main-nav></pu-main-nav>'
     // template: '{{$ctrl.myMenu()}}'
+    template :
+    '<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">' +
+      `<p ng-repeat="item in $ctrl.myMenu"` +
+      ' class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center' +
+      'layout-column">{{item.label}}</p>' +
+    '</div>'
   });
 
   app.controller('prmMainMenuAfterController', [function(){
     var mm = this;
-    // mm.myMenu = myMenu
-    // function myMenu(){
-    //   return mm.parentCtrl.mainView;
-    // }
+    mm.myMenu = myMenu();
+    function myMenu(){
+      return mm.parentCtrl.mainView;
+    }
+    alert("fish");
   }]);
 
-  app.provider('myMenuProvider', function(){
-    var provider = {};
+  // app.value ('myMenu', [
+  //   {
+  //     label: 'Fly Fishing'
+  //   },
+  //   {
+  //     label: 'Fly Fishing'
+  //   },
+  //   {
+  //     label: 'Fly Fishing'
+  //   },
+  //   {
+  //     label: 'Fly Fishing'
+  //   }
+  // ])
 
-    provider.$get = function() {
-      var service = {};
 
-      service.doService = function(){
-        return app.myMenu;
-      }
-      return service
-    }
-    return provider
-  })
+  // [{ label: 'Fly Fishing' }, { label: 'Fly Fishing' }, { label: 'Fly Fishing' }, { label: 'Fly Fishing' }]
 
-  app.myMenu = [
-    {
-      label: 'Fly Fishing'
-    },
-    {
-      label: 'Fly Fishing'
-    },
-    {
-      label: 'Fly Fishing'
-    },
-    {
-      label: 'Fly Fishing'
-    },
-  ]
+  // var MainNav = angular.module('puMainNavApp', ['viewCustom']);
 
-  var MainNav = angular.module('puMainNavApp', ['viewCustom']);
+  // MainNav.component('puMainNav', {
+  //     template :
+  //   '<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">' +
+  //     '<p ng-repeat="item in $ctrl.menuItems" class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center' +
+  //     'layout-column">{{item.label}}</p>' +
+  //   '</div>',
+  //   // template: `<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">{{$ctrl.menuItems()}}</div>`,
+  //   controller: 'puMainNavController'
+  // });
 
-  MainNav.component('puMainNav', {
-      template :
-    `<div class="top-nav-bar-links-local top-nav-bar-links buttons-group layout-align-center-center layout-row flex-100">
-      <p ng-repeat='item in $ctrl.menuItems' class="zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column">{{item.label}}</p>
-    </div>`,
-    controller: 'puMainNavController'
-  });
+  // MainNav.controller('puMainNavController', function($scope, myMenu) {
+  //   this.menuItems = function menuItems() {
+  //     return myMenu;
+  //   }
 
-  MainNav.controller('puMainNavController', function($scope, myMenu) {
-    var ss = this;
-    ss.menuItems = menuItems;
-    function menuItems() {
-      return myMenu;
-    }
-
-  });
+  // });
 
 })();
 
