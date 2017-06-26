@@ -59,7 +59,7 @@ prm-search > md-content.md-primoExplore-theme .main {
 }
 
 #live-chat {
-  background-color: #999 !important; 
+  /*background-color: #999 !important; */
 }
 
 /* Top Bar */
@@ -83,14 +83,6 @@ md-fab-actions.md-toolbar-tools {
   background-color: red;
 }
 
-div.hide-xs.flex-50 {
-  background-color: blue;
-}
-
-div.flex-xs-100.flex-50:nth-of-type(2):not(.flex-xs) {
-  background-color: green;
-}
-
 /*button.user-menu-button.md-button.md-primoExplore-theme.md-ink-ripple.hide-xs{
   display: none;
 }*/
@@ -109,5 +101,5 @@ prm-main-menu div.top-nav-bar-links {
 
 prm-main-menu div.top-nav-bar-links-local {
   display:flex;
-  background-color: #ccf;
+  background-color: #CCF;
 }
