@@ -6,8 +6,10 @@ let customCssFile =  'custom1.css';
 let mainFile = 'main.js';
 
 let browserify;
-let view ;
-let ve ;
+let view;
+let ve;
+let reinstallNodeModules;
+
 function setView(_view) {
     view = _view;
 }
@@ -33,6 +35,13 @@ function setBrowserify(_browserify) {
     browserify = _browserify;
 }
 
+function setReinstallNodeModules(_reinstallNodeModules) {
+	reinstallNodeModules = _reinstallNodeModules;
+}
+
+function getReinstallNodeModules() {
+	return reinstallNodeModules;
+}
 
 function getView(){
     return view;
@@ -68,6 +77,11 @@ function customCssMainPath() {
 function customColorsPath(){
     return `colors.json`;
 }
+
+function viewRootDir() {
+	return `primo-explore/custom/${view}`;
+}
+
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
 }
@@ -75,6 +89,9 @@ function customCssPath() {
     return `primo-explore/custom/${view}/css/custom1.css`;
 }
 
+function customNpmModuleRootDir() {
+	return `primo-explore/custom/${view}/node_modules`;
+}
 
 function customNpmJsCustomPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.js`;
@@ -101,7 +118,7 @@ var SERVERS = {
 };
 
 /*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://il-primo17:1703';
+var PROXY_SERVER = 'http://ubz-primo.hosted.exlibrisgroup.com';
 
 
 let buildParams = {
@@ -111,10 +128,12 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
+		viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
     customCssPath: customCssPath,
+		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
@@ -128,6 +147,8 @@ module.exports = {
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
     setProxy: setProxy,
+		getReinstallNodeModules: getReinstallNodeModules,
+		setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
