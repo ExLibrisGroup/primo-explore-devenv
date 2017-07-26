@@ -1,8 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const execSync = require('child_process').execSync;
-const del = require('del');
 const babel = require('gulp-babel');
 const config = require('../config.js');
 const rename = require("gulp-rename");
@@ -22,45 +20,14 @@ gulp.task('watch-js', () => {
 
 
 gulp.task('custom-js', ['custom-html-templates'],() => {
-	if (config.getReinstallNodeModules()) {
-		reinstallNodeModules();
-	}
+   if(config.getBrowserify()) {
+       buildByBrowserify();
+   }
+   else {
+       buildByConcatination();
+   }
 
-	if(config.getBrowserify()) {
-  	buildByBrowserify();
-  } else {
-		buildByConcatination();
-	}
 });
-
-function reinstallNodeModules() {
-	gutil.log("Starting deletion of the view package's node modules.");
-
-	del.sync([
-		config.buildParams.customNpmModuleRootDir() + "/**/*"
-	]);
-
-	gutil.log("Finished deletion of the view package's node modules.");
-	gutil.log("Starting re-installation of the view package's node modules using >npm install< command.");
-
-	execSync('npm install', {
-		cwd: config.buildParams.viewRootDir()
-	}, function(error, stdout, stderr) {
-		if (error) {
-			gutil.log(error);
-		}
-
-		if (stdout) {
-			gutil.log(stdout);
-		}
-
-		if (stderr) {
-			gutil.log(stderr);
-		}
-	});
-
-	gutil.log("Finished re-installation of the view package's node modules using >npm install< command.");
-}
 
 function buildByConcatination() {
     return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])

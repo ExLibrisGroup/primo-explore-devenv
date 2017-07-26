@@ -105,4 +105,4 @@ gulp.task('connect:primo_explore', function() {
     });
 });
 
-gulp.task('run', ['connect:primo_explore','custom-js','custom-css','setup_watchers']); //watch
+gulp.task('run', ['connect:primo_explore','reinstall-primo-node-modules','setup_watchers','custom-js','custom-css']); //watch
