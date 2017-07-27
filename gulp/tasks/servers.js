@@ -10,11 +10,12 @@ let browserSyncManager = require('../browserSyncManager');
 let primoProxy = require('../primoProxy');
 let glob = require('glob');
 let prompt = require('prompt');
+let runSequence = require('run-sequence');
 
 
 
 
-gulp.task('setup_watchers', ['watch-js', 'watch-css'], () => {
+gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
         return browserSyncManager.reloadServer();
     });
@@ -68,7 +69,7 @@ gulp.task('connect:primo_explore', function() {
                         let hostname = parts[0];
                         let port = parts[1];
 
-                        
+
                         let options = {
                             hostname: hostname,
                             port: port,
@@ -105,4 +106,4 @@ gulp.task('connect:primo_explore', function() {
     });
 });
 
-gulp.task('run', ['connect:primo_explore','setup_watchers','custom-js','custom-css']); //watch
+gulp.task('run', ['connect:primo_explore','setup_watchers','custom-js','custom-scss','custom-css']); //watch
