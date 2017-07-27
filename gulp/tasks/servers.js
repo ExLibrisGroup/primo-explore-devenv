@@ -68,7 +68,7 @@ gulp.task('connect:primo_explore', function() {
                         let hostname = parts[0];
                         let port = parts[1];
 
-                        
+
                         let options = {
                             hostname: hostname,
                             port: port,
@@ -105,4 +105,4 @@ gulp.task('connect:primo_explore', function() {
     });
 });
 
-gulp.task('run', ['connect:primo_explore','setup_watchers','custom-js','custom-css']); //watch
+gulp.task('run', ['connect:primo_explore','reinstall-primo-node-modules','setup_watchers','custom-js','custom-css']); //watch
