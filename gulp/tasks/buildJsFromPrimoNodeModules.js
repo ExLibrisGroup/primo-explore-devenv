@@ -7,12 +7,25 @@ let gulp = require("gulp");
 let gutil = require("gulp-util");
 let runSequence = require("run-sequence");
 
+/**
+ * Metatask that executes the two atomic tasks in order
+ * to re-install all primo-explore related node modules
+ * of the view package
+ *
+ * Will only execute the atomic tasks when the run task
+ * is called with the --reinstallNodeModules parameter
+ *
+ * e.g. gulp run --view [ViewName] --reinstallNodeModules
+ */
 gulp.task("reinstall-primo-node-modules", function() {
 	if (config.getReinstallNodeModules()) {
 		runSequence(["delete-primo-node-modules", "install-primo-node-modules"]);
 	}
 });
 
+/**
+ * Deletes all primo-explore related node modules of the view package.
+ */
 gulp.task("delete-primo-node-modules", function() {
 	gutil.log("Starting deletion of the view package's primo explore related node modules.");
 
@@ -23,6 +36,13 @@ gulp.task("delete-primo-node-modules", function() {
 	gutil.log("Finished deletion of the view package's primo explore related node modules.");
 });
 
+/**
+ * Reinstalls all primo-explore related node modules of the view package by
+ * executing the "npm install" command.
+ *
+ * This requires that all relevant primo-explore modules need to be referenced
+ * in the package.json file in the root folder of the view package.
+ */
 gulp.task("install-primo-node-modules", function() {
 	gutil.log("Starting re-installation of the view package's node modules using >npm install< command.");
 
