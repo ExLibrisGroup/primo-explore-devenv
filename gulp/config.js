@@ -9,9 +9,18 @@ let browserify;
 let view;
 let ve;
 let reinstallNodeModules;
+let useScss;
 
 function setView(_view) {
     view = _view;
+}
+
+function setUseScss(_useScss) {
+	useScss = _useScss;
+}
+
+function getUseScss() {
+	return useScss;
 }
 
 function setProxy(_proxy) {
@@ -85,6 +94,12 @@ function viewRootDir() {
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
 }
+function customScssDir() {
+		return `primo-explore/custom/${view}/scss`;
+}
+function customScssMainPath() {
+		return customScssDir() + "/main.scss";
+}
 function customCssPath() {
     return `primo-explore/custom/${view}/css/custom1.css`;
 }
@@ -128,12 +143,14 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-		viewRootDir: viewRootDir,
+	viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
+	customScssDir: customScssDir,
+	customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
-		customNpmModuleRootDir: customNpmModuleRootDir,
+	customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
@@ -146,9 +163,11 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+	setUseScss: setUseScss,
+	getUseScss: getUseScss,
     setProxy: setProxy,
-		getReinstallNodeModules: getReinstallNodeModules,
-		setReinstallNodeModules: setReinstallNodeModules,
+	getReinstallNodeModules: getReinstallNodeModules,
+	setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
