@@ -83,12 +83,15 @@ gulp.task('app-css', (cb) => {
 
 /**
  * Task to watch custom scss files contained in /scss directory in view package folder
+ *
+ * Please note. The logic of this task will only execute if the run task is
+ * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
 gulp.task("watch-custom-scss", () => {
 	if (!useScss()) {
 		return;
 	}
-	
+
 	gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
 });
 
@@ -99,9 +102,7 @@ gulp.task("watch-custom-scss", () => {
  * of the view package css.
  *
  * Please note. The logic of this task will only execute if the run task is
- * executed with the "useScss" parameter, e.g.:
- *
- * gulp run --view UNIBZ --useScss
+ * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
 gulp.task("custom-scss", () => {
 	if (!useScss()) {
