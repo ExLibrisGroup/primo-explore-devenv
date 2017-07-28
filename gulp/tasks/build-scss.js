@@ -85,7 +85,11 @@ gulp.task('app-css', (cb) => {
  * Task to watch custom scss files contained in /scss directory in view package folder
  */
 gulp.task("watch-custom-scss", () => {
-    gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
+	if (!useScss()) {
+		return;
+	}
+	
+	gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
 });
 
 /**
