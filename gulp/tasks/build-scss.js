@@ -48,7 +48,8 @@ gulp.task('color-variables',() => {
     return gulp.src(templateFile)
         .pipe(template(colorsMeregd))
         .pipe(rename(scssFile))
-        .pipe(gulp.dest(stylesBaseDir));
+        .pipe(gulp.dest(stylesBaseDir))
+				.pipe(gulp.dest(config.customScssDir() + "/partials"));
 });
 
 gulp.task('compile-scss',() => {
@@ -78,35 +79,6 @@ gulp.task('compile-scss',() => {
 
 gulp.task('app-css', (cb) => {
 	runSequence('extract-scss-files','color-variables', 'compile-scss', 'cleanup', cb);
-});
-
-/**
- * Task that creates a file named _variables.scss containing
- * all variables that can be used within the custom scss files of the view package
- *
- * The task needs to executed with the "view" parameter since the _variables.scss
- * will be saved in a specific view package, e.g.:
- *
- * gulp create-variables-for-custom-scss --view [viewName]
- */
-gulp.task("create-custom-scss-variables", (cb) => {
-	runSequence("extract-scss-files", "create-custom-scss-variables-partial", "cleanup");
-});
-
-/**
- * Creates the actual _variables.scss partial
- *
- * It is similar to the task "color-variables" except for the folder to which
- * the _variables.scss should be saved.
- */
-gulp.task("create-custom-scss-variables-partial", () => {
-	let colorVariables = JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
-	let colorVariablesOTB =JSON.parse(fs.readFileSync(OTBColorsFile, 'utf8'));
-	let colorsMeregd = lodashMerge(colorVariablesOTB, colorVariables);
-	return gulp.src(templateFile)
-			.pipe(template(colorsMeregd))
-			.pipe(rename(scssFile))
-			.pipe(gulp.dest(config.customScssDir() + "/partials"));
 });
 
 /**
