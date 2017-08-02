@@ -34,32 +34,37 @@ prm-search > md-content.md-primoExplore-theme .main {
   padding-top: 18px;
 }
 
-.icon-renew {  
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-renew.png');
-}
-
 .icon-ask { 
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-ask.png');  
+  background-image: url('/primo-explore/custom/MATT_TEST/img/ask-PNG.png');  
 }
 
 .icon-libweb {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-libweb.png');  
+  background-image: url('/primo-explore/custom/MATT_TEST/img/www-PNG.png');  
 }
 
 .icon-databases {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-databases.png');  
+  background-image: url('/primo-explore/custom/MATT_TEST/img/databases-PNG.png');  
 }
 
 .icon-eJournals {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-eJournals.png'); 
+  background-image: url('/primo-explore/custom/MATT_TEST/img/eJournals-PNG.png'); 
 }
 
 .icon-libguides {
-  background-image: url('/primo-explore/custom/MATT_TEST/img/icon-libguides.png');  
+  background-image: url('/primo-explore/custom/MATT_TEST/img/libGuides-PNG.png');  
+}
+
+.icon-libaccount {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/account-PNG.png');  
 }
 
 #live-chat {
   /*background-color: #999 !important; */
+}
+
+.libraryh3lp {
+  display: inline;
+  border: none;
 }
 
 /* Top Bar */
@@ -69,31 +74,35 @@ prm-change-lang {
   display: none;
 }
 
-/* Logo clickable changes */
-prm-logo div.product-logo {
-    display:none;
-}
- 
-prm-logo div.product-logo-local {
- display: flex;
+/* hide library card and settings buttons*/
+prm-library-card-menu {
+  display: none;
 }
 
 /* scratch pad */
+/*
 md-fab-actions.md-toolbar-tools {
   background-color: red;
 }
 
-/*button.user-menu-button.md-button.md-primoExplore-theme.md-ink-ripple.hide-xs{
+
+
+.button-with-icon.zero-margin.md-button.md-primoExplore-theme.md-ink-ripple {
   display: none;
-}*/
+}
+
+button.user-menu-button.md-button.md-primoExplore-theme.md-ink-ripple.hide-xs{
+  display: none;
+}
 
 button.button-with-icon:not(.switch-to-advanced) {
-  background-color: yellow;
+  background-color: #070;
 }
 
 prm-search-bookmark-filter {
   background-color: cyan;
 }
+
 
 prm-main-menu div.top-nav-bar-links {
   display: none;
@@ -103,3 +112,4 @@ prm-main-menu div.top-nav-bar-links-local {
   display:flex;
   background-color: #CCF;
 }
+*/
