@@ -80,6 +80,11 @@ prm-library-card-menu {
 }
 
 /* scratch pad */
+
+.full-view-aside {
+  display: none;
+}
+
 /*
 md-fab-actions.md-toolbar-tools {
   background-color: red;
@@ -87,7 +92,7 @@ md-fab-actions.md-toolbar-tools {
 
 
 
-.button-with-icon.zero-margin.md-button.md-primoExplore-theme.md-ink-ripple {
+.button-with-icon.zero-margin.md-button.md-primoExplore-theme.md-ink-ripple {git
   display: none;
 }
 
