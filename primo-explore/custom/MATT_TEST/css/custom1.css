@@ -26,6 +26,18 @@ prm-search > md-content.md-primoExplore-theme .main {
   }
 }
 
+.default-card.message {
+  border-width: 3px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 6px;
+  color: #5c92bd;
+}
+
+.message-important {
+  color: red;
+}
+
 .icon {
   background-position: left center;
   background-repeat: no-repeat;
@@ -79,42 +91,36 @@ prm-library-card-menu {
   display: none;
 }
 
-/* scratch pad */
+/* Hide 'Related Reading' strip */
+/*.full-view-aside {
+  display: none;
+}*/
 
-.full-view-aside {
+prm-recomendations {
   display: none;
 }
-
 /*
-md-fab-actions.md-toolbar-tools {
-  background-color: red;
-}
-
-
-
-.button-with-icon.zero-margin.md-button.md-primoExplore-theme.md-ink-ripple {git
+.recommendations-wrapper, .recomendations-list{
   display: none;
-}
-
-button.user-menu-button.md-button.md-primoExplore-theme.md-ink-ripple.hide-xs{
-  display: none;
-}
-
-button.button-with-icon:not(.switch-to-advanced) {
-  background-color: #070;
-}
-
-prm-search-bookmark-filter {
-  background-color: cyan;
-}
-
-
-prm-main-menu div.top-nav-bar-links {
-  display: none;
-}
-
-prm-main-menu div.top-nav-bar-links-local {
-  display:flex;
-  background-color: #CCF;
 }
 */
+/*prm-full-view {
+  display: none;
+}
+
+prm-full-view div.full-view-container {
+  display: inline-flex;
+}
+*/
+/* Hide 'Tags' */
+div#tags {
+  display: none;
+}
+
+/*.zero-margin.button-right-align.button-link.md-button.md-primoExplore-theme.md-ink-ripple:last-of-type {
+  display: none;
+}*/
+
+[translate~="brief.results.tabs.tags"] {
+    border: 5px solid yellow;
+}
