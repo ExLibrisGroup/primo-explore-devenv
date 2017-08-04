@@ -1,3 +1,6 @@
-primo-explore/custom/
 primo-explore/tmp/
 .idea/
+.directory
+*.zip
+/.project
+scratchpad.htm

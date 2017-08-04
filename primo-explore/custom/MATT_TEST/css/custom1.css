@@ -1,0 +1,126 @@
+
+
+/*Uncomment the follwoing lines to move facets to the left*/
+
+
+prm-search > md-content.md-primoExplore-theme .main {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+
+}
+
+.screen-gt-sm .sidebar {
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+
+.default-card a {
+  border-width: 3px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 6px;
+  &:hover{
+    border-color: #5c92bd;
+  }
+}
+
+.default-card.message {
+  border-width: 3px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 6px;
+  color: #5c92bd;
+}
+
+.message-important {
+  color: red;
+}
+
+.icon {
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  padding-bottom: 17px;
+  padding-top: 18px;
+}
+
+.icon-ask { 
+  background-image: url('/primo-explore/custom/MATT_TEST/img/ask-PNG.png');  
+}
+
+.icon-libweb {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/www-PNG.png');  
+}
+
+.icon-databases {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/databases-PNG.png');  
+}
+
+.icon-eJournals {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/eJournals-PNG.png'); 
+}
+
+.icon-libguides {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/libGuides-PNG.png');  
+}
+
+.icon-libaccount {
+  background-image: url('/primo-explore/custom/MATT_TEST/img/account-PNG.png');  
+}
+
+#live-chat {
+  /*background-color: #999 !important; */
+}
+
+.libraryh3lp {
+  display: inline;
+  border: none;
+}
+
+/* Top Bar */
+
+/* hide labguage selection */
+prm-change-lang {
+  display: none;
+}
+
+/* hide library card and settings buttons*/
+prm-library-card-menu {
+  display: none;
+}
+
+/* Hide 'Related Reading' strip */
+/*.full-view-aside {
+  display: none;
+}*/
+
+prm-recomendations {
+  display: none;
+}
+/*
+.recommendations-wrapper, .recomendations-list{
+  display: none;
+}
+*/
+/*prm-full-view {
+  display: none;
+}
+
+prm-full-view div.full-view-container {
+  display: inline-flex;
+}
+*/
+/* Hide 'Tags' */
+div#tags {
+  display: none;
+}
+
+/*.zero-margin.button-right-align.button-link.md-button.md-primoExplore-theme.md-ink-ripple:last-of-type {
+  display: none;
+}*/
+
+[translate~="brief.results.tabs.tags"] {
+    border: 5px solid yellow;
+}
