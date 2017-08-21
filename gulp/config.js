@@ -11,6 +11,13 @@ let ve ;
 function setView(_view) {
     view = _view;
 }
+
+function setProxy(_proxy) {
+    this.PROXY_SERVER = _proxy;
+}
+function getProxy(){
+    return PROXY_SERVER;
+}
 function getVe() {
     return ve;
 }
@@ -26,6 +33,7 @@ function setBrowserify(_browserify) {
     browserify = _browserify;
 }
 
+
 function getView(){
     return view;
 }
@@ -36,6 +44,10 @@ function customPath() {
 
 function customModulePath() {
     return viewJsDir()+'/'+customModuleFile;
+}
+
+function viewHtmlDir() {
+    return `primo-explore/custom/${view}/html`;
 }
 
 function viewJsDir() {
@@ -101,6 +113,7 @@ let buildParams = {
     mainPath: mainPath,
     mainJsPath: mainJsPath,
     viewJsDir: viewJsDir,
+    viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
     customCssPath: customCssPath,
     customNpmJsPath: customNpmJsPath,
@@ -115,6 +128,8 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+    setProxy: setProxy,
+    proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify,

@@ -1,6 +1,6 @@
 {
   "name": "primo-explore-devenv",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "",
   "author": "",
   "devDependencies": {
@@ -17,6 +17,7 @@
     "del": "2.2.1",
     "glob": "6.0.4",
     "gulp": "3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
     "gulp-autoprefixer": "3.1.0",
     "gulp-babel": "6.1.2",
     "gulp-clone": "1.0.0",
@@ -42,9 +43,17 @@
     "run-sequence": "1.2.1",
     "shelljs": "0.6.0",
     "tar-fs": "1.13.0",
-    "x2js": "^3.1.0"
+    "protractor": "5.0.0",
+    "fs-extra": "2.1.2",
+    "protractor-image-comparison": "1.2.3"
   },
   "engines": {
     "node": ">=4.2"
-  }
+  },
+  "name": "primo-explore-devenv",
+  "version": "1.0.1",
+  "description": "The Exlibris Primo Open Discovery Framework",
+  "author": "noamamit92",
+  "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv"
+
 }
