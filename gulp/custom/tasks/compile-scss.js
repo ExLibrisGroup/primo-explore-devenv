@@ -29,3 +29,6 @@ gulp.task('default-custom-css', () => {
       .pipe(concat(buildParams.customCssFile))
       .pipe(gulp.dest(buildParams.viewCssDir()));
 });
+
+// Setup watcher to recompile CSS when any SCSS changes
+gulp.watch([`${config.viewScssMainPath()}/**/*.scss`],['custom-css'])

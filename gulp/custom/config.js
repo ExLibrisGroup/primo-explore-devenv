@@ -16,11 +16,16 @@ function viewCssMainFilename() {
   return config.buildParams.viewCssDir() + "/main.css";
 }
 
+function viewScssMainPath() {
+  return config.buildParams.viewCssDir() + "/sass";
+}
+
 // Insert custom NYU config here
 let nyuConfig = {
   handleError: handleError,
   viewScssMainFilename: viewScssMainFilename,
-  viewCssMainFilename: viewCssMainFilename
+  viewCssMainFilename: viewCssMainFilename,
+  viewScssMainPath: viewScssMainPath
 };
 
 // Merge configs
