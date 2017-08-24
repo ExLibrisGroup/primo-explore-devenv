@@ -1,6 +1,6 @@
 FROM node:7.7.2
 
-ENV INSTALL_PATH /home/app
+ENV INSTALL_PATH /app
 ENV PROXY_SERVER http://bobcatdev.library.nyu.edu:80
 ENV VIEW NYU-NUI
 ENV PATH $INSTALL_PATH/node_modules/.bin:$PATH
