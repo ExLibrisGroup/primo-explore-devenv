@@ -1,10 +1,13 @@
-server:
-  build: .
-  environment:
-    PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
-    VIEW: NYU-NUI
-  ports:
-    - 8003:8003
-    - 3001:3001
-  volumes:
-    - .:/app
+version: '3'
+services:
+  web:
+    build: .
+    environment:
+      PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
+      VIEW: NYU-NUI
+      GULPFILE: nyu-gulpfile.js
+    ports:
+      - 8003:8003
+      - 3001:3001
+    volumes:
+      - .:/app
