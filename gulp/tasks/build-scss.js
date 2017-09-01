@@ -2,7 +2,6 @@
 
 let autoprefixer = require('gulp-autoprefixer');
 let config = require('../config').buildParams;
-let proxy_server = require('../config').PROXY_SERVER
 let gulp = require('gulp');
 let cssnano = require('gulp-cssnano');
 let debug = require('gulp-debug');
@@ -28,7 +27,8 @@ let lodashMerge = require('lodash/merge');
 
 gulp.task('cleanup',()=> del(['www']));
 
-gulp.task('extract-scss-files', () => {
+gulp.task('extract-scss-files', () = {
+    let proxy_server = require('../config').PROXY_SERVER;    
     console.log(proxy_server+'/primo-explore/lib/scsss.tar.gz');
     let url = proxy_server+'/primo-explore/lib/scsss.tar.gz';
     var headers = {
