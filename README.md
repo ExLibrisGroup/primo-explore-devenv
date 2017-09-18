@@ -28,7 +28,7 @@ The development package allows you to configure the following page components (f
 
 - [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
 
-For each configuration-type, or for every different [Primo View](https://knowledge.exlibrisgroup.com/Alma/Product_Documentation/Alma_Online_Help_(English)/Alma-Primo_Integration/040Configuring_the_Primo_Front_End_for_an_Alma_Data_Source/010Creating_a_Primo_View), there should be a specified folder named after the View (which adheres to the established directory structure) in the `primo-explore/custom` package folder.
+For each configuration-type, or for every different Primo View, there should be a specified folder named after the View (which adheres to the established directory structure) in the `primo-explore/custom` package folder.
 
 This custom View folder can be downloaded from your Primo Back Office, by following `Primo Home > Primo Utilities > UI customization Package Manager`, or started fresh from the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"). (The benefit of using this repository is that in each folder you will find a specific README.md file containing recipes and examples.)
 
