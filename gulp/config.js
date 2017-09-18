@@ -8,10 +8,20 @@ let mainFile = 'main.js';
 let browserify;
 let view;
 let ve;
+let useScss;
 let reinstallNodeModules;
+
 
 function setView(_view) {
     view = _view;
+}
+
+function setUseScss(_useScss) {
+	useScss = _useScss;
+}
+
+function getUseScss() {
+	return useScss;
 }
 
 function setProxy(_proxy) {
@@ -85,6 +95,12 @@ function viewRootDir() {
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
 }
+function customScssDir() {
+		return `primo-explore/custom/${view}/scss`;
+}
+function customScssMainPath() {
+		return customScssDir() + "/main.scss";
+}
 function customCssPath() {
     return `primo-explore/custom/${view}/css/custom1.css`;
 }
@@ -118,7 +134,7 @@ var SERVERS = {
 };
 
 /*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://il-primo17:1703';
+var PROXY_SERVER = 'http://ubz-primo.hosted.exlibrisgroup.com';
 
 
 let buildParams = {
@@ -132,6 +148,8 @@ let buildParams = {
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
+		customScssDir: customScssDir,
+		customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
 		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
@@ -146,6 +164,8 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+		setUseScss: setUseScss,
+		getUseScss: getUseScss,
     setProxy: setProxy,
 		getReinstallNodeModules: getReinstallNodeModules,
 		setReinstallNodeModules: setReinstallNodeModules,
