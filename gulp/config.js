@@ -133,8 +133,15 @@ var SERVERS = {
     local: 'http://localhost:8002'
 };
 
-/*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://il-primo17:1703';
+/**
+ * The URL to your sandbox or production Primo instance.
+ * For SSL environments (https), the port number (443) must be included.
+ *
+ * Examples:
+ *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
+ *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
+ */
+var PROXY_SERVER = 'http://your-server:your-port';
 
 
 let buildParams = {
