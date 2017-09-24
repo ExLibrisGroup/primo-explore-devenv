@@ -30,7 +30,7 @@ let gutil = require('gulp-util');
 
 gulp.task('cleanup',()=> del(['www']));
 
-gulp.task('extract-scss-files', () = {
+gulp.task('extract-scss-files', ()=> {
     let proxy_server = require('../config').PROXY_SERVER;    
     console.log(proxy_server+'/primo-explore/lib/scsss.tar.gz');
     let url = proxy_server+'/primo-explore/lib/scsss.tar.gz';
@@ -57,7 +57,7 @@ gulp.task('compile-scss',() => {
     let allCss  = gulp.src('www/styles/main.scss')
         .pipe(plumber({
             errorHandler: function (err) {
-                console.log('1111111' + err);
+                console.log('Error:' + err);
                 this.emit('end');
             }
         }))
