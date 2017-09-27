@@ -141,7 +141,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://ubz-primo-test.hosted.exlibrisgroup.com';
+var PROXY_SERVER = 'http://your-server:your-port';
 
 
 let buildParams = {
