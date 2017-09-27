@@ -11,6 +11,7 @@ const glob = require('glob');
 const gutil = require('gulp-util');
 const fs = require("fs");
 const browserify = require("browserify");
+const order = require("gulp-order");
 
 let buildParams = config.buildParams;
 
@@ -30,7 +31,20 @@ gulp.task('custom-js', ['custom-html-templates'],() => {
 });
 
 function buildByConcatination() {
-    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
+    return gulp.src([
+        buildParams.customModulePath(),
+        buildParams.mainPath(),
+        buildParams.customNpmJsPath(),
+        '!' + buildParams.customPath(),
+        '!' + buildParams.customNpmJsModulePath(),
+        '!' + buildParams.customNpmJsCustomPath()
+    ])
+        .pipe(order([
+            buildParams.mainJsPath(),
+            buildParams.customModulePath(),
+            buildParams.mainPath(),
+            buildParams.customNpmJsPath()
+        ], {base: './'}))
         .pipe(concat(buildParams.customFile))
         .pipe(babel({
             presets: ['es2015']
