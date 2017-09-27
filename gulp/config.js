@@ -8,8 +8,9 @@ let mainFile = 'main.js';
 let browserify;
 let view;
 let ve;
-let reinstallNodeModules;
 let useScss;
+let reinstallNodeModules;
+
 
 function setView(_view) {
     view = _view;
@@ -132,8 +133,15 @@ var SERVERS = {
     local: 'http://localhost:8002'
 };
 
-/*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://ubz-primo.hosted.exlibrisgroup.com';
+/**
+ * The URL to your sandbox or production Primo instance.
+ * For SSL environments (https), the port number (443) must be included.
+ *
+ * Examples:
+ *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
+ *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
+ */
+var PROXY_SERVER = 'http://your-server:your-port';
 
 
 let buildParams = {
@@ -143,14 +151,14 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-	viewRootDir: viewRootDir,
+		viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
-	customScssDir: customScssDir,
-	customScssMainPath: customScssMainPath,
+		customScssDir: customScssDir,
+		customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
-	customNpmModuleRootDir: customNpmModuleRootDir,
+		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
@@ -163,11 +171,11 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
-	setUseScss: setUseScss,
-	getUseScss: getUseScss,
+		setUseScss: setUseScss,
+		getUseScss: getUseScss,
     setProxy: setProxy,
-	getReinstallNodeModules: getReinstallNodeModules,
-	setReinstallNodeModules: setReinstallNodeModules,
+		getReinstallNodeModules: getReinstallNodeModules,
+		setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
