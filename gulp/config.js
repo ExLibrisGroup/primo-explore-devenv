@@ -78,7 +78,7 @@ function mainPath() {
 }
 
 function mainJsPath() {
-    return viewJsDir()+'/main.js';
+    return viewJsDir() + '/' + mainFile;
 }
 
 function customCssMainPath() {
@@ -143,7 +143,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://your-server:your-port';
+var PROXY_SERVER = 'http://ubz-primo-test.hosted.exlibrisgroup.com';
 
 
 let buildParams = {
