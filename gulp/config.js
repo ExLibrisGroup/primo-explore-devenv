@@ -140,9 +140,12 @@ var SERVERS = {
  * Examples:
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
+ * 
+ * Production:
+ *   var PROXY_SERVER = 'https://alliance-primo.hosted.exlibrisgroup.com:443';
  */
 
-var PROXY_SERVER = 'https://alliance-primo.hosted.exlibrisgroup.com:443';
+var PROXY_SERVER = 'http://alliance-primo-sb.hosted.exlibrisgroup.com:80';
 
 let buildParams = {
     customFile: customFile,
