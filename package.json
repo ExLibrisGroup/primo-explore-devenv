@@ -64,7 +64,7 @@
   "version": "1.0.1",
     "scripts": {
 	"preinstall": "npm install npm@3.3.12",
-	"install": "npm install -g gulp",
+	"install": "npm install gulp",
 	"prestart": "npm install",
     "start": "gulp web",
     "restart": "gulp web"    
