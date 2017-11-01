@@ -63,9 +63,7 @@
   "name": "primo-explore-devenv",
   "version": "1.0.1",
     "scripts": {
-	"preinstall": "npm install npm@3.3.12 -g",
-	"install": "npm install -g gulp",
-	"postinstall": "npm install",
+	"install": "npm install",
     "start": "gulp web",
     "restart": "gulp web"    
   },
