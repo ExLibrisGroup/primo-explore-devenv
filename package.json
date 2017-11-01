@@ -58,7 +58,7 @@
     "protractor-image-comparison": "1.2.3"
   },
   "engines": {
-    "node": ">=4.2"
+    "node": "6.9.4"
   },
   "name": "primo-explore-devenv",
   "version": "1.0.1",
