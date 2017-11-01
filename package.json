@@ -65,7 +65,7 @@
     "scripts": {
 	"preinstall": "npm install npm@3.3.12 -g",
 	"install": "npm install -g gulp",
-	"prestart": "npm install",
+	"postinstall": "npm install",
     "start": "gulp web",
     "restart": "gulp web"    
   },
