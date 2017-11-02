@@ -62,10 +62,8 @@
   },
   "name": "primo-explore-devenv",
   "version": "1.0.1",
-    "scripts": {
-	"install": "npm install",
-    "start": "gulp web",
-    "restart": "gulp web"    
+    "scripts": {	
+    "start": "gulp web"    
   },
   "description": "The Exlibris Primo Open Discovery Framework",
   "author": "noamamit92",
