@@ -1,0 +1,8 @@
+{
+  "spec_dir": "test/",
+  "spec_files": [
+    "unit/resemble.spec.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": false
+}
