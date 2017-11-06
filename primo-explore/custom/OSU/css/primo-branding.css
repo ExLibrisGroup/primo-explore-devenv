@@ -113,37 +113,20 @@ prm-brief-result-container .media-content-type prm-search-result-frbr-line a spa
     text-transform: none; 
 }
 
-
-@media print {
-/* hide the sidebar/facets */
-.sidebar {display:none;}
-/* hide the floating page navigation element */
-prm-page-nav-menu {display:none;}
-/* hide the mobile footer toolbar for refining results */
-.bottom-fixed-toolbar {display:none;}
-/* hide the floating scroll to top and pin icons */
-#fixed-buttons-holder {display:none;}
-/* hide the search bar area */
-prm-search-bar {display:none;}
-/* hide the entire primo header */
-.header.topbar-wrapper {display:none;}
-/* hide the white space section opposite the facets sidebar */
-.flex-order-4.flex-lg-15.flex-xl-25.flex-xl-10.flex-md-0.flex-lg-5.flex-0 {display:none;}
-/* hide the load more search results link */
-.button-confirm[translate="nui.brief.results.loadMore"] {display:none;}
-/* hide the white space section below the search results */
-.list-spacer {display:none;}
-/* hide page number */
-.md-subheader {display:none;}
-/*hide the Alert Bar*/
-prm-alert-bar {display: none;}
-/*hide the "# Results"*/
-#mainResults > div.results-title.layout-align-start-center.layout-row {display: none;} 
+.multiselect-facet-group.multiselect-inactive
+.md-chip, md-checkbox,
+.multiselect-facet-group.multiselect-inactive
+.md-chip, md-checkbox,
+.multiselect-facet-group.multiselect-inactive
+.md-chip md-checkbox, 
+.section-content .md-chips .md-chip .md-chip-remove-container .md-button {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+    transform: scaleX(1);
+    transition: all 0s 0s;
 }
 
-
-@media (max-width: 600px)
-{
-    
+md-input-container {
+    padding: 0 !important; 
 }
-

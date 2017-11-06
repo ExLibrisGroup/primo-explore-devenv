@@ -1,0 +1,29 @@
+/* Small screen styles */ 
+@media (max-width: 600px)
+{
+    
+}
+
+/* Tablet styles */
+
+/* Netbook styles */ 
+@media (max-width: 1280px)
+{
+  
+}
+
+/* Print styles */ 
+@media print {
+    .sidebar { display:none; }
+    prm-page-nav-menu { display:none; }
+    .bottom-fixed-toolbar { display:none; }
+    #fixed-buttons-holder { display:none; }
+    prm-search-bar { display:none; }
+    .header.topbar-wrapper { display:none; }
+    .flex-order-4.flex-lg-15.flex-xl-25.flex-xl-10.flex-md-0.flex-lg-5.flex-0 { display:none; }
+    .button-confirm[translate="nui.brief.results.loadMore"] { display:none; }
+    .list-spacer { display:none; }
+    .md-subheader { display:none; }
+    prm-alert-bar { display: none; }
+    #mainResults > div.results-title.layout-align-start-center.layout-row { display: none; } 
+}
