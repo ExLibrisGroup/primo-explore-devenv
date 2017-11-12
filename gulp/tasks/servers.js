@@ -14,7 +14,6 @@ let runSequence = require('run-sequence');
 
 
 
-
 gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
         return browserSyncManager.reloadServer();
@@ -34,9 +33,10 @@ gulp.task('connect:primo_explore', function() {
         middleware:[
                 function(req,res,next) {
                     let confPath = config.getVe() ? '/primaws/rest/pub/configuration' : '/primo_library/libweb/webservices/rest/v1/configuration';
+                    let confAsJsPath = '/primo-explore/config_';
 
+                    let fixConfiguration = function(res,res1,isConfByFile){
 
-                    let fixConfiguration = function(res,res1){
                         let body = '';
 
                         res1.setEncoding('utf8');
@@ -48,20 +48,33 @@ gulp.task('connect:primo_explore', function() {
                         res1.on("end", function(){
                             let vid = config.view() || '';
                             let customizationProxy = primoProxy.getCustimazationObject(vid,appName);
-                            let newBodyObject = JSON.parse(body);
-                            console.log(customizationProxy);
-                            newBodyObject.customization = customizationProxy;
-                            let newBody = JSON.stringify(newBodyObject);
 
-                            res.body = newBody;
+                            if(isConfByFile){
+                                res.end('');
 
-                            /*console.log('newBody: ' +newBody);*/
-                            res.end(newBody);
+                            }else{
+                                let jsonBody = JSON.parse(body);
+                                let newBodyObject = jsonBody;
+
+                                newBodyObject.customization = customizationProxy;
+                                let newBody = JSON.stringify(newBodyObject);
+
+                                res.body = newBody;
+
+                                /*console.log('newBody: ' +newBody);*/
+                                res.end(newBody);
+                            }
+
 
                         });
                     }
-                    if(req.url.startsWith(confPath)) {
-                        //console.log(util.inspect(req, {}));
+
+                    if(req.url.startsWith(confAsJsPath) || req.url.startsWith(confPath)) {
+                        let isConfByFile = false;
+                        if(req.url.startsWith(confAsJsPath)){
+                            isConfByFile = true;
+                        }
+
                         let url = config.PROXY_SERVER+req.url;
                         let base = config.PROXY_SERVER.replace('http:\/\/','').replace('https:\/\/','');
                         let method = config.PROXY_SERVER.split('://')[0];
@@ -84,9 +97,8 @@ gulp.task('connect:primo_explore', function() {
                             requestObject = https;
                         }
                         let req2 = requestObject.request(options, (res1) => {
-                            fixConfiguration(res, res1);
+                            fixConfiguration(res, res1,isConfByFile);
                         });
-
                         req2.on('error', (e) => {
                             next();
                         });
@@ -108,4 +120,3 @@ gulp.task('connect:primo_explore', function() {
 
 
 gulp.task('run', ['connect:primo_explore','reinstall-primo-node-modules','setup_watchers','custom-js','custom-scss','custom-css']); //watch
-
