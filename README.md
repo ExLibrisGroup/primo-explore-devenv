@@ -64,8 +64,6 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
     
 11. Start your code customizations : 
 
-   - From command line, go to your custom view package folder : `cd primo-explore\custom\VIEW_CODE`
-
    - From command line, run the command : `gulp run --view <the VIEW_CODE folder>` (This will start your local server.)
    
      (For example, running `gulp run --view Auto1` will start the environment taking the customizations from the <b>Auto1</b> folder.)
