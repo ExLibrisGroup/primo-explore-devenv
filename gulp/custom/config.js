@@ -20,12 +20,37 @@ function viewScssMainPath() {
   return config.buildParams.viewCssDir() + "/sass";
 }
 
+function centralPackageCssDir() {
+  return "primo-explore/custom/CENTRAL_PACKAGE/css";
+}
+
+function centralPackageScssMainFilename() {
+  return centralPackageCssDir() + "/sass/main.scss";
+}
+
+function centralPackageCssMainFilename() {
+  return centralPackageCssDir() + "/main.css";
+}
+
+function centralPackageScssMainPath() {
+  return centralPackageCssDir() + "/sass";
+}
+
+function centralCustomCssMainPath() {
+  return centralPackageCssDir() + "/*.css";
+}
+
 // Insert custom NYU config here
 let nyuConfig = {
   handleError: handleError,
   viewScssMainFilename: viewScssMainFilename,
   viewCssMainFilename: viewCssMainFilename,
-  viewScssMainPath: viewScssMainPath
+  viewScssMainPath: viewScssMainPath,
+  centralPackageCssDir: centralPackageCssDir,
+  centralPackageScssMainFilename: centralPackageScssMainFilename,
+  centralPackageCssMainFilename: centralPackageCssMainFilename,
+  centralPackageScssMainPath: centralPackageScssMainPath,
+  centralCustomCssMainPath: centralCustomCssMainPath
 };
 
 // Merge configs
