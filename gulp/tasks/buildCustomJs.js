@@ -59,7 +59,7 @@ function buildByBrowserify() {
             buildParams.viewJsDir()+'/node_modules'
         ]
     })
-        .transform("babelify",{presets: ["es2015"]})
+        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"]})
         .bundle()
         .pipe(fs.createWriteStream(buildParams.customPath()));
 }

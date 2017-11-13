@@ -2,6 +2,7 @@
 
 let autoprefixer = require('gulp-autoprefixer');
 let config = require('../config').buildParams;
+let useScss = require('../config').getUseScss;
 let proxy_server = require('../config').PROXY_SERVER
 let gulp = require('gulp');
 let cssnano = require('gulp-cssnano');
@@ -25,10 +26,12 @@ var runSequence = require('run-sequence');
 let  fs = require('fs');
 let del = require('del');
 let lodashMerge = require('lodash/merge');
+let gutil = require('gulp-util');
 
 gulp.task('cleanup',()=> del(['www']));
 
-gulp.task('extract-scss-files', () => {
+gulp.task('extract-scss-files', ()=> {
+    let proxy_server = require('../config').PROXY_SERVER;    
     console.log(proxy_server+'/primo-explore/lib/scsss.tar.gz');
     let url = proxy_server+'/primo-explore/lib/scsss.tar.gz';
     var headers = {
@@ -46,14 +49,15 @@ gulp.task('color-variables',() => {
     return gulp.src(templateFile)
         .pipe(template(colorsMeregd))
         .pipe(rename(scssFile))
-        .pipe(gulp.dest(stylesBaseDir));
+        .pipe(gulp.dest(stylesBaseDir))
+				.pipe(gulp.dest(config.customScssDir() + "/partials"));
 });
 
 gulp.task('compile-scss',() => {
     let allCss  = gulp.src('www/styles/main.scss')
         .pipe(plumber({
             errorHandler: function (err) {
-                console.log('1111111' + err);
+                console.log('Error:' + err);
                 this.emit('end');
             }
         }))
@@ -75,7 +79,56 @@ gulp.task('compile-scss',() => {
 });
 
 gulp.task('app-css', (cb) => {
-    runSequence('extract-scss-files','color-variables', 'compile-scss', 'cleanup', cb);
-
+	runSequence('extract-scss-files','color-variables', 'compile-scss', 'cleanup', cb);
 });
 
+/**
+ * Task to watch custom scss files contained in /scss directory in view package folder
+ *
+ * Please note. The logic of this task will only execute if the run task is
+ * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
+ */
+gulp.task("watch-custom-scss", () => {
+	if (!useScss()) {
+		return;
+	}
+
+	gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
+});
+
+/**
+ * Compiles the custom scss to a css file called custom-scss-compiled.css which
+ * in turn is then concatenated with all other css files present in the /css folder
+ * of the view package folder to the custom1.css file that constitutes the entirety
+ * of the view package css.
+ *
+ * Please note. The logic of this task will only execute if the run task is
+ * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
+ */
+gulp.task("custom-scss", () => {
+	if (!useScss()) {
+		return;
+	}
+
+	gutil.log("Start Creating custom CSS from custom SCSS");
+
+	let customScss = gulp.src(config.customScssMainPath())
+		.pipe(plumber({
+				errorHandler: function (err) {
+						console.log('1111111' + err);
+						this.emit('end');
+				}
+		}))
+		// .pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(autoprefixer({
+				browsers: ['last 2 versions'],
+				cascade: false
+		}))
+		.pipe(rename("custom-scss-compiled.css"))
+		.pipe(gulp.dest(config.viewCssDir()));
+
+	gutil.log("End Creating custom CSS from custom SCSS");
+
+	return customScss;
+});
