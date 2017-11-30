@@ -40,7 +40,7 @@
     "minimist": "1.2.0",
     "prompt": "1.0.0",
     "request": "2.72.0",
-    "require-dir": "0.3.0",
+    "require-dir": "0.3.2",
     "run-sequence": "1.2.1",
     "shelljs": "0.6.0",
     "tar-fs": "1.13.0",
