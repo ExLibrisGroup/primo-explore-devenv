@@ -11,6 +11,11 @@ const glob = require('glob');
 const gutil = require('gulp-util');
 const fs = require("fs");
 const browserify = require("browserify");
+const source = require('vinyl-source-stream');
+const streamify = require('gulp-streamify');
+const uglify = require('gulp-uglify');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
 
 let buildParams = config.buildParams;
 
@@ -59,7 +64,12 @@ function buildByBrowserify() {
             buildParams.viewJsDir()+'/node_modules'
         ]
     })
-        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"]})
+        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"], sourceMaps: true})
         .bundle()
-        .pipe(fs.createWriteStream(buildParams.customPath()));
+        .pipe(source(buildParams.customFile))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(buildParams.viewJsDir()));
 }

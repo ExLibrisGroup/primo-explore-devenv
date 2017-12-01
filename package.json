@@ -46,7 +46,11 @@
     "tar-fs": "1.13.0",
     "protractor": "5.0.0",
     "fs-extra": "2.1.2",
-    "protractor-image-comparison": "1.2.3"
+    "protractor-image-comparison": "1.2.3",
+    "gulp-streamify": "1.0.2",
+    "gulp-uglify": "3.0.0",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0"
   },
   "engines": {
     "node": ">=4.2"
