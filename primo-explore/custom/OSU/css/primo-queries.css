@@ -1,4 +1,5 @@
 /* Begin Primo media queries */
+
 /* Small screen styles */ 
 @media (max-width: 600px)
 {
@@ -6,9 +7,13 @@
 }
 
 /* Tablet styles */
+@media 
+{
 
-/* Netbook/Laptop styles */ 
-@media (max-width: 1280px) and (max-width: 1919px)
+}
+
+/* Netbook/Laptop styles - fix new search screen; check other search screens*/ 
+@media (max-width: 1280px) and (min-width: 1919px)
 {
     .flex-lg-10, .layout-lg-row > .flex-lg-10, .layout-row > .flex-lg-10 { max-width: 5%; }
 
@@ -18,9 +23,10 @@
 
     .flex-lg-5, .layout-lg-row > .flex-lg-5, .layout-row > .flex-lg-5 { max-width: 0; }
 }
-/* fix new search screen... */ 
+
 /* Print styles */ 
-@media print {
+@media print 
+{
     .sidebar { display:none; }
     prm-page-nav-menu { display:none; }
     .bottom-fixed-toolbar { display:none; }
