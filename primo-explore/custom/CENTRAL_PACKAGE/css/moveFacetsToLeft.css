@@ -1,0 +1,22 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+prm-search > .layout-row {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+prm-search > .flex-gt-md-25.sidebar{
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+prm-search > .main{
+    webkit-flex: 0 0 65%;
+    flex: 0 0 65%;
+}
+prm-search > .layout-row>.flex-gt-lg-10{
+    webkit-flex: 0 0 16%;
+    flex: 0 0 16%;
+    max-width: none;
+}
