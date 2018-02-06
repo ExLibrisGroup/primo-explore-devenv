@@ -1,8 +1,9 @@
 /*
 * 
 *	Orbis Cascade Alliance Central Package
-*	Environment: Sandbox
-*	Last updated: 20170808
+*	Environment: Production
+*	Last updated: 20170606
+*	Upload date: 20170620
 *	
 *	Included customizations:
 *		Hide/show Summit institutions (updated 20170605)
@@ -76,5 +77,5 @@ function hide_show_other_institutions_toggle() {
     },
     template: '<div class="hide_show_other_institutions_container hide"></div>'
   });
-  
+
 })();
