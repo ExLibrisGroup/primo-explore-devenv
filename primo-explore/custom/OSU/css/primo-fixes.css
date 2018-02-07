@@ -27,7 +27,7 @@ md-icon[aria-label="icon-earth"] {
 display: none;
 }
 
-/* Hide interface language selector in My Account/My Library Card */ 
+/* Hide interface language selector in My Account/My Library Card - FIX*/ 
 html#primoExploreRoot body primo-explore.__lgPlus.__gt-xs.__gt-sm.__gt-md div prm-account md-content.padded-container.layout-fill._md.md-primoExplore-theme.layout-align-center-start.layout-row div.main.layout-row.flex prm-account-overview.layout-fill md-content#accountoverview._md.md-primoExplore-theme.flex md-tabs.static-tabs.default-tabs.md-dynamic-height.md-primoExplore-theme md-tabs-content-wrapper._md md-tab-content#tab-content-5._md.md-no-scroll.md-active div div.layout-row prm-personal-info.flex div.layout-wrap.layout-align-center-start.layout-row md-card.default-card._md.md-primoExplore-theme.flex-xs-100.flex-sm-100 {
     display: none;
 }

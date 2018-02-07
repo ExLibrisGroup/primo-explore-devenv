@@ -28,14 +28,6 @@ md-tab-item.md-tab:nth-child(3) { display: none; }
 
 span[translate="mainmenu.label.interlibrary_loan"] { max-width: none; }
 
-/* Hide Tags in Detailed Display */
-[aria-label="Tags"] { display:none; }
-#tags { display:none; }
-
-/* Hide Tags in Menu Tab */
-a.md-button[aria-label="Tags"] { display:none; }
-a.md-button[aria-label="nui.mainmenu.label.tags"] { display:none; }
-
 .WC_hide { display:none; } 
 
 button.user-menu-button:nth-child(2) > div:nth-child(1) > span:nth-child(1) {font-size: 110%; }
@@ -57,25 +49,6 @@ div.chat a:hover { text-decoration: none; color: white !important; }
 
 [class*=does_not_exist] {
     color: #e08303 !important;
-}
-
-/* Fix sizing of resource icons in IE */
-div.result-item-image > div.media-content-images {
-    max-height: 60px;
-}
-
-.saved-query-list > md-nav-bar .md-nav-item, prm-action-list > md-nav-bar .md-nav-item {
-    max-width: none; 
-}
-
-/* Hide Language option in Additional Main Menu options overlay */
-prm-change-lang {
-display: none;
-}
- 
-/* Hide globe icon in Additional Main Menu options overlay */
-md-icon[aria-label="icon-earth"] {
-display: none;
 }
 
 prm-main-menu .top-nav-bar-links>a[aria-label="Browse"] {
@@ -132,24 +105,60 @@ md-input-container {
     padding: 0 !important; 
 }
 /* End Primo branding */
+/* Begin Primo fixes */ 
 
+/* Hide Tags in Detailed Display */
+[aria-label="Tags"] { display:none; }
+#tags { display:none; }
+
+/* Hide Tags in Menu Tab */
+a.md-button[aria-label="Tags"] { display:none; }
+a.md-button[aria-label="nui.mainmenu.label.tags"] { display:none; }
+
+/* Fix sizing of resource icons in IE */
+div.result-item-image > div.media-content-images {
+    max-height: 60px;
+}
+
+.saved-query-list > md-nav-bar .md-nav-item, prm-action-list > md-nav-bar .md-nav-item {
+    max-width: none; 
+}
+
+/* Hide Language option in Additional Main Menu options overlay */
+prm-change-lang {
+display: none;
+}
+ 
+/* Hide globe icon in Additional Main Menu options overlay */
+md-icon[aria-label="icon-earth"] {
+display: none;
+}
+
+/* Hide interface language selector in My Account/My Library Card - FIX*/ 
+html#primoExploreRoot body primo-explore.__lgPlus.__gt-xs.__gt-sm.__gt-md div prm-account md-content.padded-container.layout-fill._md.md-primoExplore-theme.layout-align-center-start.layout-row div.main.layout-row.flex prm-account-overview.layout-fill md-content#accountoverview._md.md-primoExplore-theme.flex md-tabs.static-tabs.default-tabs.md-dynamic-height.md-primoExplore-theme md-tabs-content-wrapper._md md-tab-content#tab-content-5._md.md-no-scroll.md-active div div.layout-row prm-personal-info.flex div.layout-wrap.layout-align-center-start.layout-row md-card.default-card._md.md-primoExplore-theme.flex-xs-100.flex-sm-100 {
+    display: none;
+}
+
+/* End Primo fixes */ 
 /* Begin Primo media queries */
 
-/* Small screen styles */ 
+/* Small screen/phone styles */ 
 @media (max-width: 600px)
 {
-    
+    body { background-color: lightseagreen !important; }
 }
 
 /* Tablet styles */
-@media 
+@media (max-width: 959px) and (min-width: 601px)
 {
-
+    body { background-color: lightcoral !important; }
 }
 
-/* Netbook/Laptop styles - fix new search screen; check other search screens*/ 
-@media (max-width: 1280px) and (min-width: 1919px)
+/* Netbook/Laptop styles - fix new search screen; check other search screens */ 
+@media (max-width: 1280px) and (min-width: 960px)
 {
+    body { background-color: SandyBrown !important; }
+
     .flex-lg-10, .layout-lg-row > .flex-lg-10, .layout-row > .flex-lg-10 { max-width: 5%; }
 
     prm-search-bar div.layout-fill.layout-column.zero-padding div.search-wrapper.dark-toolbar.prm-top-bar-container.main-header-row.layout-row div.flex-xl-20.flex-md-0.flex-lg-10.flex-0 { max-width: 10%; }
@@ -157,6 +166,24 @@ md-input-container {
     .flex-lg-20, .layout-lg-row > .flex-lg-20, .layout-row > .flex-lg-20 { max-width: 28%; }
 
     .flex-lg-5, .layout-lg-row > .flex-lg-5, .layout-row > .flex-lg-5 { max-width: 0; }
+}
+
+/* Medium screens */ 
+@media (max-width: 1599px) and (min-width: 1281px)
+{
+    body { background-color: Aquamarine !important; }
+}
+
+/* Large screens */ 
+@media (max-width: 1919px) and (min-width: 1600px)
+{
+    body { background-color: lightyellow !important; }
+}
+
+/* Very large screens */ 
+@media (min-width: 1920px)
+{
+    body { background-color: lightblue !important; }
 }
 
 /* Print styles */ 

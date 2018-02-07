@@ -36,7 +36,7 @@ applocal.controller('SearchBarAfterController', ['angularLoad', function (angula
     vm.parentCtrl.showTabsAndScopes = true;
 }]);
 
-// Add Google Scholar and Worldcat search in facet pane - fix keyboard tabbing  
+// Add Google Scholar and Worldcat search in facet pane - FIX keyboard tabbing  
 app.component('prmFacetExactAfter', {
     bindings: { parentCtrl: '<' },
     controller: function controller($scope) {
