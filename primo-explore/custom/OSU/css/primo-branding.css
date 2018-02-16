@@ -10,9 +10,11 @@ div.md-fab-action-item { font-weight: bold; color: white; }
 prm-main-menu[menu-type="menu"] .md-button {
     font-size: 1em;
     text-transform: none;
-}
+} 
 
 .md-button.button-confirm, .service-form-static-panel button.button-confirm prm-icon + span, .service-form-static-panel button.button-confirm prm-icon svg path { color: black; }
+
+prm-atoz-search-bar { background-color: black !important; }
 
 .view-switcher > a:nth-child(1) { display: none; }
 

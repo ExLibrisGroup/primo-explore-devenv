@@ -8,7 +8,7 @@
 a.md-button[aria-label="Tags"] { display:none; }
 a.md-button[aria-label="nui.mainmenu.label.tags"] { display:none; }
 
-/* Fix sizing of resource icons in IE */
+/* Fix sizing of resource icons in IE */ 
 div.result-item-image > div.media-content-images {
     max-height: 60px;
 }
