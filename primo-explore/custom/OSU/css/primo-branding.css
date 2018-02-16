@@ -1,14 +1,17 @@
 /* Begin Primo branding */
+body { font-family: Arial, sans-serif !important; font-size: 12pt !important; }
+
+prm-main-menu { font-size: 14pt; }
+
 prm-topbar .prm-primary-bg.prm-hue1, prm-browse-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1, prm-search-bar.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark::after, prm-tags-search-bar.prm-hue1, prm-topbar .top-nav-bar, .prm-secondary-color, prm-topbar .top-nav-bar, html#primoExploreRoot body primo-explore.__lgPlus.__gt-xs.__gt-sm.__gt-md div prm-explore-main div.header.topbar-wrapper.relative-position.layout-column prm-topbar div.top-nav-bar.layout-row prm-user-area md-fab-toolbar.hide-xs._md-animations-ready.md-fab-toolbar.md-left.md-is-open div._md-fab-toolbar-wrapper div._md-fab-toolbar-content md-fab-trigger.align-with-text.show-user-info { background-color: #dc4405; }
 
-prm-topbar .md-toolbar-tools { background-color: #dc4405; font-size: 110%; }
+prm-topbar .md-toolbar-tools { background-color: #dc4405; }
 
 div.md-fab-action-item { font-weight: bold; color: white; }
 
 .prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark::after, prm-tags-search-bar { background-color: #000; }
 
 prm-main-menu[menu-type="menu"] .md-button {
-    font-size: 1em;
     text-transform: none;
 }  
 
@@ -19,8 +22,6 @@ prm-atoz-search-bar { background-color: black !important; }
 .view-switcher > a:nth-child(1) { display: none; }
 
 .switch-to-advanced, button.switch-to-simple:nth-child(1) { font-size: 110%; /*font-weight: bold;*/ }
-
-body, .md-chips { font-family: Arial, sans-serif !important; }
 
 button.user-menu-button:nth-child(2) > div:nth-child(1) > span:nth-child(1), #main\ menu a { color: white; }
 
