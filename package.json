@@ -31,7 +31,7 @@
     "gulp-plumber": "1.1.0",
     "gulp-print": "^2.0.1",
     "gulp-rename": "1.2.2",
-    "gulp-sass": "2.3.2",
+    "gulp-sass": "3.0.0",
     "gulp-sourcemaps": "1.6.0",
     "gulp-template": "4.0.0",
     "gulp-wrap": "0.11.0",
@@ -45,7 +45,7 @@
     "protractor": "5.0.0",
     "protractor-image-comparison": "1.2.3",
     "request": "2.72.0",
-    "require-dir": "0.3.0",
+    "require-dir": "0.3.2",
     "run-sequence": "1.2.1",
     "shelljs": "0.6.0",
     "tar-fs": "1.13.0"
