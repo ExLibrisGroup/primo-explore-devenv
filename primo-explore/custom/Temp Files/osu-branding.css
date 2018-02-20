@@ -1,0 +1,302 @@
+ /* Basics */
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+    body {
+        font-family: 'Open sans',sans-serif;
+        background-image: none;
+        background-color: #fff;
+        display: flex;
+        min-height: 100%;
+        flex-direction: column;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0;
+	    padding: 0;
+    }   
+
+    h1 {
+        font-family: 'Open sans',sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        color: #fff;
+        background-color: #000;
+        margin: 0;
+        font-weight: 900;
+        padding: 10px 20px;
+        width: 100%;
+        display: block;
+    }
+
+    h1 a {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        text-decoration: underline;
+    }
+
+    h2 {
+        font-family: sans-serif;
+        font-size: 2rem;
+        line-height: 2.5rem;
+        font-weight: 700;
+        color: #dc4405;
+    }
+
+    h3 {
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        line-height: 1.6rem;
+        font-weight: 500;
+        color: #dc4405;
+    }
+    h4{
+        font-family: 'Open sans',sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    h5 {
+        font-family: 'Open sans',sans-serif;
+        font-size: 1.1rem;
+        color: #dc4405;
+        border-bottom: none;
+    }
+    
+    hr {
+        margin: 22px 0;
+        border: 0;
+        border-top: 1px solid #eeeeee;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    table th {
+        border: none;
+        border-top: 1px solid #e0e0e0;
+        line-height: 2em;
+        background-color: #444;
+        color: #fff;
+        font-weight: normal;
+    }
+
+    table tr:nth-child(2n+1) {
+        background-color: #f0f0f0;
+    }
+
+    
+
+    caption, thead, tbody, tr, th, td {
+        border-style: solid;
+        border-color: #e0e0e0;
+        border-width: 0;
+    }
+
+/*
+******
+HEADER STYLES
+******
+*/  
+
+    #header #osu-top-hat {
+        width: 100%;
+    }
+
+    #header #osu-top-hat.new img {
+        height: 80px;
+        margin: 10px;
+    }
+    #header .group-header {
+        background: #000;
+        color: #fff;
+        padding: 10px;
+    }
+
+    #header .group-header h1 {
+        display: inline;
+        padding: 0;
+    }
+
+    #header .group-header a {
+        text-decoration: none;
+    }
+
+    #header #page-wrapper.container-fluid {
+        padding-left: 0;
+    }
+    #header #main-menu .menu, #main-menu .nice-menu {
+        margin-left: 6em;
+    }
+    
+    #header li.menu-dropdown-item:hover {
+        background-color: #666;
+    }
+
+    #header .nice-menu > li {
+        float: left;
+        margin: 0;
+        list-style-type: none;
+        padding: 0;
+        border: none;
+    }
+
+    #header a#search-link {
+        display: none;
+    }
+
+    #header #osu-top-hat.new {
+        background: #dc4405;
+        height: 100px;
+        border-bottom: none;
+        position: relative;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+/* Menu position  */
+/* @media (min-width: 980px) */
+#header .menu-container {
+    padding-left: 85px;
+    padding-right: 85px;
+    margin: 10px 0;
+}
+
+/* menu top level item position */
+#header .menuparent .menu-top-level {
+    padding: 10px 16px;
+}
+
+/* dropdown menu magic  */
+
+    #header .menu-dropdown {
+        display: none;
+    }
+
+    #header .menuparent:hover .menu-dropdown {
+        display: block;
+    }
+/* dropdown styles */
+
+    #header ul li .menuparent{
+        list-style-type: none;
+    }
+
+    #header li.menu-parent {
+        position: relative;
+    }
+
+    #header ul.menu-dropdown {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        margin-top: 13px;
+        padding: 10px 0;
+    }
+
+    #header li.menu-dropdown-item {
+        padding: 15px;
+        list-style-type: none;
+    }
+
+    #header li.menu-dropdown-item a {
+        text-decoration:none;
+        color: white;
+    }
+ 
+    #header #main-menu .nice-menu {
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #252525;
+        border: none;
+        line-height: 16px;
+        margin: 0 2px;
+        display: inline-block;
+        padding: 10px 16px;
+    }
+    #header #main-menu .nice-menu > li.menuparent:hover > span,
+    #header #main-menu .nice-menu > li.over > span {
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+    }
+
+
+/* dropdown fade in  */
+
+@-webkit-keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+.fade {
+    -webkit-animation: fadeIn .5s;
+}
+
+/* 
+*********
+END HEADER
+********* 
+*/
+
+
+
+
+
+
+
+/*
+********
+FOOTER STYLES
+********
+*/
+#footer {
+    background: url(http://oregonstate.edu/themes/osu/drupal8-osuhomepage/assets/images/repeatable-treeline.png) #373737 repeat-x left bottom;
+    border-top: 4px solid #dc4405;
+    min-height: 270px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 20px;
+}
+
+#footer h2, #footer h3 {
+    color: #fff;
+    font-size: 120%;
+    margin-top: 0;
+    line-height: inherit;
+}
+
+#footer a {
+    color: #fff;
+}
+
+#footer .row {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer ul li {
+    list-style: none;
+}
+
+#footer hr {
+    border-top: 2px solid #DC4405;
+    border-bottom: none;
+    margin: 10px 0;
+    width: 25%;
+}
+
+
+/*
+********
+END FOOTER
+********
+*/

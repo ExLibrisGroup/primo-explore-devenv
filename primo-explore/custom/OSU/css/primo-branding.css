@@ -1,0 +1,112 @@
+/* Begin Primo branding */
+body { font-family: Arial, sans-serif !important; font-size: 12pt !important; }
+
+prm-main-menu { font-size: 14pt; }
+
+prm-topbar .prm-primary-bg.prm-hue1, prm-browse-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1, prm-search-bar.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark::after, prm-tags-search-bar.prm-hue1, prm-topbar .top-nav-bar, .prm-secondary-color, prm-topbar .top-nav-bar, html#primoExploreRoot body primo-explore.__lgPlus.__gt-xs.__gt-sm.__gt-md div prm-explore-main div.header.topbar-wrapper.relative-position.layout-column prm-topbar div.top-nav-bar.layout-row prm-user-area md-fab-toolbar.hide-xs._md-animations-ready.md-fab-toolbar.md-left.md-is-open div._md-fab-toolbar-wrapper div._md-fab-toolbar-content md-fab-trigger.align-with-text.show-user-info { background-color: #dc4405; }
+
+prm-topbar .md-toolbar-tools { background-color: #dc4405; }
+
+div.md-fab-action-item { font-weight: bold; color: white; }
+
+.prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark::after, prm-tags-search-bar { background-color: #000; }
+
+prm-main-menu[menu-type="menu"] .md-button {
+    text-transform: none;
+}  
+
+.dogs { font-size: 10pt; }
+
+.md-button.button-confirm, .service-form-static-panel button.button-confirm prm-icon + span, .service-form-static-panel button.button-confirm prm-icon svg path { color: black; }
+
+prm-atoz-search-bar { background-color: black !important; }
+
+.view-switcher > a:nth-child(1) { display: none; }
+
+.switch-to-advanced, button.switch-to-simple:nth-child(1) { font-size: 110%; /*font-weight: bold;*/ }
+
+button.user-menu-button:nth-child(2) > div:nth-child(1) > span:nth-child(1), #main\ menu a { color: white; }
+
+prm-logo .product-logo { padding: 0; }
+
+md-tab-item.md-tab:nth-child(3) { display: none; }
+
+span[translate="mainmenu.label.interlibrary_loan"] { max-width: none; }
+
+.WC_hide { display:none; } 
+
+button.user-menu-button:nth-child(2) > div:nth-child(1) > span:nth-child(1) {font-size: 110%; }
+
+div.chat { 
+    text-decoration: none; 
+    padding: .5em;    
+    border-radius: 4px;
+    display: inline-block; 
+    font-size: 110%;
+    border-radius: 8px !important;
+    border: 2px solid #ffffff !important;
+    margin: 0 .5em; 
+}
+
+div.chat a { color: white !important; }
+
+div.chat a:hover { text-decoration: none; color: white !important; }
+
+[class*=does_not_exist] {
+    color: #e08303 !important;
+}
+
+prm-main-menu .top-nav-bar-links>a[aria-label="Browse"] {
+  display: none;
+}
+
+prm-main-menu[menu-type="full"] div.custom-links-container > md-card:last-child {
+    display:none;
+}
+
+html#primoExploreRoot body primo-explore.__lgPlus.__gt-xs.__gt-sm.__gt-md div prm-account md-content.padded-container.layout-fill._md.md-primoExplore-theme.layout-align-center-start.layout-row div.main.layout-row.flex prm-account-overview.layout-fill md-content#accountoverview._md.md-primoExplore-theme.flex md-tabs.static-tabs.default-tabs.md-dynamic-height.md-primoExplore-theme md-tabs-content-wrapper._md md-tab-content#tab-content-7._md.md-no-scroll.md-active div div.layout-row prm-personal-info.flex div.layout-wrap.layout-align-center-start.layout-row md-card.default-card._md.md-primoExplore-theme.flex-xs-100.flex-sm-100 {
+    display: none; 
+}
+
+span[translate="nui.loan.due"] {
+    color: black;
+    font-weight: bold; 
+}
+
+.weak-text { color: #545454; }
+
+#main\20 menu > a:nth-child(2) > span {
+    max-width: inherit; 
+}
+
+prm-brief-result-container .media-content-type prm-search-result-frbr-line > span { 
+    font-weight: 600 !important; 
+}
+
+prm-brief-result-container .media-content-type prm-search-result-frbr-line a span {
+    background-color: #dc4405;
+    padding: 0px 3px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #dc4405;
+    text-transform: none; 
+}
+
+.multiselect-facet-group.multiselect-inactive
+.md-chip, md-checkbox,
+.multiselect-facet-group.multiselect-inactive
+.md-chip, md-checkbox,
+.multiselect-facet-group.multiselect-inactive
+.md-chip md-checkbox, 
+.section-content .md-chips .md-chip .md-chip-remove-container .md-button {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+    transform: scaleX(1);
+    transition: all 0s 0s;
+}
+
+md-input-container {
+    padding: 0 !important; 
+}
+/* End Primo branding */

@@ -1,0 +1,65 @@
+/* Begin Primo media queries */
+
+/* Small screen/phone styles */ 
+@media (max-width: 600px)
+{
+    body { background-color: lightseagreen !important; }
+}
+
+/* Tablet styles */
+@media (max-width: 959px) and (min-width: 601px)
+{
+    body { background-color: lightcoral !important; }
+}
+
+/* Netbook/Laptop styles - fix new search screen; check other search screens */ 
+@media (max-width: 1280px) and (min-width: 960px)
+{
+    body { background-color: SandyBrown !important; }
+
+    .flex-lg-10, .layout-lg-row > .flex-lg-10, .layout-row > .flex-lg-10 { max-width: 5%; }
+
+    prm-search-bar div.layout-fill.layout-column.zero-padding div.search-wrapper.dark-toolbar.prm-top-bar-container.main-header-row.layout-row div.flex-xl-20.flex-md-0.flex-lg-10.flex-0 { max-width: 10%; }
+
+    .flex-lg-20, .layout-lg-row > .flex-lg-20, .layout-row > .flex-lg-20 { max-width: 28%; }
+
+    .flex-lg-5, .layout-lg-row > .flex-lg-5, .layout-row > .flex-lg-5 { max-width: 0; }
+}
+
+/* Medium screens */ 
+@media (max-width: 1599px) and (min-width: 1281px)
+{
+    body { background-color: Aquamarine !important; }
+}
+
+/* Large screens */ 
+@media (max-width: 1919px) and (min-width: 1600px)
+{
+    body { background-color: lightyellow !important; }
+}
+
+/* Very large screens */ 
+@media (min-width: 1920px)
+{
+    body { background-color: lightblue !important; }
+}
+
+/* Print styles */ 
+@media print 
+{
+    .sidebar { display:none; }
+    prm-page-nav-menu { display:none; }
+    .bottom-fixed-toolbar { display:none; }
+    #fixed-buttons-holder { display:none; }
+    prm-search-bar { display:none; }
+    .header.topbar-wrapper { display:none; }
+    .flex-order-4.flex-lg-15.flex-xl-25.flex-xl-10.flex-md-0.flex-lg-5.flex-0 { display:none; }
+    .button-confirm[translate="nui.brief.results.loadMore"] { display:none; }
+    .list-spacer { display:none; }
+    .md-subheader { display:none; }
+    prm-alert-bar { display: none; }
+    #mainResults > div.results-title.layout-align-start-center.layout-row { display: none; } 
+}
+/* End Primo media queries */
+
+
