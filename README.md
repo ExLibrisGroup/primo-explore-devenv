@@ -39,7 +39,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 2.  Unzip the file you downloaded to a preferred development project folder location
 
-3.  Download and install the [latest LTS version of Node](https://nodejs.org/en/download/)
+3.  Download and install the [Node version 6.9.2](https://nodejs.org/download/release/v6.9.2/)
 
 4.  From command line, run the command : `npm install npm@3.3.12 -g`
 
