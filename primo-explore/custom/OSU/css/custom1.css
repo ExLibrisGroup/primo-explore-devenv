@@ -15,6 +15,8 @@ prm-main-menu[menu-type="menu"] .md-button {
     text-transform: none;
 }  
 
+.dogs { font-size: 10pt; }
+
 .md-button.button-confirm, .service-form-static-panel button.button-confirm prm-icon + span, .service-form-static-panel button.button-confirm prm-icon svg path { color: black; }
 
 prm-atoz-search-bar { background-color: black !important; }
