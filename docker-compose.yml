@@ -11,6 +11,7 @@ services:
       VIEW: NYU-NUI
       # VIEW: NYUAD-NUI
       # VIEW: NYUSH-NUI
+      # VIEW: CENTRAL_PACKAGE
       GULPFILE: nyu-gulpfile.js
     ports:
       - 8003:8003
