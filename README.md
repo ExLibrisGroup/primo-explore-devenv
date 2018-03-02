@@ -15,7 +15,7 @@ Then to start the server up with Docker:
 # Setup your views
 git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU-NUI
 ...
-docker-compose up
+VIEW=NYU-NUI docker-compose up
 ```
 
 To run on your local machine and not on Docker you can use the following customized gulp task:
