@@ -36,6 +36,6 @@ function prepareTemplates() {
     }
 }
 
-gulp.task('custom-html-templates', () => {
+gulp.task('custom-html-templates', ['select-view'], () => {
     prepareTemplates();
 })

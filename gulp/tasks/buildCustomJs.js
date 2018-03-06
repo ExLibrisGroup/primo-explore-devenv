@@ -14,12 +14,12 @@ const browserify = require("browserify");
 
 let buildParams = config.buildParams;
 
-gulp.task('watch-js', () => {
+gulp.task('watch-js', ['select-view'], () => {
     gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],['custom-js']);
 });
 
 
-gulp.task('custom-js', ['custom-html-templates'],() => {
+gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
    if(config.getBrowserify()) {
        buildByBrowserify();
    }
