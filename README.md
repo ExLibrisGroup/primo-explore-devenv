@@ -54,7 +54,7 @@ Deploys must be done through the back office UI with an uploaded zip package.
     - Process Monitoring
     - Job Monitoring
 
-1. **Upload zip file.** Navigate to Deploy & Utilities > Customization Manager. Select "New York University" as Owner and "NYU-NUI" as View. Download the existing package in case of failure. Choose file and click "Upload".
+1. **Upload zip file.** Navigate to Deploy & Utilities > Customization Manager. Select the appropriate view (e.g. "NYU-NUI") as View. Download the existing package in case of failure. Choose file and click "Upload".
 
 1. **Deploy** by clicking "Deploy." You can monitor progress under "Deploy Monitoring."
 
