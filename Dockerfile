@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:6.14-slim
 
 ENV INSTALL_PATH /app
 ENV PATH $INSTALL_PATH/node_modules/.bin:${PATH}
@@ -8,12 +8,6 @@ ENV PROXY_SERVER http://bobcatdev.library.nyu.edu:80
 
 # Install essentials
 RUN apt-get update -qq && apt-get install -y build-essential vim
-
-# Install yarn
-RUN apt-get update && apt-get install -y apt-transport-https
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install yarn
 
 # Install node_modules with yarn
 ADD package.json yarn.lock /tmp/

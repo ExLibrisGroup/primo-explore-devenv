@@ -36,6 +36,12 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 
 ## Build a package
 
+With Docker to ensure the supported version of node is used:
+```
+docker-compose run web yarn run gulp create-package
+```
+
+Or locally if you're willing to take the risk:
 ```
 gulp create-package
 ```
