@@ -46,6 +46,8 @@ Deploys must be done through the back office UI with an uploaded zip package.
 
 1. **Notify admins and devs** by scheduling a block in the appropriate Primo calendar. This ensures no conflicts between manual deploys and jobs.
 
+1. **Rerun your devenv** with the latest versions of all dependent views. This means to at least run CENTRAL_PACKAGE as well as the view being targeted before building the package. This ensures that all files upon which the build process depends are present and updated on your development machine.
+
 1. **Build a package.** Run `gulp create-package` to build a zip file of this customization package. The script also removes files that cause the upload to fail, specifically any files except `package.json` without the following extensions: `png`, `jpg`, `gif`, `js`, `html`, `css`.
 
 1. **Verify that no deploys or pipes are running or scheduled.** Under Monitor Primo Status, check the following to ensure nothing is running or scheduled (Jobs need about 15 minutes after completion to finish before a deploy can be run.):
