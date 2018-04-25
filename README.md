@@ -91,6 +91,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
       - [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
 
 
+Note: you have multiple options to edit the css file(custom1.css) and the js file(custom.js), some of them include methods of splitting your developments to seperate files. When using such methods - the css and js file will be overriden by the different files.
+
 
 ## Publishing packages
 
