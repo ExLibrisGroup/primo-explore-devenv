@@ -122,6 +122,10 @@ function customNpmJsPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/*.js`;
 }
 
+function customNpmDistPath() {
+  return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
+}
+
 
 function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
@@ -162,6 +166,7 @@ let buildParams = {
     customCssPath: customCssPath,
 		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
+    customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
