@@ -64,7 +64,7 @@ function buildByBrowserify() {
             buildParams.viewJsDir()+'/node_modules'
         ]
     })
-        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"], sourceMaps: true})
+        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string", ["angularjs-annotate", { "explicitOnly" : true}]], sourceMaps: true})
         .bundle()
         .pipe(source(buildParams.customFile))
         .pipe(buffer())
