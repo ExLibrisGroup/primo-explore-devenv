@@ -1,8 +1,36 @@
-var app = app || angular.module('viewCustom', ['angularLoad', 'hathiTrustAvailability', 'sendSms']).constant('nodeserver', "https://apiconnector.thirdiron.com/v1/libraries/72").config(['$sceDelegateProvider', 'nodeserver', function ($sceDelegateProvider, nodeserver) {
-  var urlWhitelist = $sceDelegateProvider.resourceUrlWhitelist();
-  urlWhitelist.push(nodeserver + '**');
-  $sceDelegateProvider.resourceUrlWhitelist(urlWhitelist);
-}]);
+import 'primo-explore-getit-to-link-resolver';
+
+var app = app || angular.module(
+  'viewCustom', ['angularLoad', 'hathiTrustAvailability', 'sendSms', 'getitToLinkResolver']
+).constant(
+  'nodeserver', "https://apiconnector.thirdiron.com/v1/libraries/72"
+).config([
+  '$sceDelegateProvider',
+  'nodeserver',
+  function ($sceDelegateProvider, nodeserver) {
+    var urlWhitelist = $sceDelegateProvider.resourceUrlWhitelist();
+    urlWhitelist.push(nodeserver + '**');
+    $sceDelegateProvider.resourceUrlWhitelist(urlWhitelist);
+  }
+]);
+
+app.constant('getitToLinkResolverConfig', {
+  serviceSectionHeader: 'View It',
+  linkField: 'openURL',
+  linkText: 'Check Availability',
+  iconBefore: {
+    set: 'primo-ui',
+    icon: 'book-open'
+  },
+  iconAfter: {
+    set: 'primo-ui',
+    icon: 'open-in-new'
+  }
+});
+
+app.component('prmFullViewServiceContainerAfter', {
+  template: '<getit-to-link-resolver-full></getit-to-link-resolver-full>'
+});
 
 // Enhance No Results tile
 
