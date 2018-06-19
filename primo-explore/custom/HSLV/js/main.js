@@ -1,7 +1,5 @@
-import 'primo-explore-getit-to-link-resolver';
-
 var app = app || angular.module(
-  'viewCustom', ['angularLoad', 'hathiTrustAvailability', 'sendSms', 'getitToLinkResolver']
+  'viewCustom', ['angularLoad', 'hathiTrustAvailability', 'sendSms']
 ).constant(
   'nodeserver', "https://apiconnector.thirdiron.com/v1/libraries/72"
 ).config([
@@ -14,22 +12,43 @@ var app = app || angular.module(
   }
 ]);
 
-app.constant('getitToLinkResolverConfig', {
-  serviceSectionHeader: 'View It',
-  linkField: 'openURL',
-  linkText: 'Check Availability',
-  iconBefore: {
-    set: 'primo-ui',
-    icon: 'book-open'
-  },
-  iconAfter: {
-    set: 'primo-ui',
-    icon: 'open-in-new'
+app.controller('prmFullViewServiceContainerAfterController', function ($scope) {
+  var vm = this;
+  var mashScope;
+  function traverse(node) {
+    if (mashScope) return;
+    if (node.$ctrl) {
+      if (node.$ctrl.service) {
+        //for (var key in node.$ctrl) {
+        if (node.$ctrl.service.linkElement && node.$ctrl.service.linkElement.category === 'Alma-E') {
+          mashScope = node.$ctrl;
+          return;
+        }
+      }
+    }
+    if (node.$$childHead) traverse(node.$$childHead)
+    if (node.$$nextSibling) traverse(node.$$nextSibling)
   }
+  traverse(vm.parentCtrl.$rootScope);
+  function almaELink() {
+    return mashScope.service.linkElement.links[0];
+  }
+  console.log('BOO');
+  console.log($scope)
+  console.log('BOO');
+  if (mashScope) {
+    $scope.mashScope = mashScope.service.linkElement.links[0].link;
+  }
+  console.log(mashScope);
+  console.log('OK');
+  //console.log(almaELink());
+  console.log('YES');
 });
 
 app.component('prmFullViewServiceContainerAfter', {
-  template: '<getit-to-link-resolver-full></getit-to-link-resolver-full>'
+  bindings: { parentCtrl: '<' },
+  controller: 'prmFullViewServiceContainerAfterController',
+  template: '<div>Hello: {{mashScope}}</div>'
 });
 
 // Enhance No Results tile
