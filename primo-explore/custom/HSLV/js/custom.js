@@ -8,16 +8,17 @@ var app = app || angular.module('viewCustom', ['angularLoad', 'hathiTrustAvailab
   $sceDelegateProvider.resourceUrlWhitelist(urlWhitelist);
 }]);
 
-app.controller('prmFullViewServiceContainerAfterController', function ($scope) {
-  var vm = this;
+app.controller('prmLoginAlmaMashupAfterController', function ($scope) {
   var mashScope;
+  // Find the prm-alma-mashup scope.
+  // This is a horrid hack, but I seen no alternatives.
+  // There's no prm-alma-mashup-after to use.
   function traverse(node) {
     if (mashScope) return;
     if (node.$ctrl) {
       if (node.$ctrl.service) {
-        //for (var key in node.$ctrl) {
         if (node.$ctrl.service.linkElement && node.$ctrl.service.linkElement.category === 'Alma-E') {
-          mashScope = node.$ctrl;
+          $scope.mashScope = node.$ctrl.service.linkElement.links[0].link;
           return;
         }
       }
@@ -25,26 +26,12 @@ app.controller('prmFullViewServiceContainerAfterController', function ($scope) {
     if (node.$$childHead) traverse(node.$$childHead);
     if (node.$$nextSibling) traverse(node.$$nextSibling);
   }
-  traverse(vm.parentCtrl.$rootScope);
-  function almaELink() {
-    return mashScope.service.linkElement.links[0];
-  }
-  console.log('BOO');
-  console.log($scope);
-  console.log('BOO');
-  if (mashScope) {
-    $scope.mashScope = mashScope.service.linkElement.links[0].link;
-  }
-  console.log(mashScope);
-  console.log('OK');
-  //console.log(almaELink());
-  console.log('YES');
+  traverse($scope.$root);
 });
 
-app.component('prmFullViewServiceContainerAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'prmFullViewServiceContainerAfterController',
-  template: '<div>Hello: {{mashScope}}</div>'
+app.component('prmLoginAlmaMashupAfter', {
+  controller: 'prmLoginAlmaMashupAfterController',
+  template: '<div>Hello: {{mashScope}}<iframe ng-src="https://libguides.galter.northwestern.edu" /></div>'
 });
 
 // Enhance No Results tile
