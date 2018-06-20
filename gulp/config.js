@@ -148,7 +148,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
 //var PROXY_SERVER = 'https://nwu-primosb.hosted.exlibrisgroup.com:443';
-var PROXY_SERVER = 'https://nwu-primosb.hosted.exlibrisgroup.com:4443';
+var PROXY_SERVER = 'https://nwu-primosb.hosted.exlibrisgroup.com:443';
 
 
 let buildParams = {
