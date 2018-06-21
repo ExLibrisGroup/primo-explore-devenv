@@ -1,4 +1,5 @@
-const iframeResizer = require('./iframeResizer') ;
+// FIXME enable for browserify
+//const iFrameResize = require('./iframeResizer') ;
 
 var app = app || angular.module(
   'viewCustom', ['angularLoad', 'hathiTrustAvailability', 'sendSms']
@@ -14,10 +15,10 @@ var app = app || angular.module(
   }
 ]);
 
-app.controller('prmLoginAlmaMashupAfterController',
-               ['$http', '$scope', '$sce', function ($http, $scope, $sce) {
+app.controller('prmLoginAlmaMashupAfterController', ['$http', '$scope', '$sce', function ($http, $scope, $sce) {
+
   $scope.sizeIframe = function () {
-    iframeResizer({log:true,checkOrigin:false},'.mashup-iframe');
+    iFrameResize({ log: false, checkOrigin: false }, '.mashup-iframe');
   }
 
   var mashScope;
@@ -28,9 +29,11 @@ app.controller('prmLoginAlmaMashupAfterController',
     if (mashScope) return;
     if (node.$ctrl) {
       if (node.$ctrl.service) {
-        if (node.$ctrl.service.linkElement && node.$ctrl.service.linkElement.category === 'Alma-E') {
-          $scope.mashScope = node.$ctrl;
-          return;
+        if (node.$ctrl.service.linkElement) {
+          if (node.$ctrl.service.linkElement.category === 'Alma-E') {
+            $scope.mashScope = node.$ctrl;
+            return;
+          }
         }
       }
     }
@@ -38,6 +41,13 @@ app.controller('prmLoginAlmaMashupAfterController',
     if (node.$$nextSibling) traverse(node.$$nextSibling)
   }
   traverse($scope.$root);
+
+  // Bound containerCtrl only available on init
+  this.$onInit = function() {
+    $scope.showGalterIFrame = (
+      this.containerCtrl.service.title === 'nui.getit.alma_tab1_norestrict'
+    )
+  }
 
   const LINK_TEMPLATE = 'http://local-dev.northwestern.edu:3000/search/results/view_it_primo?url=';
   if ($scope.mashScope) {
@@ -54,13 +64,14 @@ app.controller('prmLoginAlmaMashupAfterController',
 
 app.component('prmLoginAlmaMashupAfter', {
   controller: 'prmLoginAlmaMashupAfterController',
+  require: { containerCtrl: '^prmFullViewServiceContainer' },
+  //bindings: { parentCtrl: '<' },
   template: `
-  <div>
+  <div ng-if="showGalterIFrame && isLinkAvailable">
     <iframe class="mashup-iframe"
             iframe-onload="{{sizeIframe()}}"
             ng-src="{{mashLink}}"
             style="width: 100%; border: none; overflow: hidden;"
-            ng-if="isLinkAvailable"
             id="iFrameResizer1"
             scrolling="no" />
   </div>
