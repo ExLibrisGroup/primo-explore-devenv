@@ -1,4 +1,4 @@
-
+// Run with `--browserify true' to build via browserify
 const gulp = require('gulp');
 const minimist = require('minimist');
 const requireDir = require('require-dir');
@@ -12,4 +12,7 @@ config.setVe(options.ve ? true : false);
 if (options.reinstallNodeModules) config.setReinstallNodeModules(options.reinstallNodeModules);
 if (options.proxy) config.setProxy(options.proxy);
 if (options.useScss) config.setUseScss(options.useScss);
+
+//Disable to build through append
+options.browserify = true;
 config.setBrowserify(options.browserify);

@@ -38,7 +38,6 @@ function setVe(_ve) {
     ve = _ve;
 }
 function getBrowserify() {
-  //  return true;
     return browserify;
 }
 
