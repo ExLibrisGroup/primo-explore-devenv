@@ -1000,11 +1000,19 @@ app.controller('prmLoginAlmaMashupAfterController', ['$http', '$scope', '$sce', 
 
 	// Bound containerCtrl only available on init
 	this.$onInit = function () {
+		// Check if we're in the 'View it' container
 		$scope.showGalterIFrame = this.containerCtrl.service.title === 'nui.getit.alma_tab1_norestrict';
 	};
 
+	// Find and format Galter iframe viewit link
 	var LINK_TEMPLATE = 'http://local-dev.northwestern.edu:3000/search/results/view_it_primo?url=';
 	if ($scope.mashScope) {
+		// A very bad hack to hide Primo's own viewit iframe
+		// We're modifying prm-alma-mashup contriller we found earlier
+		// *ducks*
+		$scope.mashScope.isMashupLink = function () {
+			return false;
+		};
 		var mashLink = $scope.mashScope.service.linkElement.links[0].link;
 		$scope.isLinkAvailable = false;
 		if (mashLink && typeof mashLink !== 'undefined') {
