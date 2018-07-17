@@ -51,7 +51,10 @@ app.controller('prmLoginAlmaMashupAfterController', ['$http', '$scope', '$sce', 
   }
 
   // Find and format Galter iframe viewit link
-  const LINK_TEMPLATE = 'http://local-dev.northwestern.edu:3000/search/results/view_it_primo?url=';
+  var LINK_TEMPLATE = 'https://www-stage.galter.northwestern.edu/search/results/view_it_primo?url=';
+  if (location.hostname === 'search.library.northwestern.edu') {
+    LINK_TEMPLATE = 'https://galter.northwestern.edu/search/results/view_it_primo?url=';
+  }
   if ($scope.mashScope) {
     // A very bad hack to hide Primo's own viewit iframe
     // We're modifying prm-alma-mashup contriller we found earlier
