@@ -30,7 +30,7 @@ The development package allows you to configure the following page components (f
 
 For each configuration-type, or for every different Primo View, there should be a specified folder named after the View (which adheres to the established directory structure) in the `primo-explore/custom` package folder.
 
-This custom View folder can be downloaded from your Primo Back Office, by following `Primo Home > Primo Utilities > UI customization Package Manager`, or started fresh from the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"). (The benefit of using this repository is that in each folder you will find a specific README.md file containing recipes and examples.)
+This custom View folder can be downloaded from your Primo Back Office, by following `Primo Home > Primo Utilities > UI customization Package Manager` <em>(for Galter, the package should be labelled HSLV)</em>, or started fresh from the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"). (The benefit of using this repository is that in each folder you will find a specific README.md file containing recipes and examples.)
 
 
 ## Installation
@@ -39,9 +39,9 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 2.  Unzip the file you downloaded to a preferred development project folder location
 
-3.  Download and install the [Node version 6.9.2](https://nodejs.org/download/release/v6.9.2/)
+3.  ~~Download and install the [Node version 6.9.2](https://nodejs.org/download/release/v6.9.2/)~~ Latest version should be fine
 
-4.  From command line, run the command : `npm install npm@3.3.12 -g`
+4.  ~~From command line, run the command : `npm install npm@3.3.12 -g`~~ The npm version that comes with latest node should be fine
 
 5.  Restart your computer
 
@@ -53,7 +53,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
     ![npm install image](./help_files/npmInstall.png "Running npm install")
 
-9.  Edit Gulp configuration file's <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`
+9.  Edit Gulp configuration file's <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`. This is already set for Galter.
 
 10. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
 

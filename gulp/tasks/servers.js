@@ -113,7 +113,7 @@ gulp.task('connect:primo_explore', ['select-view'], function() {
 
                 },
                 primoProxy.proxy_function()],
-        port: 8003,
+        port: 3333,
         baseDir: appName
     });
 });
