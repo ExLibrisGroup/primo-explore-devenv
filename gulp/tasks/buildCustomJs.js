@@ -69,7 +69,7 @@ function buildByBrowserify() {
         .pipe(source(buildParams.customFile))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
+        .pipe(uglify({ mangle: false }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(buildParams.viewJsDir()));
 }
