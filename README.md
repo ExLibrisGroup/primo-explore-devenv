@@ -113,3 +113,16 @@ Once you finish customizing the package, you can zip up that directory and uploa
     ![BO Image](./help_files/bo.png "BO up")
 
 5. Don't forget to <b>deploy</b> your changes
+
+
+## Publishing Primo-Studio addons
+
+Once you finish customizing the package, you can get it ready to be published to Primo-Studio.
+
+1. In a command line window, navigate to the project base directory : `cd \path\to\your\project\folder\primo-explore-devenv`
+
+2. From command line, run the command : `gulp prepare-addon` You will be prompted with a menu specifying all of the possible packages you can build.
+
+3. Once you finished running the script a folder containing the add-on will be created in `\path\to\your\project\folder\primo-explore-devenv\addons`.
+
+4. From the above folder you can publish your add-on to NPM and to Primo-Studio. For Instructions see: [Primo-Studio add-on tutorial](https://github.com/ExLibrisGroup/Primo-Studio-Addon-Tutorial)
