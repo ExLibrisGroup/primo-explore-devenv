@@ -8,6 +8,7 @@ const prompt = require('prompt');
 const camelCase = require('camel-case');
 const streamToPromise = require('stream-to-promise');
 const colors = require('colors/safe');
+const path = require('path');
 
 
 let buildParams = config.buildParams;
@@ -42,7 +43,6 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
         .then(makeDirectory, handleError)
         .then(copyFiles, handleError)
         .then(compileAddon, handleError)
-        .then(announceFinishedCompiling, handleError)
         .then(createDescriptorJson, handleError)
         .then(announceFinishedProcess, handleError);
 
@@ -173,13 +173,6 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
     }
 
 
-    function announceFinishedCompiling() {
-        console.log('\n');
-        console.log('Finished compiling addon\n');
-        console.log(colors.green('Addon can be found at /addons/' + npmId + '\n'));
-    }
-
-
     function createDescriptorJson() {
         return new Promise((resolve, reject) => {
             let npmignorePath = directoryName + '/.npmignore';
@@ -280,7 +273,15 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
 
     function announceFinishedProcess() {
         console.log('\n');
-        console.log(colors.green("Please update 'descriptor.json' file with the fields at https://github.com/primousers/primostudio and publish to NPM\n"));
+        process.stdout.write('Finished compiling addon\n');
+        console.log('');
+        process.stdout.write(colors.green('Addon can be found at ' ));
+        process.stdout.write(colors.cyan(path.resolve('./addons/' + npmId)));
+        process.stdout.write(colors.green('.\nIn order to publish to NPM:  Navigate to the addon folder. Review the \'package.json\' file. Then run \'npm publish\'.\n'));
+        process.stdout.write(colors.green('A basic descriptor for your addon was created in the file \'descriptor.json\'. Please review it and edit fields accordingly.\n'));
+        process.stdout.write(colors.green('When you are ready to publish to Primo-Studio, create a pull request at '));
+        process.stdout.write(colors.cyan('https://github.com/primousers/primostudio/tree/submit_here'));
+        process.stdout.write(colors.green(' appending your descriptor to the \'features.json\' file.\n'));
     }
 
 
