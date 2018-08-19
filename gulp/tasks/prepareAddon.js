@@ -1,7 +1,7 @@
 'use strict';
 const gulp = require('gulp');
 const config = require('../config.js');
-const exec = require('child_process').exec;
+const spawn = require('child_process').spawn;
 const fs = require('fs');
 const Promise = require('bluebird');
 const prompt = require('prompt');
@@ -21,30 +21,16 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
 
     let runNpmInitIfNeeded = new Promise((resolve, reject) => {
         if (!fs.existsSync(packageJsonPath)) {
-            // console.error("You need to run 'npm init' before running this gulp task");
-            let childProcess = exec('npm init', {cwd: buildParams.viewRootDir()}, err => {
-                if (err) {
-                    reject(err);
-                }
-                resolve();
+            let childProcess = spawn('npm', ['init'], {cwd: buildParams.viewRootDir(), shell: true, stdio: 'inherit'});
+
+            childProcess.on('error', err => {
+                reject(err);
             });
 
-            childProcess.stdout.on('data', function(data) {
-                process.stdout.write(data);
-            });
-
-            process.stdin.on('readable', function() {
-                let chunk = process.stdin.read();
-
-                if(chunk !== null && childProcess.stdin.writable) {
-                    childProcess.stdin.write(chunk);
+            childProcess.on('exit', (code, signal) => {
+                if (!code) {
+                    resolve();
                 }
-
-                setTimeout(() => {
-                    if (fs.existsSync(packageJsonPath)) {
-                        childProcess.stdin.end();
-                    }
-                }, 150);
             });
         } else {
             resolve();
@@ -63,13 +49,17 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
 
     function findNpmIdInPackageJson() {
         return new Promise((resolve, reject) => {
-            fs.readFile(packageJsonPath, (err, data) => {
-                if (err) {
-                    reject(err);
+            fs.exists(packageJsonPath, exists => {
+                if (exists) {
+                    fs.readFile(packageJsonPath, (err, data) => {
+                        if (err) {
+                            reject(err);
+                        }
+                        let packageJson = JSON.parse(data.toString());
+                        npmId = camelCase(packageJson.name);
+                        resolve();
+                    });
                 }
-                let packageJson = JSON.parse(data.toString());
-                npmId = camelCase(packageJson.name);
-                resolve();
             });
         });
     }
