@@ -16,6 +16,7 @@ const streamify = require('gulp-streamify');
 const uglify = require('gulp-uglify');
 const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
+const order = require("gulp-order");
 
 let buildParams = config.buildParams;
 
@@ -35,7 +36,21 @@ gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
 });
 
 function buildByConcatination() {
-    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
+    return gulp.src([
+        buildParams.customModulePath(),
+        buildParams.mainPath(),
+        buildParams.customNpmJsPath(),
+        buildParams.customNpmDistPath(),
+        '!'+buildParams.customPath(),
+        '!'+buildParams.customNpmJsModulePath(),
+        '!'+buildParams.customNpmJsCustomPath()
+    ])
+        .pipe(order([
+            buildParams.mainJsPath(),
+            buildParams.customModulePath(),
+            buildParams.mainPath(),
+            buildParams.customNpmJsPath()
+        ], {base: './'}))
         .pipe(concat(buildParams.customFile))
         .pipe(babel({
             presets: ['es2015']
