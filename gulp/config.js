@@ -78,7 +78,7 @@ function mainPath() {
 }
 
 function mainJsPath() {
-    return viewJsDir()+'/main.js';
+    return viewJsDir() + '/' + mainFile;
 }
 
 function customCssMainPath() {
