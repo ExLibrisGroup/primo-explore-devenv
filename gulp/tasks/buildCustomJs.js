@@ -16,6 +16,7 @@ const streamify = require('gulp-streamify');
 const uglify = require('gulp-uglify');
 const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
+const removeCode = require('gulp-remove-code');
 
 let buildParams = config.buildParams;
 
@@ -40,6 +41,7 @@ function buildByConcatination() {
         .pipe(babel({
             presets: ['es2015']
         }))
+        .pipe(removeCode({ isStaging: config.getIsStaging() }))
         .on("error", function(err) {
             if (err && err.codeFrame) {
                 gutil.log(
@@ -69,6 +71,7 @@ function buildByBrowserify() {
         .pipe(source(buildParams.customFile))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(removeCode({ isStaging: config.getIsStaging() }))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(buildParams.viewJsDir()));

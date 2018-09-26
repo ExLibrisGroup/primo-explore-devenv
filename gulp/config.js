@@ -9,8 +9,8 @@ let browserify;
 let view;
 let ve;
 let useScss;
+let isStaging;
 let reinstallNodeModules;
-
 
 function setView(_view) {
     view = _view;
@@ -22,6 +22,14 @@ function setUseScss(_useScss) {
 
 function getUseScss() {
 	return useScss;
+}
+
+function setIsStaging(_isStaging) {
+	isStaging = _isStaging;
+}
+
+function getIsStaging() {
+	return isStaging;
 }
 
 function setProxy(_proxy) {
@@ -147,7 +155,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://your-server:your-port';
+var PROXY_SERVER = 'https://ubz-primo.hosted.exlibrisgroup.com';
 
 
 let buildParams = {
@@ -157,14 +165,14 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-		viewRootDir: viewRootDir,
+	viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
-		customScssDir: customScssDir,
-		customScssMainPath: customScssMainPath,
+	customScssDir: customScssDir,
+	customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
-		customNpmModuleRootDir: customNpmModuleRootDir,
+	customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
@@ -179,11 +187,13 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
-		setUseScss: setUseScss,
-		getUseScss: getUseScss,
+	setUseScss: setUseScss,
+    getUseScss: getUseScss,
+    setIsStaging: setIsStaging,
+    getIsStaging: getIsStaging,
     setProxy: setProxy,
-		getReinstallNodeModules: getReinstallNodeModules,
-		setReinstallNodeModules: setReinstallNodeModules,
+	getReinstallNodeModules: getReinstallNodeModules,
+	setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
