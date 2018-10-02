@@ -22,6 +22,8 @@ The development package allows you to configure the following page components (f
 
 - [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
 
+- [SASS/SCSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/scss "sass/scss documentation") (an optional alternative to CSS)
+
 - [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")
 
 - [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
@@ -69,9 +71,13 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
      (For example, running `gulp run --view Auto1` will start the environment taking the customizations from the <b>Auto1</b> folder.)
      
      ![Server Startup Image](./help_files/serverStartup.png "Server Startup")
-   - For Primo VE customers, add the --ve flag :
-      `gulp run --view <the VIEW_CODE folder> --ve`
+
+   - For Primo VE customers, add the `--ve` flag: `gulp run --view <the VIEW_CODE folder> --ve`
+
+   - When you are using SASS/SCSS, add the `--useScss` flag: `gulp run --view <the VIEW_CODE folder> --useScss`
+
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
+
    - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-view-code`
 
    -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser's incognito mode; or you can clear your browser cache before you start the Gulp server.
@@ -84,6 +90,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
       - [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")
 
+      - [SASS/SCSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/scss "sass/scss documentation") (an optional alternative to CSS)
+
       - [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")
 
       - [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")
@@ -92,6 +100,15 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 
 Note: you have multiple options to edit the css file(custom1.css) and the js file(custom.js), some of them include methods of splitting your developments to seperate files. When using such methods - the css and js file will be overriden by the different files.
+
+
+## Force a reinstallation of all npm modules your View Package depends on
+
+In the `package.json` file within your view package folder you can find a list of all npm modules your view package depends on. You can force a reinstallation of these modules in the following ways:
+
+- Run the dedicated gulp task in the command line: `gulp reinstall-primo-node-modules`
+
+- Attach the `--reinstallNodeModules` flag to the `create-package` or `run` tasks in the command line (e.g. `gulp run --view <the VIEW_CODE folder> --reinstallNodeModules` or `gulp create-package --reinstallNodeModules`).
 
 
 ## Publishing packages
