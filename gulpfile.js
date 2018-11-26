@@ -5,6 +5,7 @@ const requireDir = require('require-dir');
 requireDir('./gulp/tasks', { recurse: true });
 const config = require('./gulp/config');
 
+
 var options = minimist(process.argv.slice(2));
 config.setView(options.view);
 config.setVe(options.ve ? true : false);
@@ -13,3 +14,4 @@ if (options.proxy) config.setProxy(options.proxy);
 if (options.useScss) config.setUseScss(options.useScss);
 (options.isStaging) ? config.setIsStaging(options.isStaging) : config.setIsStaging(false);
 config.setBrowserify(options.browserify);
+config.setSaml(options.saml);

@@ -11,9 +11,18 @@ let ve;
 let useScss;
 let isStaging;
 let reinstallNodeModules;
+let saml;
 
 function setView(_view) {
     view = _view;
+}
+
+function setSaml(_saml) {
+  saml = _saml;
+}
+
+function getSaml() {
+  return saml;
 }
 
 function setUseScss(_useScss) {
@@ -199,5 +208,7 @@ module.exports = {
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify,
     getVe: getVe,
-    setVe: setVe
+    setVe: setVe,
+    getSaml: getSaml,
+    setSaml: setSaml
 };
