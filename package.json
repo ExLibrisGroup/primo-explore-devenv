@@ -54,5 +54,9 @@
   "dependencies": {
     "node-sass": "^4.6.0",
     "require-dir": "^0.3.2"
+  },
+  "scripts": {
+    "start": "gulp run --gulpfile=${GULPFILE:-nyu-gulpfile.js} --view=${VIEW:-NYU} --browserify",
+    "create-package": "gulp create-package"
   }
 }
