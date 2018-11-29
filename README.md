@@ -12,7 +12,7 @@ Then to start the server up with Docker:
 
 ```
 # Setup your views
-git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU-NUI
+git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU
 ...
 VIEW=NYU docker-compose up
 ```
@@ -61,7 +61,7 @@ Deploys must be done through the back office UI with an uploaded zip package.
     - Process Monitoring
     - Job Monitoring
 
-1. **Upload zip file.** Navigate to Deploy & Utilities > Customization Manager. Select the appropriate view (e.g. "NYU-NUI") as View. Download the existing package in case of failure. Choose file and click "Upload".
+1. **Upload zip file.** Navigate to Deploy & Utilities > Customization Manager. Select the appropriate view (e.g. "NYU") as View. Download the existing package in case of failure. Choose file and click "Upload".
 
 1. **Deploy** by clicking "Deploy." You can monitor progress under "Deploy Monitoring."
 
