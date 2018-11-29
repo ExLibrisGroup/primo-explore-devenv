@@ -2,11 +2,10 @@
 
 ## Setting up the dev environments
 
-Assuming you have node and npm installed locally you'll have to install the dependencies and install gulp globally:
+Assuming you have node and yarn installed locally you'll have to install the dependencies:
 
 ```
-npm install
-npm install gulp -g
+yarn install --frozen-lockfile
 ```
 
 Then to start the server up with Docker:
@@ -15,13 +14,13 @@ Then to start the server up with Docker:
 # Setup your views
 git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU-NUI
 ...
-VIEW=NYU-NUI docker-compose up
+VIEW=NYU docker-compose up
 ```
 
 To run on your local machine and not on Docker you can use the following customized gulp task:
 
 ```
-gulp run --gulpfile=nyu-gulpfile.js --view=NYU-NUI --browserify
+VIEW=NYU yarn start
 ```
 
 We're using an NYU-specific gulpfile so that we can override the css compilation before the default watchers are setup.
@@ -38,12 +37,12 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 
 With Docker to ensure the supported version of node is used:
 ```
-docker-compose run web yarn run gulp create-package
+docker-compose run web yarn create-package
 ```
 
-Or locally if you're willing to take the risk:
+If you're willing to take the risk, you can also create packages locally in your devenv. Ensure depencies are installed with `yarn install --frozen-lockfile` to ensure consistency across environments.
 ```
-gulp create-package
+yarn gulp create-package
 ```
 
 ## Deploys
