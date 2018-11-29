@@ -42,7 +42,7 @@ docker-compose run web yarn create-package
 
 If you're willing to take the risk, you can also create packages locally in your devenv. Ensure depencies are installed with `yarn install --frozen-lockfile` to ensure consistency across environments.
 ```
-yarn gulp create-package
+yarn create-package
 ```
 
 ## Deploys
