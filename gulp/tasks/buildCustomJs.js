@@ -11,15 +11,20 @@ const glob = require('glob');
 const gutil = require('gulp-util');
 const fs = require("fs");
 const browserify = require("browserify");
+const source = require('vinyl-source-stream');
+const streamify = require('gulp-streamify');
+const uglify = require('gulp-uglify');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
 
 let buildParams = config.buildParams;
 
-gulp.task('watch-js', () => {
+gulp.task('watch-js', ['select-view'], () => {
     gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],['custom-js']);
 });
 
 
-gulp.task('custom-js', ['custom-html-templates'],() => {
+gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
    if(config.getBrowserify()) {
        buildByBrowserify();
    }
@@ -30,7 +35,7 @@ gulp.task('custom-js', ['custom-html-templates'],() => {
 });
 
 function buildByConcatination() {
-    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
+    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
         .pipe(concat(buildParams.customFile))
         .pipe(babel({
             presets: ['es2015']
@@ -59,7 +64,12 @@ function buildByBrowserify() {
             buildParams.viewJsDir()+'/node_modules'
         ]
     })
-        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"]})
+        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"], sourceMaps: true})
         .bundle()
-        .pipe(fs.createWriteStream(buildParams.customPath()));
+        .pipe(source(buildParams.customFile))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(buildParams.viewJsDir()));
 }

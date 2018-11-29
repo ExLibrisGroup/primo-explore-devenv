@@ -30,12 +30,12 @@ function prepareTemplates() {
         prepareTempltesWithBrowserify();
     }
     else{
-        gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
+        gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
             .pipe(templateCache({filename:'customTemplates.js', templateHeader: 'app.run(function($templateCache) {', templateFooter: '});'}))
             .pipe(gulp.dest(buildParams.viewJsDir()));
     }
 }
 
-gulp.task('custom-html-templates', () => {
+gulp.task('custom-html-templates', ['select-view'], () => {
     prepareTemplates();
 })
