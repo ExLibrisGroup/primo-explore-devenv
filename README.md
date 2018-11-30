@@ -17,10 +17,10 @@ git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/cu
 VIEW=NYU docker-compose up
 ```
 
-To run on your local machine and not on Docker you can use the following customized gulp task:
+To run on your local machine and not on Docker you can use the following yarn task:
 
 ```
-VIEW=NYU yarn start
+yarn start --view=NYU
 ```
 
 We're using an NYU-specific gulpfile so that we can override the css compilation before the default watchers are setup.
@@ -37,12 +37,12 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 
 With Docker to ensure the supported version of node is used:
 ```
-docker-compose run web yarn create-package
+docker-compose run web yarn create-package --view=NYU
 ```
 
 If you're willing to take the risk, you can also create packages locally in your devenv. Ensure depencies are installed with `yarn install --frozen-lockfile` to ensure consistency across environments.
 ```
-yarn create-package
+yarn create-package --view=NYU
 ```
 
 ## Deploys
@@ -52,6 +52,13 @@ Deploys must be done through the back office UI with an uploaded zip package.
 1. **Notify admins and devs** by scheduling a block in the appropriate Primo calendar. This ensures no conflicts between manual deploys and jobs.
 
 1. **Rerun your devenv** with the latest versions of all dependent views. This means to at least run CENTRAL_PACKAGE as well as the view being targeted before building the package. This ensures that all files upon which the build process depends are present and updated on your development machine.
+
+```
+yarn start --view=NYU
+# Devenv starts....
+# Devenv closed by user
+yarn create-package --view=NYU
+```
 
 1. **Build a package.** Run `gulp create-package` to build a zip file of this customization package. The script also removes files that cause the upload to fail, specifically any files except `package.json` without the following extensions: `png`, `jpg`, `gif`, `js`, `html`, `css`.
 

@@ -1,11 +1,12 @@
 version: '3'
 services:
   web:
-    build: .
+    build:
+      context: .
+    image: primo-explore-devenv
     environment:
       PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
-      VIEW: ${VIEW}
-      GULPFILE: nyu-gulpfile.js
+      VIEW:
     ports:
       - 8003:8003
       - 3001:3001

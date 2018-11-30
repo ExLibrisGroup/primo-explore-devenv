@@ -1,4 +1,4 @@
-FROM node:6.9.2-slim
+FROM node:6-slim
 
 ENV INSTALL_PATH /app
 ENV PATH $INSTALL_PATH/node_modules/.bin:${PATH}
@@ -22,4 +22,4 @@ RUN sed -ie 's@http:\/\/your-server:your-port@'"$PROXY_SERVER"'@g' $INSTALL_PATH
 
 EXPOSE 8003 3001
 
-CMD [ "/bin/bash", "-c", "yarn start"]
+CMD [ "/bin/bash", "-c", "yarn start --view=${VIEW}"]
