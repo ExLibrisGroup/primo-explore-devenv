@@ -14,7 +14,7 @@ let runSequence = require('run-sequence');
 
 
 
-gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () => {
+gulp.task('setup_watchers', ['select-view', 'watch-js', 'watch-custom-scss', 'watch-css'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
         return browserSyncManager.reloadServer();
     });
@@ -26,7 +26,7 @@ gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () =
 
 
 
-gulp.task('connect:primo_explore', function() {
+gulp.task('connect:primo_explore', ['select-view'], function() {
     let appName = 'primo-explore';
     browserSyncManager.startServer({
         label: 'production',
@@ -119,4 +119,4 @@ gulp.task('connect:primo_explore', function() {
 });
 
 
-gulp.task('run', ['connect:primo_explore','reinstall-primo-node-modules','setup_watchers','custom-js','custom-scss','custom-css']); //watch
+gulp.task('run', ['select-view', 'connect:primo_explore','reinstall-primo-node-modules','setup_watchers','custom-js','custom-scss','custom-css']); //watch
