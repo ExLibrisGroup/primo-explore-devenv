@@ -63,7 +63,7 @@
     "node-sass": "^4.6.0"
   },
   "scripts": {
-    "start": "gulp run --gulpfile=${GULPFILE:-nyu-gulpfile.js} --view=${VIEW:-NYU} --browserify",
+    "start": "gulp run --gulpfile=nyu-gulpfile.js --browserify",
     "create-package": "gulp create-package --browserify"
   }
 }
