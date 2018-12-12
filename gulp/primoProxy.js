@@ -136,8 +136,9 @@ module.exports.getCustimazationObject = function (vid,appName) {
         customizationObject.staticHtml = staticHtmlRes;
     }
     function getLanguage(entry) {
-        var start = entry.indexOf('.html')-5;
-        var res = entry.substring(start,start+5);
+        var numberOfCharsForLang = config.getVe() ? 2 : 5;
+        var start = entry.indexOf('.html')-numberOfCharsForLang;
+        var res = entry.substring(start,start+numberOfCharsForLang);
         return res;
     }
     function getHtmlCustomizations(paths,path,staticDict){
@@ -151,11 +152,15 @@ module.exports.getCustimazationObject = function (vid,appName) {
         res.forEach((e)=> {
             var lang = getLanguage(e);
             var dirName = e.replace('_'+lang+'.html','');
+            if (dirName.indexOf('/') > -1) {
+                var sepIndex = dirName.indexOf('/');
+                dirName = dirName.substr(0, sepIndex);
+            }
             if(!staticDict[dirName]) {
                 staticDict[dirName] = {};
             }
             staticDict[dirName][lang] = path+ '/html/'+e;
-            if(lang ==='en_US') {
+            if(lang ==='en_US' || lang === 'en') {
                 staticDict[dirName]['default'] = path+ '/html/'+e;
             }
 
