@@ -29,24 +29,28 @@ gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
 
 });
 
-const browserifyBabelConfig = config.getBrowserify() ? [
+const browserifyBabelPlugins = [
     "transform-html-import-to-string"
-] : [];
+];
 
-const babelConfig = {
-    presets: ["es2015"],
-    plugins: [
-        ["transform-define", {
-            "process.env.NODE_ENV": process.env.NODE_ENV || "production",
-        }]
-    ].concat(browserifyBabelConfig),
-    sourceMaps: config.getBrowserify(),
+const defaultPlugins = [
+    ["transform-define", {
+        "process.env.NODE_ENV": process.env.NODE_ENV || "production",
+    }]
+];
+
+function getBabelConfig() {
+    return {
+        presets: ["es2015"],
+        plugins: defaultPlugins.concat(config.getBrowserify() ? browserifyBabelPlugins : []),
+        sourceMaps: config.getBrowserify(),
+    };
 }
 
 function buildByConcatination() {
     return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
         .pipe(concat(buildParams.customFile))
-        .pipe(babel(babelConfig))
+        .pipe(babel(getBabelConfig()))
         .on("error", function(err) {
             if (err && err.codeFrame) {
                 gutil.log(
@@ -71,7 +75,7 @@ function buildByBrowserify() {
             buildParams.viewJsDir()+'/node_modules'
         ]
     })
-        .transform("babelify", babelConfig)
+        .transform("babelify", getBabelConfig())
         .bundle()
         .pipe(source(buildParams.customFile))
         .pipe(buffer())
