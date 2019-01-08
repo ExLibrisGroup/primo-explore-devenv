@@ -185,13 +185,14 @@ module.exports.getCustimazationObject = function (vid,appName) {
 module.exports.proxy_function = function () {
     var proxyServer = config.PROXY_SERVER;
     var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
-    var loginRewriteFlags = (config.getSaml()) ? 'RL' : 'PL';
+    var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
     return modRewrite([
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
         '/primaws/rest/(.*) ' + proxyServer + '/primaws/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [' + loginRewriteFlags + ']',
-        '/primaws/suprimaLogin ' + proxyServer + '/primaws/suprimaLogin [PL]',
+        '/primaws/suprimaLogin ' + proxyServer + '/primaws/suprimaLogin [' + loginRewriteFlags + ']',
+        '/primaws/suprimaExtLogin ' + proxyServer + '/primaws/suprimaExtLogin [' + loginRewriteFlags + ']',
 
         '/primo-explore/index.html ' + proxyServer + '/primo-explore/index.html [PL]',
         '/discovery/index.html ' + proxyServer + '/discovery/index.html [PL]',
