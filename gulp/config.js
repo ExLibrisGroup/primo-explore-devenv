@@ -12,6 +12,8 @@ let useScss;
 let isStaging;
 let reinstallNodeModules;
 let saml;
+let cas;
+
 
 function setView(_view) {
     view = _view;
@@ -23,6 +25,14 @@ function setSaml(_saml) {
 
 function getSaml() {
   return saml;
+}
+
+function setCas(_cas) {
+    cas = _cas;
+}
+
+function getCas() {
+    return cas;
 }
 
 function setUseScss(_useScss) {
@@ -174,14 +184,14 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-	viewRootDir: viewRootDir,
+		viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
-	customScssDir: customScssDir,
-	customScssMainPath: customScssMainPath,
+		customScssDir: customScssDir,
+		customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
-	customNpmModuleRootDir: customNpmModuleRootDir,
+		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
@@ -196,13 +206,13 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
-	setUseScss: setUseScss,
-    getUseScss: getUseScss,
+		setUseScss: setUseScss,
+		getUseScss: getUseScss,
     setIsStaging: setIsStaging,
     getIsStaging: getIsStaging,
     setProxy: setProxy,
-	getReinstallNodeModules: getReinstallNodeModules,
-	setReinstallNodeModules: setReinstallNodeModules,
+		getReinstallNodeModules: getReinstallNodeModules,
+		setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
@@ -210,5 +220,7 @@ module.exports = {
     getVe: getVe,
     setVe: setVe,
     getSaml: getSaml,
-    setSaml: setSaml
+    setSaml: setSaml,
+    getCas: getCas,
+    setCas: setCas
 };
