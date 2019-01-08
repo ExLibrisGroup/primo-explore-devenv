@@ -29,22 +29,26 @@ gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
 
 });
 
-const browserifyBabelPlugins = [
-    "transform-html-import-to-string"
-];
+function getBrowserifyBabelPlugins() {
+    return [
+        "transform-html-import-to-string"
+    ];
+}
 
-const defaultPlugins = [
-    ["transform-define", {
-        "process.env.NODE_ENV": process.env.NODE_ENV || "production",
-    }]
-];
+function getDefaultBabelPlugins() {
+    return [
+        ["transform-define", {
+            "process.env.NODE_ENV": process.env.NODE_ENV,
+        }]
+    ];
+}
 
-function getBabelConfig() {
-    return {
+const getBabelConfig = () => {
+    return ({
         presets: ["es2015"],
-        plugins: defaultPlugins.concat(config.getBrowserify() ? browserifyBabelPlugins : []),
+        plugins: getDefaultBabelPlugins().concat(config.getBrowserify() ? getBrowserifyBabelPlugins() : []),
         sourceMaps: config.getBrowserify(),
-    };
+    });
 }
 
 function buildByConcatination() {
@@ -80,7 +84,7 @@ function buildByBrowserify() {
         .pipe(source(buildParams.customFile))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
+        .pipe(process.env.NODE_ENV === 'production' ? uglify() : gutil.noop())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(buildParams.viewJsDir()));
 }
