@@ -72,7 +72,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
    - For Primo VE customers, add the --ve flag :
       `gulp run --view <the VIEW_CODE folder> --ve`
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
-   - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-view-code`
+   - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-institution-code:your-view-code`
 
    -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser's incognito mode; or you can clear your browser cache before you start the Gulp server.
    
