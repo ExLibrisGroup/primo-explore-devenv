@@ -1,15 +1,34 @@
-version: '3'
+x-defaults: &x-defaults
+  build:
+    context: .
+  image: primo-explore-devenv
+  environment:
+    PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
+    VIEW:
+  ports:
+    - 8003:8003
+    - 3001:3001
+  volumes:
+    - ./primo-explore:/app/primo-explore
+    - ./packages:/app/packages
+
+version: '3.7'
 services:
   web:
-    build:
-      context: .
-    image: primo-explore-devenv
+    <<: *x-defaults
+  create-package:
+    <<: *x-defaults
+    command: &create-package-command
+      yarn create-package --browserify --view=${VIEW}
     environment:
-      PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
-      VIEW:
-    ports:
-      - 8003:8003
-      - 3001:3001
-    volumes:
-      - ./primo-explore:/app/primo-explore
-      - ./packages:/app/packages
+      NODE_ENV: ${NODE_ENV:?Specify a build environment (NODE_ENV)}
+  create-package-dev:
+    <<: *x-defaults
+    command: *create-package-command
+    environment:
+      NODE_ENV: development
+  create-package-prod:
+    <<: *x-defaults
+    command: *create-package-command
+    environment:
+      NODE_ENV: production
