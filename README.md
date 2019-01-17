@@ -35,14 +35,24 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 
 ## Build a package
 
-With Docker to ensure the supported version of node is used:
+With Docker to ensure deterministic builds.
+
+Environment variables:
+* **NODE_ENV**: represents the deployment environment ('production' or 'development')
+* **VIEW**: which package will be built
+
+
 ```
-docker-compose run web yarn create-package --view=NYU
+NODE_ENV=[environment] VIEW=[view] docker-compose run create-package
+# or
+docker-compose run create-package-dev
+# or
+docker-compose run create-package-prod
 ```
 
 If you're willing to take the risk, you can also create packages locally in your devenv. Ensure depencies are installed with `yarn install --frozen-lockfile` to ensure consistency across environments.
 ```
-yarn create-package --view=NYU
+NODE_ENV=production yarn create-package --view=NYU
 ```
 
 ## Deploys
