@@ -38,9 +38,9 @@ When developing or creating a package the Primo gulp watchers will compile a `cu
 With Docker to ensure deterministic builds.
 
 Environment variables:
-```
-NODE_ENV: represents the deployment environment ('production' or 'development')
-VIEW: which package will be built
+* **NODE_ENV**: represents the deployment environment ('production' or 'development')
+* **VIEW**: which package will be built
+
 
 ```
 NODE_ENV=[environment] VIEW=[view] docker-compose run create-package
