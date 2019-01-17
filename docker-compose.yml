@@ -18,17 +18,16 @@ services:
     <<: *x-defaults
   create-package:
     <<: *x-defaults
-    command: &create-package-command
-      yarn create-package --browserify --view=${VIEW}
+    command: yarn create-package --browserify --view=${VIEW}
     environment:
-      NODE_ENV: ${NODE_ENV:?Specify a build environment (NODE_ENV)}
+      NODE_ENV:
   create-package-dev:
     <<: *x-defaults
-    command: *create-package-command
+    command: yarn create-package --browserify --view=${VIEW}
     environment:
       NODE_ENV: development
   create-package-prod:
     <<: *x-defaults
-    command: *create-package-command
+    command: yarn create-package --browserify --view=${VIEW}
     environment:
       NODE_ENV: production
