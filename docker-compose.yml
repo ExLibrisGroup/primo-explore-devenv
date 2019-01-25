@@ -5,6 +5,7 @@ x-defaults: &x-defaults
   environment:
     PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
     VIEW:
+    NODE_ENV: development
   ports:
     - 8003:8003
     - 3001:3001

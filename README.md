@@ -41,7 +41,12 @@ Environment variables:
 * **NODE_ENV**: represents the deployment environment ('production' or 'development')
 * **VIEW**: which package will be built
 
+**First run the package to build the `custom.js` and `custom.css` files from latest source**:
+```
+NODE_ENV=[environment] VIEW=[view] docker-compose run web
+```
 
+**Then create the package from that source**:
 ```
 NODE_ENV=[environment] VIEW=[view] docker-compose run create-package
 # or
