@@ -42,17 +42,18 @@ Environment variables:
 * **VIEW**: which package will be built
 
 **First run the package to build the `custom.js` and `custom.css` files from latest source**:
-```
+```bash
 NODE_ENV=[environment] VIEW=[view] docker-compose run web
 ```
 
 **Then create the package from that source**:
-```
+```bash
 NODE_ENV=[environment] VIEW=[view] docker-compose run create-package
-# or
-docker-compose run create-package-dev
-# or
-docker-compose run create-package-prod
+```
+
+**Or, all at once**:
+```bash
+NODE_ENV=[environment] VIEW=[view] docker-compose up create-package
 ```
 
 If you're willing to take the risk, you can also create packages locally in your devenv. Ensure depencies are installed with `yarn install --frozen-lockfile` to ensure consistency across environments.

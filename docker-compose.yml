@@ -5,10 +5,7 @@ x-defaults: &x-defaults
   environment:
     PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
     VIEW:
-    NODE_ENV: development
-  ports:
-    - 8003:8003
-    - 3001:3001
+    NODE_ENV: ${NODE_ENV-development}
   volumes:
     - ./primo-explore:/app/primo-explore
     - ./packages:/app/packages
@@ -17,19 +14,12 @@ version: '3.7'
 services:
   web:
     <<: *x-defaults
+    ports:
+    - 8003:8003
+    - 3001:3001
   create-package:
     <<: *x-defaults
     command: &create-cmd
-      yarn create-package --browserify --view=${VIEW}
-    environment:
-      NODE_ENV:
-  create-package-dev:
-    <<: *x-defaults
-    command: *create-cmd
-    environment:
-      NODE_ENV: development
-  create-package-prod:
-    <<: *x-defaults
-    command: *create-cmd
-    environment:
-      NODE_ENV: production
+      /tmp/wait-for-it.sh web:8003 -- yarn create-package --view=${VIEW}
+    depends_on:
+      - web

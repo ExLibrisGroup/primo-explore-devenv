@@ -22,4 +22,7 @@ RUN sed -ie 's@http:\/\/your-server:your-port@'"$PROXY_SERVER"'@g' $INSTALL_PATH
 
 EXPOSE 8003 3001
 
+RUN wget --no-check-certificate -q -O - https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /tmp/wait-for-it.sh
+RUN chmod a+x /tmp/wait-for-it.sh
+
 CMD [ "/bin/bash", "-c", "yarn start --view=${VIEW}"]
