@@ -14,7 +14,7 @@ Then to start the server up with Docker:
 # Setup your views
 git clone https://github.com/NYULibraries/primo-explore-nyu.git primo-explore/custom/NYU
 ...
-VIEW=NYU docker-compose up
+VIEW=NYU docker-compose up web
 ```
 
 To run on your local machine and not on Docker you can use the following yarn task:
