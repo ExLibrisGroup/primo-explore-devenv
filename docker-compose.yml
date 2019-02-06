@@ -19,7 +19,8 @@ services:
     - 3001:3001
   create-package:
     <<: *x-defaults
-    command: &create-cmd
-      /tmp/wait-for-it.sh web:8003 -- yarn create-package --view=${VIEW}
+    environment:
+      NODE_ENV: ${NODE_ENV-staging}
+    command: /tmp/wait-for-it.sh web:8003 -- yarn create-package --view=${VIEW}
     depends_on:
       - web
