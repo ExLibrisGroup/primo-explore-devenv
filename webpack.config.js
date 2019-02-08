@@ -2,6 +2,7 @@ let { VIEW, NODE_ENV, PACK } = process.env;
 NODE_ENV = NODE_ENV || 'production';
 
 const path = require('path');
+const resolveViewPath = (...args) => path.resolve(`./primo-explore/custom/${VIEW}`, ...args)
 const { DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
@@ -30,8 +31,8 @@ const plugins = [
     onEnd: [
       {copy: [
         {
-          source: `./primo-explore/custom/${VIEW}/js/*.css*`,
-          destination: `./primo-explore/custom/${VIEW}/css`,
+          source: resolveViewPath(`/js/*.css*`),
+          destination: resolveViewPath(`/css`),
         },
       ]},
       {delete: [
@@ -39,20 +40,20 @@ const plugins = [
       ]},
       ...(PACK ? [
         // move important files to /tmp for zipping
-        {mkdir: [`./primo-explore/custom/${VIEW}/`, `./primo-explore/custom/${VIEW}/html/`, `./primo-explore/custom/${VIEW}/img/`, `./primo-explore/custom/${VIEW}/css/`, `./primo-explore/custom/${VIEW}/js`]},
+        {mkdir: [`./`, `./html/`, `./img/`, `./css/`, `./js`].map(dir => path.resolve(`./primo-explore/tmp/${VIEW}`, dir)) },
         {copy: [
-          { source: `./primo-explore/custom/${VIEW}/html/**/*.html`, destination: `./primo-explore/tmp/${VIEW}/html` },
-          { source: `./primo-explore/custom/${VIEW}/img/**/*`, destination: `./primo-explore/tmp/${VIEW}/img` },
-          { source: `./primo-explore/custom/${VIEW}/css/**/custom1.css`, destination: `./primo-explore/tmp/${VIEW}/css` },
-          { source: `./primo-explore/custom/${VIEW}/js/**/custom.js`, destination: `./primo-explore/tmp/${VIEW}/js` },
+          { source: resolveViewPath(`./html/**/*.html`), destination: `./primo-explore/tmp/${VIEW}/html` },
+          { source: resolveViewPath(`./img/**/*`), destination: `./primo-explore/tmp/${VIEW}/img` },
+          { source: resolveViewPath(`./css/**/custom1.css`), destination: `./primo-explore/tmp/${VIEW}/css` },
+          { source: resolveViewPath(`./js/**/custom.js`), destination: `./primo-explore/tmp/${VIEW}/js` },
         ]},
         {archive: [
           {
-            source: `./primo-explore/tmp/**/*`,
+            source: `./primo-explore/tmp/`,
             destination: `./packages/${VIEW}.${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 12) }.${isProduction ? 'production' : NODE_ENV }.zip`
           }
         ]},
-        {delete: ['./primo-explore/custom/tmp/**/*']}
+        {delete: [`./primo-explore/tmp/${VIEW}`]}
       ] : []),
     ]
   })
@@ -73,7 +74,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        // exclude: /node_modules\/(?!(my\-package)\/).*/,  // -- syntax for not excluding certain packages
+        // exclude: /node_modules\/(?!(my\-package|other\-package)\/).*/,  // -- syntax for not excluding certain packages; especially good if package requires polyfills
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
