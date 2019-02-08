@@ -2,16 +2,21 @@ let { VIEW, NODE_ENV, PACK } = process.env;
 NODE_ENV = NODE_ENV || 'production';
 
 const path = require('path');
-const resolveViewPath = (...args) => path.resolve(`./primo-explore/custom/${VIEW}`, ...args)
-const { DefinePlugin } = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const resolveViewPath = (...args) => path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, ...args)
+const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 const isProduction = NODE_ENV === 'production';
+const devMode = NODE_ENV === 'development';
 
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const devPlugins = [
   // add development-only plugins heres
+  new HotModuleReplacementPlugin({
+    // Options...
+  }),
 ];
 
 const prodPlugins = [
@@ -22,8 +27,8 @@ const plugins = [
   new DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   }),
-  new MiniCssExtractPlugin({
-    path: path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, './css'),
+  new ExtractCssChunks({
+    path: resolveViewPath('./css/'),
     filename: 'custom1.css',
   }),
   ...(isProduction ? prodPlugins : devPlugins),
@@ -31,8 +36,8 @@ const plugins = [
     onEnd: [
       {copy: [
         {
-          source: resolveViewPath(`/js/*.css*`),
-          destination: resolveViewPath(`/css`),
+          source: resolveViewPath(`./js/*.css*`),
+          destination: resolveViewPath(`./css`),
         },
       ]},
       {delete: [
@@ -61,12 +66,12 @@ const plugins = [
 
 module.exports = {
   mode: isProduction ?  'production' : 'development',
-  context: path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, './'),
+  context: resolveViewPath(),
   entry: {
     customJS: './js/main.js',
   },
   output: {
-    path: path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, './js'),
+    path: resolveViewPath('./js'),
     filename: 'custom.js'
   },
   devtool: isProduction ? undefined : 'source-map',
@@ -81,8 +86,9 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
+          // ...(devMode ? ['style-loader'] : []),
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: ExtractCssChunks.loader,
             options: {
               publicPath: './css/'
             }
@@ -93,5 +99,20 @@ module.exports = {
       },
     ],
   },
-  plugins
+  plugins,
+  devServer: {
+    contentBase: 'primo-explore',
+    compress: false,
+    port: 8004,
+    before: app => {
+      require('./webpack/loadPrimoMiddlewares')(app);
+    },
+    hot: true,
+    writeToDisk: filePath => {
+      return /(custom\.js|custom1\.css)/.test(filePath);
+    },
+    // overlay: true,
+  }
 };
+
+

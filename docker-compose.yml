@@ -1,7 +1,7 @@
 x-defaults: &x-defaults
   build:
     context: .
-  image: primo-explore-devenv
+  image: primo-explore-devenv-nyu
   environment:
     PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
     VIEW:
@@ -13,6 +13,11 @@ x-defaults: &x-defaults
 version: '3.7'
 services:
   web:
+    <<: *x-defaults
+    ports:
+    - 8004:8004
+    - 3001:3001
+  web-gulp-legacy:
     <<: *x-defaults
     ports:
     - 8003:8003

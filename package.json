@@ -64,7 +64,8 @@
     "node-sass": "^4.6.0"
   },
   "scripts": {
-    "start": "gulp run --gulpfile=nyu-gulpfile.js --browserify",
+    "start:gulp": "gulp run --gulpfile=nyu-gulpfile.js --browserify",
+    "start:dev": "webpack-dev-server",
     "create-package": "gulp create-package --browserify"
   },
   "optionalDependencies": {
@@ -75,10 +76,12 @@
     "@babel/runtime": "^7.3.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "eslint": "^5.13.0",
+    "extract-css-chunks-webpack-plugin": "^3.3.2",
     "filemanager-webpack-plugin": "^2.0.5",
-    "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   }
 }
