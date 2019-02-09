@@ -8,8 +8,9 @@ const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
-const isProduction = NODE_ENV === 'production';
+const prodMode = NODE_ENV === 'production';
 const devMode = NODE_ENV === 'development';
+const testMode = NODE_ENV === 'test';
 
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const devPlugins = [
@@ -31,7 +32,7 @@ const plugins = [
     path: resolveViewPath('./css/'),
     filename: 'custom1.css',
   }),
-  ...(isProduction ? prodPlugins : devPlugins),
+  ...(prodMode ? prodPlugins : devPlugins),
   new FileManagerPlugin({
     onEnd: [
       {copy: [
@@ -55,7 +56,7 @@ const plugins = [
         {archive: [
           {
             source: `./primo-explore/tmp/`,
-            destination: `./packages/${VIEW}.${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 12) }.${isProduction ? 'production' : NODE_ENV }.zip`
+            destination: `./packages/${VIEW}.${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 12) }.${prodMode ? 'production' : NODE_ENV }.zip`
           }
         ]},
         {delete: [`./primo-explore/tmp/${VIEW}`]}
@@ -65,7 +66,7 @@ const plugins = [
 ];
 
 module.exports = {
-  mode: isProduction ?  'production' : 'development',
+  mode: prodMode ?  'production' : 'development',
   context: resolveViewPath(),
   entry: {
     customJS: './js/main.js',
@@ -74,7 +75,7 @@ module.exports = {
     path: resolveViewPath('./js'),
     filename: 'custom.js'
   },
-  devtool: isProduction ? undefined : 'source-map',
+  devtool: prodMode ? undefined : 'source-map',
   module: {
     rules: [
       {
@@ -107,7 +108,7 @@ module.exports = {
     before: app => {
       require('./webpack/loadPrimoMiddlewares')(app);
     },
-    hot: true,
+    hot: devMode,
     writeToDisk: filePath => {
       return /(custom\.js|custom1\.css)/.test(filePath);
     },

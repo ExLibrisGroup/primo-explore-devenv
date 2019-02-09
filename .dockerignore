@@ -1,7 +1,8 @@
-node_modules/**/*
-npm-debug.log
-node_modules/
 node_modules
-primo-explore/**/*
-primo-explore/
+node_modules/
+node_modules/**/*
 primo-explore
+primo-explore/
+primo-explore/**/*
+npm-debug.log
+yarn-error.log

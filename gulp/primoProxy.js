@@ -1,17 +1,8 @@
 var modRewrite = require('connect-modrewrite');
-var fs = require('fs')
-var Promise = require("bluebird");
-var concat = require('concat-stream');
 var config = require('./config');
 var glob = require('glob');
-Promise.promisifyAll(glob);
-var Response = require('http-response-object');
 
 module.exports.getCustimazationObject = function (vid,appName) {
-
-
-    var basedir = appName+'/custom';
-    var ignored = ['img', 'css', 'custom'];
     var base_path = 'custom/';
     var customizationObject = {
         viewJs: '',
@@ -24,15 +15,14 @@ module.exports.getCustimazationObject = function (vid,appName) {
         staticHtml: ''
     };
 
-    var promises = [];
     var packages = glob.sync(base_path + "*", {cwd:appName,ignore:'**/README.md'});
 
     var isInherited = packages.indexOf(base_path + 'CENTRAL_PACKAGE') > -1;
+    var viewPackage;
     if(vid !== ''){
-        var viewPackage = base_path + vid;
-    }
-    if(vid === '') {
-        var viewPackage = packages.filter((package) => package !== base_path + 'CENTRAL_PACKAGE');
+        viewPackage = base_path + vid;
+    } else {
+        viewPackage = packages.filter((pkg) => pkg !== base_path + 'CENTRAL_PACKAGE');
     }
 
 
@@ -74,17 +64,17 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
     var paths = glob.sync(viewPackage + "/img/icon_**.png", {cwd:appName});
     customizationObject.resourceIcons = {};
-    for (path of paths) {
+    for (var path of paths) {
         var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
         customizationObject.resourceIcons[pathFixed] = path;
     }
 
 
     if (isInherited) {
-        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:appName});
+        paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:appName});
 
         for (path of paths) {
-            var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
+            pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
             if (!customizationObject.resourceIcons[pathFixed]) {
                 customizationObject.resourceIcons[pathFixed] = path;
             }
@@ -95,23 +85,22 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
 
     //html
-    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:appName});
-
+    paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:appName});
     if(paths && paths.length > 0){ // for August 2016 version
         customizationObject.staticHtml = {};
         customizationObject.staticHtml.homepage = {};
         for (path of paths) {
 
-            var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+            pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
             customizationObject.staticHtml.homepage[pathFixed] = path;
         }
 
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:appName});
+            paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:appName});
 
             for (path of paths) {
-                var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+                pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
                 if (!customizationObject.staticHtml.homepage[pathFixed]) {
                     customizationObject.staticHtml.homepage[pathFixed] = path;
                 }
@@ -122,7 +111,7 @@ module.exports.getCustimazationObject = function (vid,appName) {
         }
 
     }else{ // starting November 2016 version
-        var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:appName});
+        paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:appName});
         if(!paths || paths.length ===0){
             paths = glob.sync(viewPackage + "/html/*.html", {cwd:appName});
         }
@@ -130,7 +119,7 @@ module.exports.getCustimazationObject = function (vid,appName) {
         staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:appName});
+            paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:appName});
             staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
         }
         customizationObject.staticHtml = staticHtmlRes;
@@ -164,22 +153,12 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
         return staticDict;
     }
-
-
-
-
-
-
-
     return customizationObject;
-
-
-}
+};
 
 
 module.exports.proxy_function = function () {
     var proxyServer = config.PROXY_SERVER;
-    var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
     var loginRewriteFlags = (config.getSaml()) ? 'RL' : 'PL';
 
     return modRewrite([

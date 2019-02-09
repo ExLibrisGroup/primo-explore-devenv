@@ -14,6 +14,9 @@ version: '3.7'
 services:
   web:
     <<: *x-defaults
+    environment:
+      NODE_ENV: production
+      VIEW: NYU
     ports:
     - 8004:8004
     - 3001:3001
