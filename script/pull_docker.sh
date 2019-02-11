@@ -1,3 +1,3 @@
 #!/bin/sh -ex
 
-exit 0
+docker pull quay.io/nyulibraries/primo-explore-devenv:${CIRCLE_BRANCH//\//_} || docker pull quay.io/nyulibraries/primo-explore-devenv:latest
