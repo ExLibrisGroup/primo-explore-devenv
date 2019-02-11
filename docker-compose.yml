@@ -29,11 +29,11 @@ services:
     <<: *x-defaults
     environment:
       <<: *x-environment
-      NODE_ENV: production
   create-package:
     <<: *x-defaults
     environment:
       <<: *x-environment
+      NODE_ENV: ${NODE_ENV-staging}
     command: yarn create-package
 
 

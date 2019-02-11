@@ -48,8 +48,8 @@ const plugins = [
         {copy: [
           { source: resolveViewPath(`./html/**/*.html`), destination: `./primo-explore/tmp/${VIEW}/html` },
           { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: `./primo-explore/tmp/${VIEW}/img` },
-          { source: resolveViewPath(`./css/**/custom1.{css,css.map}`), destination: `./primo-explore/tmp/${VIEW}/css` },
-          { source: resolveViewPath(`./js/**/custom.{js.map,js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
+          { source: resolveViewPath(`./css/**/custom1.{css,css.map.js}`), destination: `./primo-explore/tmp/${VIEW}/css` },
+          { source: resolveViewPath(`./js/**/custom.{js,js.map.js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
         ]},
         {archive: [
           {
@@ -64,16 +64,18 @@ const plugins = [
 ];
 
 module.exports = {
-  mode: prodMode ?  'production' : 'development',
+  mode: prodMode ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
     customJS: './js/main.js',
   },
   output: {
     path: resolveViewPath('./js'),
-    filename: 'custom.js'
+    filename: 'custom.js',
+    // map.js to overcome Primo's asset restrictions
+    sourceMapFilename: '[file].map.js'
   },
-  devtool: prodMode ? undefined : 'source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
