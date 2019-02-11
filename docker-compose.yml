@@ -1,3 +1,11 @@
+x-environment: &x-environment
+  PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
+  NODE_ENV: ${NODE_ENV-development}
+  VIEW:
+  VE:
+  SAML:
+  PACK:
+
 x-defaults: &x-defaults
   build:
     context: .
@@ -7,9 +15,7 @@ x-defaults: &x-defaults
     - quay.io/nyulibraries/primo-explore-devenv:$BRANCH_NO_SLASH
   image: primo-explore-devenv
   environment:
-    PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
-    VIEW:
-    NODE_ENV: ${NODE_ENV-development}
+    <<: *x-environment
   ports:
     - 8004:8004
     - 3001:3001
@@ -22,14 +28,13 @@ services:
   web:
     <<: *x-defaults
     environment:
+      <<: *x-environment
       NODE_ENV: production
-      VIEW:
   create-package:
     <<: *x-defaults
     environment:
-      PACK: 'true'
-      VIEW:
-    command: yarn webpack
+      <<: *x-environment
+    command: yarn create-package
 
 
   web-gulp-legacy:

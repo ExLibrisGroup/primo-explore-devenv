@@ -7,3 +7,4 @@ primo-explore/**/*
 npm-debug.log
 yarn-error.log
 .circleci/
+packages/

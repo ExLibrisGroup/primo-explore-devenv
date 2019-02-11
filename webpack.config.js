@@ -42,14 +42,14 @@ const plugins = [
       {delete: [
         `./primo-explore/custom/${VIEW}/js/*.css*`,
       ]},
-      ...(PACK ? [
+      ...(PACK === 'true' ? [
         // move important files to /tmp for zipping
         {mkdir: [`./`, `./html/`, `./img/`, `./css/`, `./js`].map(dir => path.resolve(`./primo-explore/tmp/${VIEW}`, dir)) },
         {copy: [
           { source: resolveViewPath(`./html/**/*.html`), destination: `./primo-explore/tmp/${VIEW}/html` },
-          { source: resolveViewPath(`./img/**/*`), destination: `./primo-explore/tmp/${VIEW}/img` },
-          { source: resolveViewPath(`./css/**/custom1.css`), destination: `./primo-explore/tmp/${VIEW}/css` },
-          { source: resolveViewPath(`./js/**/custom.js`), destination: `./primo-explore/tmp/${VIEW}/js` },
+          { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: `./primo-explore/tmp/${VIEW}/img` },
+          { source: resolveViewPath(`./css/**/custom1.{css,css.map}`), destination: `./primo-explore/tmp/${VIEW}/css` },
+          { source: resolveViewPath(`./js/**/custom.{js.map,js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
         ]},
         {archive: [
           {
@@ -85,7 +85,6 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          // ...(devMode ? ['style-loader'] : []),
           {
             loader: ExtractCssChunks.loader,
             options: {
@@ -111,7 +110,6 @@ module.exports = {
       return /(custom\.js|custom1\.css)/.test(filePath);
     },
     disableHostCheck: !prodMode,
-    // overlay: true,
   }
 };
 

@@ -6,7 +6,6 @@ ENV VIEW=CENTRAL_PACKAGE
 ENV PROXY_SERVER=http://bobcatdev.library.nyu.edu:80
 
 # Install essentials
-# RUN apt-get update -qq && apt-get install -y build-essential
 RUN apk update && apk add build-base
 
 # Install node_modules with yarn
@@ -21,6 +20,6 @@ WORKDIR $INSTALL_PATH
 
 ADD . .
 
-EXPOSE 8003 8004 3001
+EXPOSE 8004 3001
 
-CMD VIEW=${VIEW} PROXY_SERVER=${PROXY_SERVER} yarn start:dev --host 0.0.0.0
+CMD VIEW=${VIEW} PROXY_SERVER=${PROXY_SERVER} yarn start
