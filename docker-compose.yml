@@ -1,11 +1,18 @@
 x-defaults: &x-defaults
   build:
     context: .
-  image: primo-explore-devenv-nyu
+    cache_from:
+    - primo-explore-devenv
+    - quay.io/nyulibraries/primo-explore-devenv
+    - quay.io/nyulibraries/primo-explore-devenv:$BRANCH_NO_SLASH
+  image: primo-explore-devenv
   environment:
     PROXY_SERVER: http://bobcatdev.library.nyu.edu:80
     VIEW:
     NODE_ENV: ${NODE_ENV-development}
+  ports:
+    - 8004:8004
+    - 3001:3001
   volumes:
     - ./primo-explore:/app/primo-explore
     - ./packages:/app/packages
@@ -16,19 +23,33 @@ services:
     <<: *x-defaults
     environment:
       NODE_ENV: production
-      VIEW: NYU
-    ports:
-    - 8004:8004
-    - 3001:3001
-  web-gulp-legacy:
-    <<: *x-defaults
-    ports:
-    - 8003:8003
-    - 3001:3001
+      VIEW:
   create-package:
     <<: *x-defaults
     environment:
+      PACK: 'true'
+      VIEW:
+    command: yarn webpack
+
+
+  web-gulp-legacy:
+    <<: *x-defaults
+    build:
+      context: .
+      dockerfile: gulp/Dockerfile
+    image: primo-explore-devenv-gulp
+    ports:
+    - 8003:8003
+    - 3001:3001
+  create-package-gulp-legacy:
+    <<: *x-defaults
+    build:
+      context: .
+      dockerfile: gulp/Dockerfile
+    image: primo-explore-devenv-gulp
+    environment:
       NODE_ENV: ${NODE_ENV-staging}
-    command: /tmp/wait-for-it.sh web:8003 -- yarn create-package --view=${VIEW}
+    command: yarn create-package --view=${VIEW}
     depends_on:
-      - web
+      - web-gulp-legacy
+

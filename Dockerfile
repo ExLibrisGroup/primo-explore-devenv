@@ -2,9 +2,8 @@ FROM node:8.15.0-alpine
 
 ENV INSTALL_PATH /app
 ENV PATH $INSTALL_PATH/node_modules/.bin:${PATH}
-ENV GULPFILE nyu-gulpfile.js
-ENV VIEW NYU
-ENV PROXY_SERVER http://bobcatdev.library.nyu.edu:80
+ENV VIEW=CENTRAL_PACKAGE
+ENV PROXY_SERVER=http://bobcatdev.library.nyu.edu:80
 
 # Install essentials
 # RUN apt-get update -qq && apt-get install -y build-essential

@@ -4,7 +4,6 @@ NODE_ENV = NODE_ENV || 'production';
 const path = require('path');
 const resolveViewPath = (...args) => path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, ...args)
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
@@ -12,7 +11,6 @@ const prodMode = NODE_ENV === 'production';
 const devMode = NODE_ENV === 'development';
 const testMode = NODE_ENV === 'test';
 
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const devPlugins = [
   // add development-only plugins heres
   new HotModuleReplacementPlugin({
@@ -112,6 +110,7 @@ module.exports = {
     writeToDisk: filePath => {
       return /(custom\.js|custom1\.css)/.test(filePath);
     },
+    disableHostCheck: !prodMode,
     // overlay: true,
   }
 };
