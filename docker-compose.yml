@@ -4,6 +4,7 @@ x-environment: &x-environment
   VIEW:
   VE:
   SAML:
+  CAS:
   PACK:
 
 x-defaults: &x-defaults

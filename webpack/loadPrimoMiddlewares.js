@@ -1,9 +1,10 @@
-const { VIEW, VE, PROXY_SERVER, SAML } = process.env;
+const { VIEW, VE, PROXY_SERVER, SAML, CAS } = process.env;
 const { proxy_function, primoCustomizationsMiddleware } = require('../gulp/primoProxy');
 
 const config = {
   getVe: () => VE === 'true',
   getSaml: () => SAML === 'true',
+  getCas: () => CAS === 'true',
   view: () => VIEW,
   PROXY_SERVER,
 };
