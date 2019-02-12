@@ -2,9 +2,9 @@ let { VIEW, NODE_ENV, PACK } = process.env;
 NODE_ENV = NODE_ENV || 'production';
 
 const path = require('path');
-const resolveViewPath = (...args) => path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, ...args)
+const resolveViewPath = (...args) => path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, ...args);
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 const prodMode = NODE_ENV === 'production';
@@ -34,13 +34,8 @@ const plugins = [
   new FileManagerPlugin({
     onEnd: [
       {copy: [
-        {
-          source: resolveViewPath(`./js/*.css*`),
-          destination: resolveViewPath(`./css`),
-        },
-      ]},
-      {delete: [
-        `./primo-explore/custom/${VIEW}/js/*.css*`,
+        { source: resolveViewPath(`./dist/custom1.css*`), destination: resolveViewPath(`./css`) },
+        { source: resolveViewPath(`./dist/custom.js*`), destination: resolveViewPath(`./js`) },
       ]},
       ...(PACK === 'true' ? [
         // move important files to /tmp for zipping
@@ -48,8 +43,8 @@ const plugins = [
         {copy: [
           { source: resolveViewPath(`./html/**/*.html`), destination: `./primo-explore/tmp/${VIEW}/html` },
           { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: `./primo-explore/tmp/${VIEW}/img` },
-          { source: resolveViewPath(`./css/**/custom1.{css,css.map.js}`), destination: `./primo-explore/tmp/${VIEW}/css` },
-          { source: resolveViewPath(`./js/**/custom.{js,js.map.js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
+          { source: resolveViewPath(`./css/dist/**/custom1.{css,css.map.js}`), destination: `./primo-explore/tmp/${VIEW}/css` },
+          { source: resolveViewPath(`./js/dist/**/custom.{js,js.map.js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
         ]},
         {archive: [
           {
@@ -70,7 +65,7 @@ module.exports = {
     customJS: './js/main.js',
   },
   output: {
-    path: resolveViewPath('./js'),
+    path: resolveViewPath('./dist'),
     filename: 'custom.js',
     // map.js to overcome Primo's asset restrictions
     sourceMapFilename: '[file].map.js'
@@ -87,16 +82,15 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          {
-            loader: ExtractCssChunks.loader,
-            options: {
-              publicPath: './css/'
-            }
-          },
+          ExtractCssChunks.loader,
           'css-loader',
           'sass-loader'
         ]
       },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$/i,
+        loader: "file-loader?name=/img/[name].[ext]"
+      }
     ],
   },
   plugins,
