@@ -11,6 +11,7 @@ let ve;
 let useScss;
 let reinstallNodeModules;
 let saml;
+let cas;
 
 
 function setView(_view) {
@@ -23,6 +24,14 @@ function setSaml(_saml) {
 
 function getSaml() {
   return saml;
+}
+
+function setCas(_cas) {
+    cas = _cas;
+}
+
+function getCas() {
+    return cas;
 }
 
 function setUseScss(_useScss) {
@@ -200,5 +209,8 @@ module.exports = {
     getVe: getVe,
     setVe: setVe,
     getSaml: getSaml,
-    setSaml: setSaml
+    setSaml: setSaml,
+    setSaml: setSaml,
+    getCas: getCas,
+    setCas: setCas
 };

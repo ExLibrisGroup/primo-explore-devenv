@@ -127,8 +127,9 @@ function getCustimazationObject(vid, appName) {
         customizationObject.staticHtml = staticHtmlRes;
     }
     function getLanguage(entry) {
-        var start = entry.indexOf('.html')-5;
-        var res = entry.substring(start,start+5);
+        var numberOfCharsForLang = config.getVe() ? 2 : 5;
+        var start = entry.indexOf('.html') - numberOfCharsForLang;
+        var res = entry.substring(start, start + numberOfCharsForLang);
         return res;
     }
     function getHtmlCustomizations(paths,path,staticDict){
@@ -142,11 +143,15 @@ function getCustimazationObject(vid, appName) {
         res.forEach((e)=> {
             var lang = getLanguage(e);
             var dirName = e.replace('_'+lang+'.html','');
+            if (dirName.indexOf('/') > -1) {
+                var sepIndex = dirName.indexOf('/');
+                dirName = dirName.substr(0, sepIndex);
+            }
             if(!staticDict[dirName]) {
                 staticDict[dirName] = {};
             }
             staticDict[dirName][lang] = path+ '/html/'+e;
-            if(lang ==='en_US') {
+            if(lang ==='en_US' || lang === 'en') {
                 staticDict[dirName]['default'] = path+ '/html/'+e;
             }
 
@@ -161,13 +166,14 @@ function getCustimazationObject(vid, appName) {
 
 function proxy_function() {
     var proxyServer = config.PROXY_SERVER;
-    var loginRewriteFlags = (config.getSaml()) ? 'RL' : 'PL';
+    var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
     return modRewrite([
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
         '/primaws/rest/(.*) ' + proxyServer + '/primaws/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [' + loginRewriteFlags + ']',
-        '/primaws/suprimaLogin ' + proxyServer + '/primaws/suprimaLogin [PL]',
+        '/primaws/suprimaLogin ' + proxyServer + '/primaws/suprimaLogin [' + loginRewriteFlags + ']',
+        '/primaws/suprimaExtLogin ' + proxyServer + '/primaws/suprimaExtLogin [' + loginRewriteFlags + ']',
 
         '/primo-explore/index.html ' + proxyServer + '/primo-explore/index.html [PL]',
         '/discovery/index.html ' + proxyServer + '/discovery/index.html [PL]',
@@ -269,3 +275,4 @@ module.exports = {
     primoCustomizationsMiddleware,
     proxy_function,
 }
+

@@ -40,7 +40,14 @@ gulp.task('extract-scss-files', ()=> {
 
     return request({url:url, 'headers': headers})
         .pipe(zlib.createGunzip()) // unzip
-        .pipe(tar.extract('.'))
+        .pipe(tar.extract('.', {
+            map: (header) => {
+                if (header.name.indexOf('src/main/webapp') > -1) {
+                    header.name = header.name.replace('src/main/webapp', 'www');
+                }
+                return header;
+            }
+        }));
 });
 gulp.task('color-variables',() => {
     let colorVariables = JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
