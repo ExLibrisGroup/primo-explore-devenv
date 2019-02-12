@@ -1,3 +1,7 @@
 node_modules/**/*
 npm-debug.log
 .node-version
+primo-explore/custom/
+primo-explore/tmp/
+.idea/
+package-lock.json
