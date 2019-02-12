@@ -27,10 +27,11 @@
   },
   "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv",
   "scripts": {
-    "start:gulp": "gulp run --gulpfile=nyu-gulpfile.js --browserify",
-    "start:dev": "webpack-dev-server --host 0.0.0.0",
+    "build": "yarn webpack",
     "start": "yarn start:dev",
+    "start:dev": "webpack-dev-server --host 0.0.0.0",
     "create-package": "PACK='true' yarn webpack",
+    "start:gulp": "gulp run --gulpfile=nyu-gulpfile.js --browserify",
     "create-package:gulp": "gulp create-package --browserify"
   },
   "optionalDependencies": {
