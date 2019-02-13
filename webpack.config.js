@@ -59,7 +59,7 @@ const plugins = [
 ];
 
 module.exports = {
-  mode: prodMode ? 'production' : 'development',
+  mode: (prodMode || testMode) ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
     customJS: './js/main.js',
