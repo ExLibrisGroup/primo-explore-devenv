@@ -20,9 +20,9 @@ x-defaults: &x-defaults
   ports:
     - 8004:8004
     - 3001:3001
-  volumes:
-    - ./primo-explore:/app/primo-explore
-    - ./packages:/app/packages
+  # volumes:
+  #   - ./primo-explore:/app/primo-explore
+  #   - ./packages:/app/packages
 
 version: '3.7'
 services:

@@ -2,8 +2,9 @@ node_modules
 node_modules/
 node_modules/**/*
 primo-explore
+primo-explore/
 primo-explore/**/*
 npm-debug.log
 yarn-error.log
 .circleci/
-packages/
+packages/**/*
