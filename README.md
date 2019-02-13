@@ -149,7 +149,7 @@ VIEW=[view] NODE_ENV=[stage] yarn create-package
 With volumes enabled in the `docker-compose.yml`:
 
 ```sh
-VIEW=[view] NODE_ENV=[stage] docker-compose create-package
+VIEW=[view] NODE_ENV=[stage] docker-compose run create-package
 ```
 
 ## Deploys

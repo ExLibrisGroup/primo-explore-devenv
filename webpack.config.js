@@ -2,7 +2,8 @@ let { VIEW, NODE_ENV, PACK } = process.env;
 NODE_ENV = NODE_ENV || 'production';
 
 const path = require('path');
-const resolveViewPath = (...args) => path.resolve(__dirname, `./primo-explore/custom/${VIEW}`, ...args);
+const resolveDevEnv = (...args) => path.resolve(__dirname, ...args);
+const resolveViewPath = (...args) => resolveDevEnv(`./primo-explore/custom/${VIEW}`, ...args);
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const FileManagerPlugin = require('filemanager-webpack-plugin');
@@ -39,20 +40,20 @@ const plugins = [
       ]},
       ...(PACK === 'true' ? [
         // move important files to /tmp for zipping
-        {mkdir: [`./`, `./html/`, `./img/`, `./css/`, `./js`].map(dir => path.resolve(`./primo-explore/tmp/${VIEW}`, dir)) },
+        {mkdir: [`./`, `./html/`, `./img/`, `./css/`, `./js`].map(dir => resolveDevEnv(`./primo-explore/tmp/${VIEW}`, dir)) },
         {copy: [
-          { source: resolveViewPath(`./html/**/*.html`), destination: `./primo-explore/tmp/${VIEW}/html` },
-          { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: `./primo-explore/tmp/${VIEW}/img` },
-          { source: resolveViewPath(`./css/dist/**/custom1.{css,css.map.js}`), destination: `./primo-explore/tmp/${VIEW}/css` },
-          { source: resolveViewPath(`./js/dist/**/custom.{js,js.map.js}`), destination: `./primo-explore/tmp/${VIEW}/js` },
+          { source: resolveViewPath(`./html/**/*.html`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/html`) },
+          { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/img`) },
+          { source: resolveViewPath(`./css/dist/**/custom1.{css,css.map.js}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/css`) },
+          { source: resolveViewPath(`./js/dist/**/custom.{js,js.map.js}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/js`) },
         ]},
         {archive: [
           {
-            source: `./primo-explore/tmp/`,
-            destination: `./packages/${VIEW}.${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 12) }.${prodMode ? 'production' : NODE_ENV }.zip`
+            source: resolveDevEnv(`./primo-explore/tmp/`),
+            destination: resolveDevEnv(`./packages/${VIEW}.${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 12) }.${prodMode ? 'production' : NODE_ENV }.zip`)
           }
         ]},
-        {delete: [`./primo-explore/tmp/${VIEW}`]}
+        { delete: [resolveDevEnv(`./primo-explore/tmp/${VIEW}`)]}
       ] : []),
     ]
   })
