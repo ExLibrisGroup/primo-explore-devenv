@@ -210,6 +210,7 @@ module.exports = {
     setVe: setVe,
     getSaml: getSaml,
     setSaml: setSaml,
+    setSaml: setSaml,
     getCas: getCas,
     setCas: setCas
 };

@@ -1,0 +1,46 @@
+docker-defaults: &docker-defaults
+  docker:
+    - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
+  working_directory: ~/app
+
+build_docker: &build_docker
+  run:
+    name: Build Docker
+    command: |
+      docker-compose build web
+
+auth_quay: &auth_quay
+  run:
+    name: Authenticate Quay
+    command: |
+      docker login -u "$QUAY_USERNAME" -p "$QUAY_PASSWORD" quay.io
+
+pull_docker: &pull_docker
+  run:
+    name: Pull Docker
+    command: |
+      script/pull_docker.sh
+
+push_docker: &push_docker
+  run:
+    name: Push Docker
+    command: |
+      script/push_docker.sh
+
+version: 2
+jobs:
+  build:
+    <<: *docker-defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - <<: *auth_quay
+      - <<: *pull_docker
+      - <<: *build_docker
+      - <<: *push_docker
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

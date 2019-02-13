@@ -1,17 +1,10 @@
 var modRewrite = require('connect-modrewrite');
-var fs = require('fs')
-var Promise = require("bluebird");
-var concat = require('concat-stream');
 var config = require('./config');
 var glob = require('glob');
-Promise.promisifyAll(glob);
-var Response = require('http-response-object');
+const http = require('http');
+const https = require('https');
 
-module.exports.getCustimazationObject = function (vid,appName) {
-
-
-    var basedir = appName+'/custom';
-    var ignored = ['img', 'css', 'custom'];
+function getCustimazationObject(vid, appName) {
     var base_path = 'custom/';
     var customizationObject = {
         viewJs: '',
@@ -24,15 +17,14 @@ module.exports.getCustimazationObject = function (vid,appName) {
         staticHtml: ''
     };
 
-    var promises = [];
     var packages = glob.sync(base_path + "*", {cwd:appName,ignore:'**/README.md'});
 
     var isInherited = packages.indexOf(base_path + 'CENTRAL_PACKAGE') > -1;
+    var viewPackage;
     if(vid !== ''){
-        var viewPackage = base_path + vid;
-    }
-    if(vid === '') {
-        var viewPackage = packages.filter((package) => package !== base_path + 'CENTRAL_PACKAGE');
+        viewPackage = base_path + vid;
+    } else {
+        viewPackage = packages.filter((pkg) => pkg !== base_path + 'CENTRAL_PACKAGE');
     }
 
 
@@ -74,17 +66,17 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
     var paths = glob.sync(viewPackage + "/img/icon_**.png", {cwd:appName});
     customizationObject.resourceIcons = {};
-    for (path of paths) {
+    for (var path of paths) {
         var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
         customizationObject.resourceIcons[pathFixed] = path;
     }
 
 
     if (isInherited) {
-        var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:appName});
+        paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/img/icon_**.png", {cwd:appName});
 
         for (path of paths) {
-            var pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
+            pathFixed = path.substring(path.indexOf('/img/icon_') + 10, path.indexOf('.png'));
             if (!customizationObject.resourceIcons[pathFixed]) {
                 customizationObject.resourceIcons[pathFixed] = path;
             }
@@ -95,23 +87,22 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
 
     //html
-    var paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:appName});
-
+    paths = glob.sync(viewPackage + "/html/home_**.html", {cwd:appName});
     if(paths && paths.length > 0){ // for August 2016 version
         customizationObject.staticHtml = {};
         customizationObject.staticHtml.homepage = {};
         for (path of paths) {
 
-            var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+            pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
             customizationObject.staticHtml.homepage[pathFixed] = path;
         }
 
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:appName});
+            paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/home_**.html", {cwd:appName});
 
             for (path of paths) {
-                var pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
+                pathFixed = path.substring(path.indexOf('/html/home_')+11, path.indexOf('.html'));
                 if (!customizationObject.staticHtml.homepage[pathFixed]) {
                     customizationObject.staticHtml.homepage[pathFixed] = path;
                 }
@@ -122,7 +113,7 @@ module.exports.getCustimazationObject = function (vid,appName) {
         }
 
     }else{ // starting November 2016 version
-        var paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:appName});
+        paths = glob.sync(viewPackage + "/html/**/*.html", {cwd:appName});
         if(!paths || paths.length ===0){
             paths = glob.sync(viewPackage + "/html/*.html", {cwd:appName});
         }
@@ -130,15 +121,15 @@ module.exports.getCustimazationObject = function (vid,appName) {
         staticHtmlRes = getHtmlCustomizations(paths,viewPackage,staticHtmlRes);
 
         if (isInherited) {
-            var paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:appName});
+            paths = glob.sync(base_path + 'CENTRAL_PACKAGE' + "/html/**/*.html", {cwd:appName});
             staticHtmlRes = getHtmlCustomizations(paths,'custom/CENTRAL_PACKAGE',staticHtmlRes);
         }
         customizationObject.staticHtml = staticHtmlRes;
     }
     function getLanguage(entry) {
         var numberOfCharsForLang = config.getVe() ? 2 : 5;
-        var start = entry.indexOf('.html')-numberOfCharsForLang;
-        var res = entry.substring(start,start+numberOfCharsForLang);
+        var start = entry.indexOf('.html') - numberOfCharsForLang;
+        var res = entry.substring(start, start + numberOfCharsForLang);
         return res;
     }
     function getHtmlCustomizations(paths,path,staticDict){
@@ -169,22 +160,12 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
         return staticDict;
     }
-
-
-
-
-
-
-
     return customizationObject;
+};
 
 
-}
-
-
-module.exports.proxy_function = function () {
+function proxy_function() {
     var proxyServer = config.PROXY_SERVER;
-    var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
     var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
     return modRewrite([
@@ -206,3 +187,91 @@ module.exports.proxy_function = function () {
 
 
 };
+
+function primoCustomizationsMiddleware(config, appName) {
+    return function (req, res, next) {
+        let confPath = config.getVe() ? '/primaws/rest/pub/configuration' : '/primo_library/libweb/webservices/rest/v1/configuration';
+        let confAsJsPath = '/primo-explore/config_';
+
+        let fixConfiguration = function (res, res1, isConfByFile) {
+
+            let body = '';
+
+            res1.setEncoding('utf8');
+
+            res1.on("data", function (chunk) {
+                body = body + chunk;
+            });
+
+            res1.on("end", function () {
+                let vid = config.view() || '';
+                let customizationProxy = getCustimazationObject(vid, appName);
+
+                if (isConfByFile) {
+                    res.end('');
+
+                } else {
+                    let jsonBody = JSON.parse(body);
+                    let newBodyObject = jsonBody;
+
+                    newBodyObject.customization = customizationProxy;
+                    let newBody = JSON.stringify(newBodyObject);
+
+                    res.body = newBody;
+
+                    /*console.log('newBody: ' +newBody);*/
+                    res.end(newBody);
+                }
+
+
+            });
+        };
+
+        if (req.url.startsWith(confAsJsPath) || req.url.startsWith(confPath)) {
+            let isConfByFile = false;
+            if (req.url.startsWith(confAsJsPath)) {
+                isConfByFile = true;
+            }
+
+            let url = config.PROXY_SERVER + req.url;
+            let base = config.PROXY_SERVER.replace('http:\/\/', '').replace('https:\/\/', '');
+            let method = config.PROXY_SERVER.split('://')[0];
+            let parts = base.split(':');
+            let hostname = parts[0];
+            let port = parts[1];
+
+
+            let options = {
+                hostname: hostname,
+                port: port,
+                path: req.url,
+                method: 'GET',
+                headers: {
+                    'X-From-ExL-API-Gateway': '1'
+                }
+            };
+            let requestObject = http;
+            if (method === 'https') {
+                requestObject = https;
+            }
+            let req2 = requestObject.request(options, (res1) => {
+                fixConfiguration(res, res1, isConfByFile);
+            });
+            req2.on('error', (e) => {
+                next();
+            });
+
+            req2.write('');
+            req2.end();
+
+        } else {
+            next();
+        }
+    };
+}
+
+module.exports = {
+    getCustimazationObject,
+    primoCustomizationsMiddleware,
+    proxy_function,
+}
