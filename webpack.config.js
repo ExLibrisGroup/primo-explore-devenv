@@ -2,11 +2,13 @@ let { VIEW, NODE_ENV, PACK } = process.env;
 NODE_ENV = NODE_ENV || 'production';
 
 const path = require('path');
+const fs = require('fs');
 const resolveDevEnv = (...args) => path.resolve(__dirname, ...args);
 const resolveViewPath = (...args) => resolveDevEnv(`./primo-explore/custom/${VIEW}`, ...args);
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 const FileManagerPlugin = require('filemanager-webpack-plugin');
+const merge = require('webpack-merge');
 
 const prodMode = NODE_ENV === 'production';
 const devMode = NODE_ENV === 'development';
@@ -59,7 +61,13 @@ const plugins = [
   })
 ];
 
-module.exports = {
+// merges in webpack.config.js in the VIEW folder, if it exists
+const viewWebpack = fs.existsSync(resolveViewPath('webpack.config.js')) ?
+  require(resolveViewPath('webpack.config.js'))
+  : {};
+
+module.exports = merge(
+{
   mode: (prodMode || testMode) ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
@@ -108,6 +116,8 @@ module.exports = {
     },
     disableHostCheck: !prodMode,
   }
-};
+},
+viewWebpack,
+);
 
 
