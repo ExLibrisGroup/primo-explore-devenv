@@ -81,7 +81,7 @@ module.exports = merge(
   output: {
     path: resolveViewPath('./dist/'),
     filename: 'js/custom.js',
-    // map.js to overcome Primo's asset restrictions
+    // ends all maps with map.js to overcome Primo's asset restrictions
     sourceMapFilename: '[file].map.js'
   },
   devtool: 'source-map',
