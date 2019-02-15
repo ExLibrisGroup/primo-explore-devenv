@@ -18,8 +18,7 @@ module.exports = function (api) {
       "transform-html-import-to-string",
       ["@babel/plugin-transform-runtime", {
         regenerator: true,
-      }],
-      "@babel/plugin-syntax-dynamic-import"
+      }]
     ],
     sourceMaps: "both",
     overrides: [{
