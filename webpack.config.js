@@ -76,11 +76,13 @@ module.exports = merge(
   mode: (prodMode || testMode) ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
-    customJS: './js/main.js'
+    'js/custom.js': './js/main.js',
+    // this is the intermediary file before extract-css-chunks takes over
+    'css/main.css-module': './scss/main.scss',
   },
   output: {
     path: resolveViewPath('./dist/'),
-    filename: 'js/custom.js',
+    filename: '[name]',
     // ends all maps with map.js to overcome Primo's asset restrictions
     sourceMapFilename: '[file].map.js'
   },
