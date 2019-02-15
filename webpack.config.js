@@ -78,7 +78,7 @@ module.exports = merge(
   entry: {
     'js/custom.js': './js/main.js',
     // this is the intermediary file before extract-css-chunks takes over
-    'css/main.css-module': './scss/main.scss',
+    'css/main.css-module': './css/sass/main.scss',
   },
   output: {
     path: resolveViewPath('./dist/'),
