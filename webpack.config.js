@@ -30,24 +30,29 @@ const plugins = [
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   }),
   new ExtractCssChunks({
-    path: resolveViewPath('./css/'),
-    filename: 'custom1.css',
+    filename: 'css/custom1.css',
   }),
-  ...(prodMode ? prodPlugins : devPlugins),
   new FileManagerPlugin({
     onEnd: [
       {copy: [
-        { source: resolveViewPath(`./dist/custom1.css*`), destination: resolveViewPath(`./css`) },
-        { source: resolveViewPath(`./dist/custom.js*`), destination: resolveViewPath(`./js`) },
+        { source: resolveViewPath(`./dist/html/**/*.html`), destination: resolveViewPath(`./html`) },
+        { source: resolveViewPath(`./dist/img/**/*.{jpg,gif,png}`), destination: resolveViewPath(`./img`) },
+        { source: resolveViewPath(`./dist/css/**/*.{js,css}`), destination: resolveViewPath(`./css`) },
+        { source: resolveViewPath(`./dist/js/**/*.js`), destination: resolveViewPath(`./js`) },
       ]},
-      ...(PACK === 'true' ? [
+    ],
+  }),
+  ...(prodMode ? prodPlugins : devPlugins),
+  ...(PACK === 'true' ? [
+  new FileManagerPlugin({
+    onEnd: [
         // move important files to /tmp for zipping
         {mkdir: [`./`, `./html/`, `./img/`, `./css/`, `./js`].map(dir => resolveDevEnv(`./primo-explore/tmp/${VIEW}`, dir)) },
         {copy: [
           { source: resolveViewPath(`./html/**/*.html`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/html`) },
           { source: resolveViewPath(`./img/**/*.{jpg,gif,png}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/img`) },
-          { source: resolveViewPath(`./css/dist/**/custom1.{css,css.map.js}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/css`) },
-          { source: resolveViewPath(`./js/dist/**/custom.{js,js.map.js}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/js`) },
+          { source: resolveViewPath(`./dist/css/**/*.{js,css}`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/css`) },
+          { source: resolveViewPath(`./dist/js/**/*.js`), destination: resolveDevEnv(`./primo-explore/tmp/${VIEW}/js`) },
         ]},
         {archive: [
           {
@@ -56,9 +61,9 @@ const plugins = [
           }
         ]},
         { delete: [resolveDevEnv(`./primo-explore/tmp/${VIEW}`)]}
-      ] : []),
-    ]
-  })
+      ]
+    })
+  ] : []),
 ];
 
 // merges in webpack.config.js in the VIEW folder, if it exists
@@ -71,11 +76,11 @@ module.exports = merge(
   mode: (prodMode || testMode) ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
-    customJS: './js/main.js',
+    customJS: './js/main.js'
   },
   output: {
-    path: resolveViewPath('./dist'),
-    filename: 'custom.js',
+    path: resolveViewPath('./dist/'),
+    filename: 'js/custom.js',
     // map.js to overcome Primo's asset restrictions
     sourceMapFilename: '[file].map.js'
   },
@@ -84,7 +89,6 @@ module.exports = merge(
     rules: [
       {
         test: /\.js$/,
-        // exclude: /node_modules\/(?!(my\-package|other\-package)\/).*/,  // -- syntax for not excluding certain packages; especially good if package requires polyfills
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
@@ -93,12 +97,16 @@ module.exports = merge(
         use: [
           ExtractCssChunks.loader,
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ]
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
         loader: "file-loader?name=/img/[name].[ext]"
+      },
+      {
+        test: /\.html$/,
+        loader: "file-loader?name=/html/[name].[ext]"
       }
     ],
   },
