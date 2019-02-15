@@ -72,7 +72,7 @@ const viewWebpack = fs.existsSync(resolveViewPath('webpack.config.js')) ?
   require(resolveViewPath('webpack.config.js'))
   : {};
 
-module.exports = merge(
+module.exports = merge.smart(
 {
   mode: (prodMode || testMode || stagingMode) ? 'production' : 'development',
   context: resolveViewPath(),
@@ -105,11 +105,23 @@ module.exports = merge(
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: "file-loader?name=/img/[name].[ext]"
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '../img/[name].[ext]',
+            }
+          },
+        ],
       },
       {
         test: /\.html$/,
-        loader: "file-loader?name=/html/[name].[ext]"
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '../html/[name].[ext]',
+          }
+        },
       }
     ],
   },
