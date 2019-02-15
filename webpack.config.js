@@ -13,6 +13,7 @@ const merge = require('webpack-merge');
 const prodMode = NODE_ENV === 'production';
 const devMode = NODE_ENV === 'development';
 const testMode = NODE_ENV === 'test';
+const stagingMode = NODE_ENV === 'staging';
 
 const devPlugins = [
   // add development-only plugins heres
@@ -73,7 +74,7 @@ const viewWebpack = fs.existsSync(resolveViewPath('webpack.config.js')) ?
 
 module.exports = merge(
 {
-  mode: (prodMode || testMode) ? 'production' : 'development',
+  mode: (prodMode || testMode || stagingMode) ? 'production' : 'development',
   context: resolveViewPath(),
   entry: {
     'js/custom.js': './js/main.js',
