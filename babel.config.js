@@ -19,6 +19,7 @@ module.exports = function (api) {
       ["@babel/plugin-transform-runtime", {
         regenerator: true,
       }],
+      "@babel/plugin-syntax-dynamic-import"
     ],
     sourceMaps: "both",
     overrides: [{
