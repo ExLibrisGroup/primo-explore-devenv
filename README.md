@@ -1,6 +1,7 @@
 # New Primo UI
 
 [![Docker Repository on Quay](https://quay.io/repository/nyulibraries/primo-explore-devenv/status "Docker Repository on Quay")](https://quay.io/repository/nyulibraries/primo-explore-devenv)
+[![CircleCI](https://circleci.com/gh/NYULibraries/primo-explore-devenv.svg?style=svg)](https://circleci.com/gh/NYULibraries/primo-explore-devenv)
 
 ## Setting up the dev environment
 
