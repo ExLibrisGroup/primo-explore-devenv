@@ -14,6 +14,7 @@ const prodMode = NODE_ENV === 'production';
 const devMode = NODE_ENV === 'development';
 const testMode = NODE_ENV === 'test';
 const stagingMode = NODE_ENV === 'staging';
+const deploymentMode = prodMode || testMode || stagingMode;
 
 const devPlugins = [
   // add development-only plugins heres
@@ -22,8 +23,8 @@ const devPlugins = [
   }),
 ];
 
-const prodPlugins = [
-  // plugins for production environment
+const deploymentPlugins = [
+  // plugins for production/deployment environment
 ];
 
 const plugins = [
@@ -43,7 +44,7 @@ const plugins = [
       ]},
     ],
   }),
-  ...(prodMode ? prodPlugins : devPlugins),
+  ...(deploymentMode ? deploymentPlugins : devPlugins),
   ...(PACK === 'true' ? [
   new FileManagerPlugin({
     onEnd: [
@@ -73,74 +74,74 @@ const viewWebpack = fs.existsSync(resolveViewPath('webpack.config.js')) ?
   : {};
 
 module.exports = merge.smart(
-{
-  mode: (prodMode || testMode || stagingMode) ? 'production' : 'development',
-  context: resolveViewPath(),
-  entry: {
-    'js/custom.js': './js/main.js',
-    // this is the intermediary file before extract-css-chunks takes over
-    'css/main.css-module': './css/sass/main.scss',
-  },
-  output: {
-    path: resolveViewPath('./dist/'),
-    filename: '[name]',
-    // ends all maps with map.js to overcome Primo's asset restrictions
-    sourceMapFilename: '[file].map.js'
-  },
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          ExtractCssChunks.loader,
-          'css-loader',
-          'sass-loader',
-        ]
-      },
-      {
-        test: /\.jpe?g$|\.gif$|\.png$/i,
-        use: [
-          {
+  {
+    mode: deploymentMode ? 'production' : 'development',
+    context: resolveViewPath(),
+    entry: {
+      'js/custom.js': './js/main.js',
+      // this is the intermediary file before extract-css-chunks takes over
+      'css/main.css-module': './css/sass/main.scss',
+    },
+    output: {
+      path: resolveViewPath('./dist/'),
+      filename: '[name]',
+      // ends all maps with map.js to overcome Primo's asset restrictions
+      sourceMapFilename: '[file].map.js'
+    },
+    devtool: 'source-map',
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+        },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            ExtractCssChunks.loader,
+            'css-loader',
+            'sass-loader',
+          ]
+        },
+        {
+          test: /\.jpe?g$|\.gif$|\.png$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '../img/[name].[ext]',
+              }
+            },
+          ],
+        },
+        {
+          test: /\.html$/,
+          use: {
             loader: 'file-loader',
             options: {
-              name: '../img/[name].[ext]',
+              name: '../html/[name].[ext]',
             }
           },
-        ],
+        }
+      ],
+    },
+    plugins,
+    devServer: {
+      contentBase: 'primo-explore',
+      compress: false,
+      port: 8004,
+      before: app => {
+        require('./webpack/loadPrimoMiddlewares')(app);
       },
-      {
-        test: /\.html$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '../html/[name].[ext]',
-          }
-        },
-      }
-    ],
+      hot: devMode,
+      writeToDisk: filePath => {
+        return /(custom\.js|custom1\.css)/.test(filePath);
+      },
+      disableHostCheck: !prodMode,
+    }
   },
-  plugins,
-  devServer: {
-    contentBase: 'primo-explore',
-    compress: false,
-    port: 8004,
-    before: app => {
-      require('./webpack/loadPrimoMiddlewares')(app);
-    },
-    hot: devMode,
-    writeToDisk: filePath => {
-      return /(custom\.js|custom1\.css)/.test(filePath);
-    },
-    disableHostCheck: !prodMode,
-  }
-},
-viewWebpack,
+  viewWebpack,
 );
 
 
