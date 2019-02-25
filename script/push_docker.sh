@@ -10,6 +10,7 @@ docker push quay.io/nyulibraries/primo-explore-devenv:${CIRCLE_BRANCH//\//_}-${C
 
 # Pushes using version number for master
 if [[ $CIRCLE_BRANCH == master ]]; then
-  docker tag primo-explore-devenv quay.io/nyulibraries/primo-explore-devenv:$version
-  docker push quay.io/nyulibraries/primo-explore-devenv:$version
+  VERSION=$(awk -F\" '/"version":/ {print $4}' package.json)
+  docker tag primo-explore-devenv quay.io/nyulibraries/primo-explore-devenv:$VERSION
+  docker push quay.io/nyulibraries/primo-explore-devenv:$VERSION
 fi
