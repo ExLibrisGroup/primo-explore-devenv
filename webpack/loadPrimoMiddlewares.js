@@ -5,7 +5,9 @@ const origConfig = require('../gulp/config');
 const config = Object.assign(
   {},
   origConfig,
-  // uses environment variables instead of
+  // implements ve, saml, cas, and view flags as enviornment variables
+  // implements config.PROXY_SERVER, which is typically manually implemented in config.js,
+  // as an environment variable
   {
     getVe: () => VE === 'true',
     getSaml: () => SAML === 'true',
