@@ -21,8 +21,9 @@ x-defaults: &x-defaults
     - 8004:8004
     - 3001:3001
   # volumes:
-    # - ../path/to/primo-explore-nyu:/app/primo-explore/custom/NYU
-    # - ../path/to/primo-explore-central-package:/app/primo-explore/custom/CENTRAL_PACKAGE
+  # - ./gulp:/app/gulp/
+  # - ./webpack:/app/webpack/
+  # - /path/to/primo-explore:/app/primo-explore
 
 version: '3.7'
 services:
@@ -46,9 +47,10 @@ services:
     ports:
     - 8003:8003
     - 3001:3001
-    # volumes:
-    # - ./primo-explore/custom/:/app/primo-explore/custom/
-    # - ../path/to/primo-explore-central-package:/app/primo-explore/custom/CENTRAL_PACKAGE
+  # volumes:
+  # - ./gulp:/app/gulp/
+  # - ./webpack:/app/webpack/
+  # - /path/to/primo-explore:/app/primo-explore
 
   create-package-gulp-legacy:
     <<: *x-defaults
@@ -61,7 +63,8 @@ services:
     command: yarn create-package --view=${VIEW}
     depends_on:
       - web-gulp-legacy
-    # volumes:
-    # - ./primo-explore/custom/:/app/primo-explore/custom/
-    # - ../path/to/primo-explore-central-package:/app/primo-explore/custom/CENTRAL_PACKAGE
+  # volumes:
+  # - ./gulp:/app/gulp/
+  # - ./webpack:/app/webpack/
+  # - /path/to/primo-explore:/app/primo-explore
 

@@ -16,14 +16,8 @@ module.exports = function (api) {
     ],
     plugins: [
       "transform-html-import-to-string",
-      ["@babel/plugin-transform-runtime", {
-        regenerator: true,
-      }]
+      "@babel/plugin-transform-runtime",
     ],
-    sourceMaps: "both",
-    overrides: [{
-      test: "./node_modules",
-      sourceType: "unambiguous"
-    }]
+    sourceMaps: "both"
   };
 };

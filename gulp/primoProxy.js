@@ -4,8 +4,10 @@ var glob = require('glob');
 const http = require('http');
 const https = require('https');
 
-function getCustimazationObject(vid, appName) {
-    var base_path = 'custom/';
+const originalConfig = config;
+
+function getCustimazationObject(vid, appName, config) {
+var base_path = 'custom/';
     var customizationObject = {
         viewJs: '',
         centralJs: '',
@@ -164,7 +166,7 @@ function getCustimazationObject(vid, appName) {
 };
 
 
-function proxy_function() {
+function proxy_function(config = originalConfig) {
     var proxyServer = config.PROXY_SERVER;
     var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
@@ -188,7 +190,7 @@ function proxy_function() {
 
 };
 
-function primoCustomizationsMiddleware(config, appName) {
+function primoCustomizationsMiddleware(appName, config = originalConfig) {
     return function (req, res, next) {
         let confPath = config.getVe() ? '/primaws/rest/pub/configuration' : '/primo_library/libweb/webservices/rest/v1/configuration';
         let confAsJsPath = '/primo-explore/config_';
@@ -205,7 +207,7 @@ function primoCustomizationsMiddleware(config, appName) {
 
             res1.on("end", function () {
                 let vid = config.view() || '';
-                let customizationProxy = getCustimazationObject(vid, appName);
+                let customizationProxy = getCustimazationObject(vid, appName, config);
 
                 if (isConfByFile) {
                     res.end('');
@@ -271,7 +273,6 @@ function primoCustomizationsMiddleware(config, appName) {
 }
 
 module.exports = {
-    getCustimazationObject,
     primoCustomizationsMiddleware,
     proxy_function,
-}
+};
