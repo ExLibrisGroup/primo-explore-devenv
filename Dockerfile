@@ -5,7 +5,7 @@ ENV PATH $INSTALL_PATH/node_modules/.bin:${PATH}
 ENV VIEW=CENTRAL_PACKAGE
 
 # Install essentials
-RUN apk update && apk add build-base
+RUN apk update && apk add build-base git
 
 # Install node_modules with yarn
 ADD package.json yarn.lock /tmp/
