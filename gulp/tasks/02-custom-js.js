@@ -19,12 +19,12 @@ const sourcemaps = require('gulp-sourcemaps');
 
 let buildParams = config.buildParams;
 
-gulp.task('watch-js', ['select-view'], () => {
+gulp.task('watch-js', gulp.series('select-view', () => {
     gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],['custom-js']);
-});
+}));
 
 
-gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
+gulp.task('custom-js', gulp.series('select-view', 'custom-html-templates',() => {
    if(config.getBrowserify()) {
        buildByBrowserify();
    }
@@ -32,7 +32,7 @@ gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
        buildByConcatination();
    }
 
-});
+}));
 
 function buildByConcatination() {
     return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
