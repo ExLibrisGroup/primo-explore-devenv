@@ -41,8 +41,8 @@ gulp.task('extract-scss-files', ()=> {
     return request({url:url, 'headers': headers})
         .pipe(zlib.createGunzip()) // unzip
         .pipe(tar.extract('.', {map: (header)=>{
-                if (header.name.indexOf('src/main/webapp') > -1){
-                    header.name = header.name.replace('src/main/webapp', 'www');
+                if (header.name.indexOf('www/') > -1){
+                    header.name = header.name.replace('www/', 'src/main/webapp/');
                 }
                 return header;
             }}));
