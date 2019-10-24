@@ -19,7 +19,7 @@ let template = require('gulp-template');
 let request = require('request');
 let  zlib = require('zlib');
 let tar = require('tar-fs');
-let stylesBaseDir = 'src/main/webapp/styles/partials';
+let stylesBaseDir = 'www/styles/partials';
 let templateFile = stylesBaseDir+'/_variables.tmpl.scss';
 let OTBColorsFile = stylesBaseDir+'/../colors.json';
 let scssFile = '_variables.scss';
@@ -29,7 +29,7 @@ let del = require('del');
 let lodashMerge = require('lodash/merge');
 let gutil = require('gulp-util');
 
-gulp.task('cleanup',()=> del(['src']));
+gulp.task('cleanup',()=> del(['www']));
 
 gulp.task('extract-scss-files', ()=> {
     let proxy_server = require('../config').PROXY_SERVER;
@@ -66,7 +66,7 @@ gulp.task('color-variables',() => {
 });
 
 gulp.task('compile-scss',() => {
-    let allCss  = gulp.src('src/main/webapp/styles/main.scss')
+    let allCss  = gulp.src('www/styles/main.scss')
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log('Error:' + err);
