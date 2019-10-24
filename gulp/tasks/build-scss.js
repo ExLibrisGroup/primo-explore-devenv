@@ -3,6 +3,7 @@
 let autoprefixer = require('gulp-autoprefixer');
 let config = require('../config').buildParams;
 let useScss = require('../config').getUseScss;
+let isVe = require('../config').getVe;
 let proxy_server = require('../config').PROXY_SERVER
 let gulp = require('gulp');
 let cssnano = require('gulp-cssnano');
@@ -32,8 +33,14 @@ gulp.task('cleanup',()=> del(['src']));
 
 gulp.task('extract-scss-files', ()=> {
     let proxy_server = require('../config').PROXY_SERVER;
-    console.log(proxy_server+'/primo-explore/lib/scsss.tar.gz');
-    let url = proxy_server+'/primo-explore/lib/scsss.tar.gz';
+    let prefix;
+    if (isVe()) {
+        prefix = '/discovery';
+    } else {
+        prefix = '/primo-explore';
+    }
+    let url = proxy_server+prefix+'/lib/scsss.tar.gz';
+    console.log(url);
     var headers = {
         /*'Accept-Encoding': 'gzip'*/
     };
@@ -41,8 +48,8 @@ gulp.task('extract-scss-files', ()=> {
     return request({url:url, 'headers': headers})
         .pipe(zlib.createGunzip()) // unzip
         .pipe(tar.extract('.', {map: (header)=>{
-                if (header.name.indexOf('www/') > -1){
-                    header.name = header.name.replace('www/', 'src/main/webapp/');
+                if (header.name.indexOf('src/main/webapp') > -1){
+                    header.name = header.name.replace('src/main/webapp', 'www');
                 }
                 return header;
             }}));
