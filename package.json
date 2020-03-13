@@ -41,7 +41,7 @@
     "listdirs": "3.0.0",
     "lodash": "4.17.15",
     "merge-stream": "1.0.0",
-    "minimist": "1.2.0",
+    "minimist": "1.2.5",
     "prompt": "1.0.0",
     "protractor": "5.0.0",
     "protractor-image-comparison": "1.2.3",
