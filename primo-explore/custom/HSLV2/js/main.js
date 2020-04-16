@@ -53,6 +53,7 @@ app.controller('prmLoginAlmaMashupAfterController', ['$http', '$scope', '$sce', 
   // Find and format Galter iframe viewit link
   // var LINK_TEMPLATE = 'https://www-stage.galter.northwestern.edu/search/results/view_it_primo?url=';
   var LINK_TEMPLATE = 'https://www-proto.galter.northwestern.edu/search/results/view_it_primo?url=';
+  // devlopment setup only works for restricted IP's
   // var LINK_TEMPLATE = 'dev.galter.northwestern.edu:3000/search/results/view_it_primo?url=';
   if (location.hostname === 'search.library.northwestern.edu') {
     LINK_TEMPLATE = 'https://galter.northwestern.edu/search/results/view_it_primo?url=';
