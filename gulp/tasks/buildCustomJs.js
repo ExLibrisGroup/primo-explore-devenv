@@ -21,17 +21,17 @@ gulp.task('watch-js', ['select-view'], () => {
 
 gulp.task('custom-js', ['select-view', 'custom-html-templates'],() => {
    if(config.getBrowserify()) {
-       buildByBrowserify();
+       return buildByBrowserify();
    }
    else {
-       buildByConcatination();
+       return buildByConcatination();
    }
 
 });
 
 function getBrowserifyBabelPlugins() {
     return [
-        "transform-html-import-to-string"
+        "transform-html-import-to-string", ["angularjs-annotate", { "explicitOnly" : true}]
     ];
 }
 
