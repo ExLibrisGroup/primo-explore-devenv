@@ -35,6 +35,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 ## Installation
 
+Note: If you are not the Administrator of your machine, you might get into problems in the flow below, we recommend using the "Node.js command prompt (search for cmd in your pc to locate it) whenever the instructions below refer to "command line".
+
 1.  Download the project from this repository and place it on your computer
 
 2.  Unzip the file you downloaded to a preferred development project folder location
