@@ -15,11 +15,11 @@ let runSequence = require('gulp4-run-sequence');
 
 
 gulp.task('setup_watchers', gulp.series('select-view', 'watch-js', 'watch-custom-scss', 'watch-css', (cb) => {
-    gulp.watch(config.buildParams.customPath(),() => {
+    gulp.watch(config.buildParams.customPath(),(cb) => {
         cb();
         return browserSyncManager.reloadServer();
     });
-    gulp.watch(config.buildParams.customCssPath(),() => {
+    gulp.watch(config.buildParams.customCssPath(),(cb) => {
         cb();
         return gulp.src(config.buildParams.customCssPath())
             .pipe(browserSyncManager.streamToServer());

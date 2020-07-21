@@ -118,8 +118,9 @@ gulp.task("watch-custom-scss", gulp.series('select-view', (cb) => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("custom-scss", gulp.series('select-view', () => {
+gulp.task("custom-scss", gulp.series('select-view', (cb) => {
 	if (!useScss()) {
+	    cb();
 		return;
 	}
 
@@ -142,6 +143,6 @@ gulp.task("custom-scss", gulp.series('select-view', () => {
 		.pipe(gulp.dest(config.viewCssDir()));
 
 	gutil.log("End Creating custom CSS from custom SCSS");
-
+    cb();
 	return customScss;
 }));
