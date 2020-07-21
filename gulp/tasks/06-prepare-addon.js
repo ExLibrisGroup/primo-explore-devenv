@@ -13,7 +13,7 @@ const path = require('path');
 
 let buildParams = config.buildParams;
 
-gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css'], function() {
+gulp.task('prepare-addon', gulp.series('select-view', 'custom-js','custom-scss','custom-css', function() {
     let view = config.view();
     let packageJsonPath = buildParams.viewRootDir() + '/package.json';
     let npmId;
@@ -292,4 +292,4 @@ gulp.task('prepare-addon', ['select-view', 'custom-js','custom-scss','custom-css
         }
         console.error(err.message);
     }
-});
+}));

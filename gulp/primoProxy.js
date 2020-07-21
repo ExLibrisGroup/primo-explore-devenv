@@ -183,7 +183,7 @@ module.exports.getCustimazationObject = function (vid,appName) {
 
 module.exports.proxy_function = function () {
     var proxyServer = config.PROXY_SERVER;
-    var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
+    var res = new Response(200, {'content-type': 'text/css'}, Buffer.from(''), '');
     var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
     return modRewrite([

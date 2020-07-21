@@ -100,13 +100,13 @@ gulp.task('app-css', (cb) => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("watch-custom-scss", ['select-view'], () => {
+gulp.task("watch-custom-scss", gulp.series('select-view', () => {
 	if (!useScss()) {
 		return;
 	}
 
 	gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
-});
+}));
 
 /**
  * Compiles the custom scss to a css file called custom-scss-compiled.css which
@@ -117,7 +117,7 @@ gulp.task("watch-custom-scss", ['select-view'], () => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("custom-scss", ['select-view'], () => {
+gulp.task("custom-scss", gulp.series('select-view', () => {
 	if (!useScss()) {
 		return;
 	}
@@ -143,4 +143,4 @@ gulp.task("custom-scss", ['select-view'], () => {
 	gutil.log("End Creating custom CSS from custom SCSS");
 
 	return customScss;
-});
+}));

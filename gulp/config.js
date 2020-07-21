@@ -19,11 +19,11 @@ function setView(_view) {
 }
 
 function setSaml(_saml) {
-  saml = _saml;
+    saml = _saml;
 }
 
 function getSaml() {
-  return saml;
+    return saml;
 }
 
 function setCas(_cas) {
@@ -35,11 +35,12 @@ function getCas() {
 }
 
 function setUseScss(_useScss) {
-	useScss = _useScss;
+    useScss = _useScss;
+	this.useScss = _useScss;
 }
 
 function getUseScss() {
-	return useScss;
+    return useScss;
 }
 
 function setProxy(_proxy) {
@@ -64,11 +65,11 @@ function setBrowserify(_browserify) {
 }
 
 function setReinstallNodeModules(_reinstallNodeModules) {
-	reinstallNodeModules = _reinstallNodeModules;
+    reinstallNodeModules = _reinstallNodeModules;
 }
 
 function getReinstallNodeModules() {
-	return reinstallNodeModules;
+    return reinstallNodeModules;
 }
 
 function getView(){
@@ -107,24 +108,24 @@ function customColorsPath(){
 }
 
 function viewRootDir() {
-	return `primo-explore/custom/${view}`;
+    return `primo-explore/custom/${view}`;
 }
 
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
 }
 function customScssDir() {
-		return `primo-explore/custom/${view}/scss`;
+    return `primo-explore/custom/${view}/scss`;
 }
 function customScssMainPath() {
-		return customScssDir() + "/main.scss";
+    return customScssDir() + "/main.scss";
 }
 function customCssPath() {
     return `primo-explore/custom/${view}/css/custom1.css`;
 }
 
 function customNpmModuleRootDir() {
-	return `primo-explore/custom/${view}/node_modules`;
+    return `primo-explore/custom/${view}/node_modules`;
 }
 
 function customNpmJsCustomPath() {
@@ -141,7 +142,7 @@ function customNpmJsPath() {
 }
 
 function customNpmDistPath() {
-  return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
 }
 
 
@@ -175,14 +176,14 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
-		viewRootDir: viewRootDir,
+    viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
-		customScssDir: customScssDir,
-		customScssMainPath: customScssMainPath,
+    customScssDir: customScssDir,
+    customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
-		customNpmModuleRootDir: customNpmModuleRootDir,
+    customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
     customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
@@ -197,11 +198,11 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
-		setUseScss: setUseScss,
-		getUseScss: getUseScss,
+    setUseScss: setUseScss,
+    getUseScss: getUseScss,
     setProxy: setProxy,
-		getReinstallNodeModules: getReinstallNodeModules,
-		setReinstallNodeModules: setReinstallNodeModules,
+    getReinstallNodeModules: getReinstallNodeModules,
+    setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,

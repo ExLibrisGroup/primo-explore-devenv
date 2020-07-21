@@ -15,3 +15,5 @@ if (options.useScss) config.setUseScss(options.useScss);
 config.setBrowserify(options.browserify);
 config.setSaml(options.saml);
 config.setCas(options.cas);
+
+process.env.NODE_ENV = process.env.NODE_ENV || options.environment || 'production';

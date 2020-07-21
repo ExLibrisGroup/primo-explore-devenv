@@ -39,30 +39,28 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 2.  Unzip the file you downloaded to a preferred development project folder location
 
-3.  Download and install the [Node version 6.9.2](https://nodejs.org/download/release/v6.9.2/)
+3.  Download and install the [Node version 10.15.3](https://nodejs.org/download/release/v10.15.3/)
 
-4.  From command line, run the command : `npm install npm@3.3.12 -g`
+4.  Restart your computer
 
-5.  Restart your computer
+5.  From command line, run the command : `npm install -g gulp`
 
-6.  From command line, run the command : `npm install -g gulp`
+6.  In a <b>new</b> command line window, navigate to the project base directory (`cd \path\to\your\project\folder\primo-explore-devenv`)
 
-7.  In a <b>new</b> command line window, navigate to the project base directory (`cd \path\to\your\project\folder\primo-explore-devenv`)
-
-8.  From command line, run the command : `npm install` (This should install all node modules needed for gulp.)
+7.  From command line, run the command : `npm install` (This should install all node modules needed for gulp.)
 
     ![npm install image](./help_files/npmInstall.png "Running npm install")
 
-9.  Edit Gulp configuration file's <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`
+8.  Edit Gulp configuration file's <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`
 
-10. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
+9. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
 
    - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this: 
    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
    
    - <b>IMPORTANT:</b> The name of your custom view package folder must match an <i>existing</i> view on the proxy server being referenced or the Gulp server will not function properly. For development from scratch, be sure to first create (or copy) a view using the Primo Back Office View Wizard; then you can accomplish your customizations locally using this document.
     
-11. Start your code customizations : 
+10. Start your code customizations : 
 
    - From command line, run the command : `gulp run --view <the VIEW_CODE folder>` (This will start your local server.)
    
@@ -91,7 +89,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
       - [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
 
 
-Note: you have multiple options to edit the css file(custom1.css) and the js file(custom.js), some of them include methods of splitting your developments to seperate files. When using such methods - the css and js file will be overriden by the different files.
+Note: you have multiple options to edit the css file(custom1.css) and the js file(custom.js), some of them include methods of splitting your developments to seperate files. When using such methods - the custom1.css and custom.js files will be overriden by the different files when gulp is run. Place your custom css and js into files with different names such as custommodule.css or custom.module.js to have it concactinated into the custom css/js files.
 
 
 ## Publishing packages
