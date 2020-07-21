@@ -1,7 +1,6 @@
 var modRewrite = require('connect-modrewrite');
 var fs = require('fs')
 var Promise = require("bluebird");
-var concat = require('concat-stream');
 var config = require('./config');
 var glob = require('glob');
 Promise.promisifyAll(glob);
