@@ -10,23 +10,26 @@ let browserSyncManager = require('../browserSyncManager');
 let primoProxy = require('../primoProxy');
 let glob = require('glob');
 let prompt = require('prompt');
-let runSequence = require('run-sequence');
+let runSequence = require('gulp4-run-sequence');
 
 
 
-gulp.task('setup_watchers', gulp.series('select-view', 'watch-js', 'watch-custom-scss', 'watch-css', () => {
+gulp.task('setup_watchers', gulp.series('select-view', 'watch-js', 'watch-custom-scss', 'watch-css', (cb) => {
     gulp.watch(config.buildParams.customPath(),() => {
+        cb();
         return browserSyncManager.reloadServer();
     });
     gulp.watch(config.buildParams.customCssPath(),() => {
+        cb();
         return gulp.src(config.buildParams.customCssPath())
             .pipe(browserSyncManager.streamToServer());
     });
+    cb();
 }));
 
 
 
-gulp.task('connect:primo_explore', gulp.series('select-view', function() {
+gulp.task('connect:primo_explore', gulp.series('select-view', function(cb) {
     let appName = 'primo-explore';
     browserSyncManager.startServer({
         label: 'production',
@@ -116,6 +119,7 @@ gulp.task('connect:primo_explore', gulp.series('select-view', function() {
         port: 8003,
         baseDir: appName
     });
+    cb();
 }));
 
 

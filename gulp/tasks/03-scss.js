@@ -23,7 +23,7 @@ let stylesBaseDir = 'www/styles/partials';
 let templateFile = stylesBaseDir+'/_variables.tmpl.scss';
 let OTBColorsFile = stylesBaseDir+'/../colors.json';
 let scssFile = '_variables.scss';
-var runSequence = require('run-sequence');
+var runSequence = require('gulp4-run-sequence');
 let  fs = require('fs');
 let del = require('del');
 let lodashMerge = require('lodash/merge');
@@ -75,8 +75,8 @@ gulp.task('compile-scss',() => {
         }))
         // .pipe(sourcemaps.init())
         .pipe(sass())
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+        .pipe(autoprefixer({    
+            browsers: ['last 2 versions'],        
             cascade: false
         }));
     let colorStream = allCss
@@ -91,7 +91,7 @@ gulp.task('compile-scss',() => {
 });
 
 gulp.task('app-css', (cb) => {
-	runSequence('extract-scss-files','color-variables', 'compile-scss', 'cleanup', cb);
+    runSequence('extract-scss-files','color-variables', 'compile-scss', 'cleanup', cb);
 });
 
 /**
@@ -100,12 +100,13 @@ gulp.task('app-css', (cb) => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("watch-custom-scss", gulp.series('select-view', () => {
+gulp.task("watch-custom-scss", gulp.series('select-view', (cb) => {
 	if (!useScss()) {
-		return;
+        cb();
+        return;
 	}
-
-	gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
+    gulp.watch([config.customScssDir() + "/**/*.scss"], ["custom-scss"]);
+    cb();
 }));
 
 /**

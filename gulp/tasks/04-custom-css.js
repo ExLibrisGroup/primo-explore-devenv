@@ -11,9 +11,11 @@ var glob = require('glob');
 
 let buildParams = config.buildParams;
 
-gulp.task('watch-css', gulp.series('select-view', () => {
 
-    gulp.watch([buildParams.customCssMainPath(),buildParams.customNpmCssPath(),'!'+buildParams.customCssPath()],['custom-css']);
+
+gulp.task('watch-css', gulp.series('select-view', (cb) => {
+    gulp.watch([buildParams.customCssMainPath(),buildParams.customNpmCssPath(),'!'+buildParams.customCssPath()],gulp.series('custom-css'));
+    cb();
 }));
 
 

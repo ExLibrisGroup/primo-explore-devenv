@@ -17,10 +17,11 @@ let runSequence = require("run-sequence");
  *
  * e.g. gulp run --view [ViewName] --reinstallNodeModules
  */
-gulp.task("reinstall-primo-node-modules", gulp.series('select-view', function() {
+gulp.task("reinstall-primo-node-modules", gulp.series('select-view', function(cb) {
 	if (config.getReinstallNodeModules()) {
 		runSequence(["delete-primo-node-modules", "install-primo-node-modules"]);
 	}
+	cb();
 }));
 
 /**

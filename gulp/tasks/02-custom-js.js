@@ -14,16 +14,22 @@ const sourcemaps = require('gulp-sourcemaps');
 
 let buildParams = config.buildParams;
 
-gulp.task('watch-js', gulp.series('select-view', () => {
-    gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],['custom-js']);
+
+
+
+gulp.task('watch-js', gulp.series('select-view', (cb) => {
+    gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],gulp.series('custom-js'));
+    cb();
 }));
 
 
-gulp.task('custom-js', gulp.series('select-view', 'custom-html-templates',() => {
+gulp.task('custom-js', gulp.series('select-view', 'custom-html-templates',(cb) => {
    if(config.getBrowserify()) {
+       cb();
        return buildByBrowserify();
    }
    else {
+       cb();
        return buildByConcatination();
    }
 
@@ -52,7 +58,7 @@ const getBabelConfig = () => {
 }
 
 function buildByConcatination() {
-    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()])
+    return gulp.src([buildParams.customModulePath(),buildParams.mainPath(),buildParams.customNpmJsPath(),buildParams.customNpmDistPath(),'!'+buildParams.customPath(),'!'+buildParams.customNpmJsModulePath(),'!'+buildParams.customNpmJsCustomPath()],{allowEmpty:true})
         .pipe(concat(buildParams.customFile))
         .pipe(babel(getBabelConfig()))
         .on("error", function(err) {
