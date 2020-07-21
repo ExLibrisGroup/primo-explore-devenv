@@ -17,11 +17,11 @@ let runSequence = require("run-sequence");
  *
  * e.g. gulp run --view [ViewName] --reinstallNodeModules
  */
-gulp.task("reinstall-primo-node-modules", ['select-view'], function() {
+gulp.task("reinstall-primo-node-modules", gulp.series('select-view', function() {
 	if (config.getReinstallNodeModules()) {
 		runSequence(["delete-primo-node-modules", "install-primo-node-modules"]);
 	}
-});
+}));
 
 /**
  * Deletes all primo-explore related node modules of the view package.
