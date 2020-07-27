@@ -7,7 +7,7 @@ const config = require('../config.js');
 let buildParams = config.buildParams;
 
 gulp.task('watch-img', () => {
-    gulp.watch([buildParams.viewImgDir(), '!'+buildParams.customNpmImgPath()],['custom-img']);
+    gulp.watch([buildParams.viewImgDir(), '!'+buildParams.customNpmImgPath()],gulp.series('custom-img'));
 });
 
 gulp.task('custom-img', () => {
