@@ -105,7 +105,7 @@ gulp.task("watch-custom-scss", gulp.series('select-view', (cb) => {
         cb();
         return;
 	}
-    gulp.watch(gulp.src([config.customScssDir() + "/**/*.scss"],{allowEmpty:true}), gulp.series('custom-scss'));
+    gulp.watch([config.customScssDir() + "/**/*.scss"], gulp.series('custom-scss'));
     cb();
 }));
 
@@ -126,7 +126,7 @@ gulp.task("custom-scss", gulp.series('select-view', (cb) => {
 
 	gutil.log("Start Creating custom CSS from custom SCSS");
 
-	let customScss = gulp.src(config.customScssMainPath())
+	let customScss = gulp.src(config.customScssMainPath(),{allowEmpty:true})
 		.pipe(plumber({
 				errorHandler: function (err) {
 						console.log('1111111' + err);
