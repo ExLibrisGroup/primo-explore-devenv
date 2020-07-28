@@ -18,7 +18,7 @@ let buildParams = config.buildParams;
 
 
 gulp.task('watch-js', gulp.series('select-view', (cb) => {
-    gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()],gulp.series('custom-js'));
+    gulp.watch([`${buildParams.viewJsDir()}/**/*.js`,'!'+buildParams.customPath()], {interval: 1000, usePolling: true}, gulp.series('custom-js'));
     cb();
 }));
 

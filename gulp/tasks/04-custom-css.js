@@ -14,7 +14,7 @@ let buildParams = config.buildParams;
 
 
 gulp.task('watch-css', gulp.series('select-view', (cb) => {
-    gulp.watch([buildParams.customCssMainPath(),buildParams.customNpmCssPath(),'!'+buildParams.customCssPath()],gulp.series('custom-css'));
+    gulp.watch([buildParams.customCssMainPath(),buildParams.customNpmCssPath(),'!'+buildParams.customCssPath()], {interval: 1000, usePolling: true}, gulp.series('custom-css'));
     cb();
 }));
 

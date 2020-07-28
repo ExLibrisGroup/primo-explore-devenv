@@ -105,7 +105,7 @@ gulp.task("watch-custom-scss", gulp.series('select-view', (cb) => {
         cb();
         return;
 	}
-    gulp.watch([config.customScssDir() + "/**/*.scss"], gulp.series('custom-scss'));
+    gulp.watch([config.customScssDir() + "/**/*.scss"], {interval: 1000, usePolling: true}, gulp.series('custom-scss'));
     cb();
 }));
 
