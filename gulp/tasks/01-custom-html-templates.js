@@ -21,7 +21,13 @@ function parseModuleName(){
 function prepareTempltesWithBrowserify(){
     let module = parseModuleName();
     gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
-        .pipe(templateCache({filename:'customTemplates.js', module: module}))
+        .pipe(templateCache({
+            filename:'customTemplates.js',
+            module: module,
+            transformUrl: function(url) {
+                return url.replace(/^\/+/g, '');
+            }
+        }))
         .pipe(gulp.dest(buildParams.viewJsDir()));
 }
 
@@ -31,7 +37,14 @@ function prepareTemplates() {
     }
     else{
         gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
-            .pipe(templateCache({filename:'customTemplates.js', templateHeader: 'app.run(function($templateCache) {', templateFooter: '});'}))
+            .pipe(templateCache({
+                filename:'customTemplates.js',
+                templateHeader: 'app.run(function($templateCache) {',
+                templateFooter: '});',
+                transformUrl: function(url) {
+                    return url.replace(/^\/+/g, '');
+                }
+            }))
             .pipe(gulp.dest(buildParams.viewJsDir()));
     }
 }
