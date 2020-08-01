@@ -50,6 +50,5 @@ function prepareTemplates() {
 }
 
 gulp.task('custom-html-templates', gulp.series('select-view', (cb) => {
-    prepareTemplates();
-    cb();
+    prepareTemplates().on('end', cb);
 }))
