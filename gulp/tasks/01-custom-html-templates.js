@@ -20,7 +20,7 @@ function parseModuleName(){
 
 function prepareTempltesWithBrowserify(){
     let module = parseModuleName();
-    gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
+    return gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
         .pipe(templateCache({
             filename:'customTemplates.js',
             module: module,
@@ -33,10 +33,10 @@ function prepareTempltesWithBrowserify(){
 
 function prepareTemplates() {
     if(config.getBrowserify()){
-        prepareTempltesWithBrowserify();
+        return prepareTempltesWithBrowserify();
     }
     else{
-        gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
+        return gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
             .pipe(templateCache({
                 filename:'customTemplates.js',
                 templateHeader: 'app.run(function($templateCache) {',
