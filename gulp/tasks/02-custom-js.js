@@ -24,15 +24,12 @@ gulp.task('watch-js', gulp.series('select-view', (cb) => {
 
 
 gulp.task('custom-js', gulp.series('select-view', 'custom-html-templates',(cb) => {
-   if(config.getBrowserify()) {
-       cb();
-       return buildByBrowserify();
-   }
-   else {
-       cb();
-       return buildByConcatination();
-   }
-
+    if (config.getBrowserify()) {
+        buildByBrowserify().on('end', cb);
+    }
+    else {
+        buildByConcatination().on('end', cb);
+    }
 }));
 
 function getBrowserifyBabelPlugins() {
