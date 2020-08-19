@@ -67,6 +67,10 @@
   "engines": {
     "node": ">=10.0"
   },
+  "browserslist": [
+    "last 2 version",
+    "> 2%"
+  ],
   "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv",
   "dependencies": {}
 }

@@ -76,7 +76,6 @@ gulp.task('compile-scss',() => {
         // .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({    
-            browsers: ['last 2 versions'],        
             cascade: false
         }));
     let colorStream = allCss
@@ -136,7 +135,6 @@ gulp.task("custom-scss", gulp.series('select-view', (cb) => {
 		// .pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(autoprefixer({
-				browsers: ['last 2 versions'],
 				cascade: false
 		}))
 		.pipe(rename("custom-scss-compiled.css"))
