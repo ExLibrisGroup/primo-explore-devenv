@@ -20,22 +20,35 @@ function parseModuleName(){
 
 function prepareTempltesWithBrowserify(){
     let module = parseModuleName();
-    gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
-        .pipe(templateCache({filename:'customTemplates.js', module: module}))
+    return gulp.src(buildParams.viewHtmlDir() + '/templates/**/*.html')
+        .pipe(templateCache({
+            filename:'customTemplates.js',
+            module: module,
+            transformUrl: function(url) {
+                return url.replace(/^\/+/g, '');
+            }
+        }))
         .pipe(gulp.dest(buildParams.viewJsDir()));
 }
 
 function prepareTemplates() {
     if(config.getBrowserify()){
-        prepareTempltesWithBrowserify();
+        return prepareTempltesWithBrowserify();
     }
     else{
-        gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
-            .pipe(templateCache({filename:'customTemplates.js', templateHeader: 'app.run(function($templateCache) {', templateFooter: '});'}))
+        return gulp.src([buildParams.viewHtmlDir() + '/templates/**/*.html', buildParams.customNpmHtmlPath()])
+            .pipe(templateCache({
+                filename:'customTemplates.js',
+                templateHeader: 'app.run(function($templateCache) {',
+                templateFooter: '});',
+                transformUrl: function(url) {
+                    return url.replace(/^\/+/g, '');
+                }
+            }))
             .pipe(gulp.dest(buildParams.viewJsDir()));
     }
 }
 
-gulp.task('custom-html-templates', ['select-view'], () => {
-    prepareTemplates();
-})
+gulp.task('custom-html-templates', gulp.series('select-view', (cb) => {
+    prepareTemplates().on('end', cb);
+}))
