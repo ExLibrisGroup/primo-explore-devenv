@@ -71,6 +71,5 @@
     "last 2 version",
     "> 2%"
   ],
-  "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv",
-  "dependencies": {}
+  "repository": "https://github.com/ExLibrisGroup/primo-explore-devenv"
 }

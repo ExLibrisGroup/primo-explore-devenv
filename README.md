@@ -57,6 +57,8 @@ Note: If you are not the Administrator of your machine, you might get into probl
 
 9. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
 
+9a. Copy `primo-explore/main.js` to the package js folder `primo-explore/custom/<VIEW CODE>/js/`
+
    - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this:
    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
 
