@@ -1,3 +1,8 @@
 primo-explore/tmp/
-.idea/
 *.swp
+
+!primo-explore/custom/.gitignore
+!primo-explore/tmp/.gitignore
+
+.idea/
+package-lock.json

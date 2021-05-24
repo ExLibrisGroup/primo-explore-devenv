@@ -1,0 +1,225 @@
+//// VARIABLES
+// The complex color calculation were created with http://razorjam.github.io/sasscolourfunctioncalculator/
+
+// Fonts family
+$serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// Font weights
+$light: 300;
+$normal: 400;
+$bold: 600;
+$heavy: 900;
+
+// Font size
+$defaultFontSize: 15px;
+
+// Shapes
+$radius: 3px;
+
+// Padding
+$paddingBase: 1em;
+$paddingExtra: 1.5em;
+$paddingMedium: 1.3em;
+$paddingLarge: 1em;
+$paddingSmall: .5em;
+$paddingTiny: .25em;
+
+// colors
+
+$muteOrange: red;
+
+
+
+$almostBlack: #777;
+
+
+
+$titles: rgb(68, 112, 123);
+$frbr: #ed9100;
+$pink: rgb(255, 171, 200);
+
+$dark: #3a3a3a;
+$darker: darken(saturate(adjust-hue($dark, 0.0000), 0.0000), 6.6667);
+
+// lighter background color
+
+
+$highlightYellow: #FFFCC4; //stronger
+$highlight: darken(desaturate(adjust-hue($highlightYellow, -4.0920), 16.0000), 8.0392);
+$highlightText: #ffe564;
+$success: #3EA03E;
+//$green: #3EA03E; // redundancy of 'success'
+$green: #198A19;
+//$orange: #CE8015; //#E0962E;
+$muteOrange: #C59655;
+$yellow: #F1C16F;
+$overlayDarkDG: rgba(68, 68, 68, 0.6);
+
+// $availabiltyDetails: desaturate(lighten($midGrey,5%), 5%);
+//$maybe: $orange;
+
+$alert: #F7EDA3;
+$alert-hue1: darken(desaturate(adjust-hue($alert, 0.3074), 15.3043), 2.9412);
+
+
+$disabled: #aaa;
+$courseColor: #55909B;
+
+$primary: red;
+$primary-hue1: darken($primary, 3%);
+$primary-hue2: darken($primary, 5%);
+$primary-hue3: darken($primary-hue2, 2%);
+$primary-hue4: darken($primary, 10%);
+$primary-hue5: darker($primary, -5%);
+
+$secondary: green;
+$secondary-hue1: darken(saturate(adjust-hue($secondary, -6.5946), 9.1452), 26.2745);
+$secondary-hue2: darken($secondary, 20%);
+$secondary-hue3:darken(saturate(adjust-hue($secondary, -12), 30.28), 47.65); // "show more" buttons in facets
+$secondary-hue4: darken(saturate(adjust-hue($secondary, -7), 64.57), 13.92);
+
+
+$backgroundColor: yellow;
+
+$positive: #0f7d00;
+
+$negative: gray;
+
+$background: darken(saturate(adjust-hue($backgroundColor, 0.0000), 0.0000), 8.6275); //redundancy of almostwhite
+
+$background-hue1: darken($backgroundColor, 3%); // darker 1 (i.e: background for locations filter bar)
+// $background-hue2: lighten(saturate(adjust-hue($backgroundColor, 0.0000), 0.0000), 3.9216); // lighter 1 (i.e: background for full view dialog)
+$background-hue2: lighten($background, 4%);
+$background-hue3: lighten(saturate(adjust-hue($backgroundColor, 0.0000), 0.0000), 5.8824); // lighter 2 (i.e: background for actions forms)
+
+$background-hue4: lighten($background, 3%);
+$background-hue5: transparentize($background, .5);
+$background-hue6: darken($background, 1%);
+$background-hue7: darken($background, 10%);
+$background-hue8: lighten($background, 6%);
+$background-hue9: darken($background, 5%);
+$background-hue10: darken($background, 12%);
+$background-hue11: darken($background, 2%);
+$background-hue12: darken($background, 7%);
+$background-hue13: lighten($background, 2%);
+
+$white: white;
+
+$almostWhite: lighten(saturate(adjust-hue($background, 60.0000), 20.0000), 0.7843);
+$bg: $background;
+$nearlyWhite: darken(saturate(adjust-hue($backgroundColor, 0.0000), 0.0000), 5.4902); // stronger
+$blueGrey: #ccc;
+$midGrey: #53738C; //darken(saturate(adjust-hue($blueGrey, 206.3158), 25.5605), 36.2745);
+$actionsBackground: lighten($background, 6%);
+$autoCompleteBg: $backgroundColor;
+$sectionHighlight: darken(desaturate($background, 0), 5%);
+$snippets:#999;
+$lightenGrey: #6d6d6d;
+
+$links: #3D6E94;
+
+$links-background-hue1: transparentize($links, 1);
+
+$links: $links;
+$links-hue-1: darken(saturate($links, 5%), 5%);
+$links-hue-5: darken(saturate($links, 20%), 20%);
+$linksHover: darken(saturate($links, 20%), 20%);
+$linksHover-hue-2: transparentize($linksHover, .5);
+$linkAlt: $secondary-hue1;
+$md-primary: $links;
+
+$linkTitle:  #33FFFF;
+
+$collectionDisLinks: #0075b0;
+
+$red: tomato;
+// warning
+$warning: $red;
+$warn: $red;
+$warningBorder: inset 0 0 0 3px $warning;
+
+
+$text: $dark;
+$text-hue1: lighten($text, 30%);
+$text-hue2: $text;
+$text-hue3: darken($text, 10%);
+
+$notice: #B84D00;
+
+$highlight: $highlightYellow;
+$highlight-hue1: #FFFCC4;
+
+$modalBackdrop: rgb(68,68,68);
+$moreLink: #45aab4;
+
+$selectedItem: saturate(lighten($midGrey, 53%), 40%);
+
+$citationTitle:  rgb(68, 112, 123);
+// $citationTitle: $titles;
+
+// chips
+$chipTouchHeight: 28px;
+$chipDesktopHeight: 22px;
+
+// Responsive
+$responsiveMaxWidth: 960px !important;
+
+// Default bars height
+$defaultBarHeight: 60px;
+
+// height of buttons in brief results
+$briefButtonHeight: 38px;
+
+// citations
+$citation: tomato;
+$citationColor: $citation;
+$citation-hue1: darken($citation, 40%);
+
+// personalization
+$personalization: #7d1538;
+
+// Peer Reviewed
+$peer-reviewed-color :#8359d4;
+
+// Open Access
+$open-access-color: #f68212;
+
+// Angular Material
+//-----------------
+
+// Progress bar
+$progressBarHeight: 15px;
+
+// buttons
+$defaultMdButtonHover: rgba(158,158,158,0.2);
+
+
+//// Angular Material overrides
+// Angular Material transition easing curves
+//-----------------------
+
+$swift-ease-out-duration: 0.4s !default;
+$swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+$swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+
+$swift-ease-in-duration: 0.3s !default;
+$swift-ease-in-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2) !default;
+$swift-ease-in: all $swift-ease-in-duration $swift-ease-in-timing-function !default;
+
+$swift-ease-in-out-duration: 0.5s !default;
+$swift-ease-in-out-timing-function: cubic-bezier(0.35, 0, 0.25, 1) !default;
+$swift-ease-in-out: all $swift-ease-in-out-duration $swift-ease-in-out-timing-function !default;
+
+//  Angular Material layouts
+// ------------------------------
+
+$baseline-grid:            8px !default;
+$layout-gutter-width:      ($baseline-grid * 2) !default;
+
+//  Angular Material breakpoints
+// ------------------------------
+
+// $layout-breakpoint-xs:     600px !default;
+// $layout-breakpoint-sm:     960px !default;
+// $layout-breakpoint-md:     1280px !default;
+// $layout-breakpoint-lg:     1920px !default;
