@@ -92,12 +92,16 @@ function viewJsDir() {
     return `primo-explore/custom/${view}/js`;
 }
 
+function mainJsDir() {
+    return `primo-explore/custom`;
+}
+
 function mainPath() {
     return viewJsDir()+'/*.js';
 }
 
 function mainJsPath() {
-    return viewJsDir()+'/main.js';
+    return mainJsDir()+'/main.js';
 }
 
 function customCssMainPath() {
@@ -178,6 +182,7 @@ let buildParams = {
     mainJsPath: mainJsPath,
     viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
+    mainJsDir: mainJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
     customScssDir: customScssDir,
