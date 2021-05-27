@@ -1778,3 +1778,10 @@ prm-primary-bg.prm-hue1, prm-search-bar.prm-hue1, prm-spinner.prm-hue1.overlay-c
 md-card.default-card md-card-title#get-help-title {
   padding: 0em 1em;
 }
+
+/* altmetrics */
+.full-view-section.loc-altmetrics{
+  background-color: #f3f3f3;
+  margin-top:0px;
+  padding-left: 3em;
+}

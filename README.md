@@ -57,7 +57,7 @@ Note: If you are not the Administrator of your machine, you might get into probl
 
 9. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
 
-9a. Copy `primo-explore/main.js` to the package js folder `primo-explore/custom/<VIEW CODE>/js/`
+9a. Use `primo-explore/custom/main.js` to make your js customizations. (<- Galter specific setup)
 
    - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this:
    ![Directory tree image](./help_files/direcoryTree.png "Directory tree")
@@ -75,6 +75,8 @@ Note: If you are not the Administrator of your machine, you might get into probl
       `gulp run --view <the VIEW_CODE folder> --ve`
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
    - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-institution-code:your-view-code`
+
+     Galter PrimoVE development: http://localhost:8003/discovery/search?vid=01NWU_INST:HSLV
 
    -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser's incognito mode; or you can clear your browser cache before you start the Gulp server.
 

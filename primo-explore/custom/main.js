@@ -499,6 +499,94 @@ angular.module('myILL', []).component('prmLoansOverviewAfterAppStoreGenerated', 
 
 //End My-ill
 
+// Altmetric plugin
+
+app.controller('FullViewAfterController', ['angularLoad', '$http', '$scope', '$element', '$timeout', '$window', function (angularLoad, $http, $scope, $element, $timeout, $window) {
+  var vm = this;
+  this.$http = $http;
+  this.$element = $element;
+  this.$scope = $scope;
+  this.$window = $window;
+  vm.$onInit = function () //wait for all the bindings to be initialised
+  {
+    vm.parentElement = this.$element.parent()[0]; //the prm-full-view container
+    try {
+        vm.doi = vm.parentCtrl.item.pnx.addata.doi[0] || '';
+    } catch (e) {
+      return;
+    }
+
+    if (vm.doi) {
+      //If we've got a doi to work with check whether altmetrics has data for it.
+      //If so, make our div visible and create a new Altmetrics service
+      $timeout(function () {
+        $http.get('https://api.altmetric.com/v1/doi/' + vm.doi).then(function () {
+            try {
+              //Get the altmetrics widget
+              angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {});
+              //Create our new Primo service
+              var altmetricsSection = {
+                scrollId: "altmetrics",
+                serviceName: "altmetrics",
+                title: "brief.results.tabs.Altmetrics"
+              };
+              vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, altmetricsSection);
+            } catch (e) {
+              console.log(e);
+            }
+        }).catch(function (e) {
+          return;
+        });
+        }, 3000);
+  }
+
+
+  //move the altmetrics widget into the new Altmetrics service section
+  var unbindWatcher = this.$scope.$watch(function () {
+    return vm.parentElement.querySelector('h4[translate="brief.results.tabs.Altmetrics"]');
+  }, function (newVal, oldVal) {
+        if (newVal) {
+          //Get the section body associated with the value we're watching
+          let altContainer = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
+          let almt1 = vm.parentElement.children[1].children[0];
+          if (altContainer && altContainer.appendChild && altm1) {
+              altContainer.appendChild(altm1);
+          }
+          unbindWatcher();
+        }
+      });
+  }; // end of $onInit
+
+
+  //You'd also need to look at removing the various css/js scripts loaded by this.
+  //refer to: https://github.com/Det-Kongelige-Bibliotek/primo-explore-rex
+  vm.$onDestroy = function ()
+    {
+      if (this.$window._altmetric) {
+          delete this.$window._altmetric;
+      }
+
+      if (this.$window._altmetric_embed_init) {
+          delete this.$window._altmetric_embed_init;
+      }
+
+      if (this.$window.AltmetricTemplates) {
+          delete this.$window.AltmetricTemplates;
+      }
+    }
+
+}]);
+
+app.component('prmFullViewAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: 'FullViewAfterController',
+  template: '<div id="altm1" ng-if="$ctrl.doi" class="altmetric-embed" data-hide-no-mentions="true" data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-doi="{{$ctrl.doi}}"></div>'
+
+});
+
+
+// End Altmetric plugin
+
 // Add the chat button
 //
 // (function () {
