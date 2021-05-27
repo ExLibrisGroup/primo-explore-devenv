@@ -1769,3 +1769,12 @@ prm-search-bar {
 prm-primary-bg.prm-hue1, prm-search-bar.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar {
   background-color: #51468A;
 }
+
+/* homepage md cards */
+#searching-list, #sign-in-list {
+  margin: 0;
+}
+
+md-card.default-card md-card-title#get-help-title {
+  padding: 0em 1em;
+}
