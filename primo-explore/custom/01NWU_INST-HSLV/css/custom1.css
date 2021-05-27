@@ -666,7 +666,7 @@ prm-pre-filters md-input-container.is-active:before {
 /* Advanced, browse, tags, newspaper search header */
 
 prm-browse-search-bar .advanced-search-backdrop, prm-journals-search-bar .advanced-search-backdrop, prm-search-bar .advanced-search-backdrop, prm-tags-search-bar .advanced-search-backdrop, .prm-primary-bg, prm-atoz-search-bar, prm-browse-search-bar, prm-collection-gallery-header .collection-header-inner, prm-newspapers-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
-    background-color: #6357a0;
+    background-color: #51468A;
 }
 
 prm-search-bar .search-switch-buttons .md-button.switch-to-simple {
