@@ -8,7 +8,7 @@ const fs = require('fs');
 let buildParams = config.buildParams;
 
 function parseModuleName(){
-    let mainJsContent= fs.readFileSync(buildParams.viewJsDir() + '/main.js', 'utf8');
+    let mainJsContent= fs.readFileSync(buildParams.mainJsPath(), 'utf8');
     let moduleString= "angular.module('";
     let index= mainJsContent.indexOf(moduleString) + moduleString.length;
     mainJsContent= mainJsContent.slice(index);
