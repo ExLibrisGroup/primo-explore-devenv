@@ -255,7 +255,7 @@ app.controller('SearchBarAfterControllerAppStoreGenerated', ['angularLoad', func
 //Hathi Trust
 
 app.component('prmSearchResultAvailabilityLineAfterAppStoreGenerated', {
-  template: '<hathi-trust-availability ignore-copyright="true" hide-online="true" entity-id="urn:mace:incommon:northwestern.edu"></hathi-trust-availability>'
+  template: '<hathi-trust-availability hide-online="true" entity-id="urn:mace:incommon:northwestern.edu"></hathi-trust-availability>'
 });
 
 angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'https://catalog.hathitrust.org/api/volumes/brief/json/').config(['$sceDelegateProvider', 'hathiTrustBaseUrl', function ($sceDelegateProvider, hathiTrustBaseUrl) {
