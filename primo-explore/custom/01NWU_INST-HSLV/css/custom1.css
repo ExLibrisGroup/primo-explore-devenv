@@ -1785,3 +1785,7 @@ md-card.default-card md-card-title#get-help-title {
   margin-top:0px;
   padding-left: 3em;
 }
+
+prm-atoz-search-bar {
+  padding-top: 5rem;
+}
