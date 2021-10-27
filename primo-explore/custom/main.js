@@ -1,8 +1,10 @@
+import 'primo-explore-lod-author-card';
+
 (function(){
 "use strict";
 'use strict';
 
-var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability', 'myILL']);
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability', 'myILL', 'lodAuthorCard']);
 
 "use strict";
 'use strict';
@@ -580,8 +582,8 @@ app.controller('FullViewAfterController', ['angularLoad', '$http', '$scope', '$e
 app.component('prmFullViewAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'FullViewAfterController',
-  template: '<div id="altm1" ng-if="$ctrl.doi" class="altmetric-embed" data-hide-no-mentions="true" data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-doi="{{$ctrl.doi}}"></div>'
-
+  template: '<div id="altm1" ng-if="$ctrl.doi" class="altmetric-embed" data-hide-no-mentions="true" data-link-target="new" data-badge-type="medium-donut" data-badge-details="right" data-doi="{{$ctrl.doi}}"></div>\
+             <primo-explore-lod-author-card parent-ctrl="$ctrl.parentCtrl"></primo-explore-lod-author-card>'
 });
 
 

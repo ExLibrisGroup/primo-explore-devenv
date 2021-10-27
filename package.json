@@ -52,6 +52,7 @@
     "merge-stream": "1.0.1",
     "minimatch": "3.0.4",
     "minimist": "1.2.5",
+    "primo-explore-lod-author-card": "^0.0.6",
     "prompt": "1.0.0",
     "protractor": "5.4.2",
     "protractor-image-comparison": "3.1.0",
