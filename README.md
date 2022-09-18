@@ -41,7 +41,7 @@ Note: If you are not the Administrator of your machine, you might get into probl
 
 2.  Unzip the file you downloaded to a preferred development project folder location
 
-3.  Download and install the [Node version 14.19.0](https://nodejs.org/download/release/v14.19.0/)
+3.  Download and install the [Node version 16.17.0](https://nodejs.org/download/release/v16.17.0/)
 
 4.  Restart your computer
 
