@@ -156,7 +156,7 @@
     });
   
     //Add External Search from WSU -- revised JMcWilliams 20180619
-    angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
+    /*angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
       controller: ['externalSearchService', function (externalSearchService) {
         externalSearchService.controller = this.parentCtrl;
@@ -250,7 +250,7 @@
       "url": "http://er.lib.ksu.edu/login?url=http://search.ebscohost.com/login.aspx?authtype=ip&profile=ehost",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/EBSCO_Information_Services_20xx_logo.svg/200px-EBSCO_Information_Services_20xx_logo.svg.png",
       "alt": "EBSCO Logo"
-    }]);
+    }]);*/
   
     /****************************************************************************************************/
     // Begin BrowZine - Primo Integration...
