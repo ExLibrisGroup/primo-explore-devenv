@@ -1,0 +1,109 @@
+<!-- HEADER -->
+<table style="width: 600px;
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+    border-spacing: 0 !important;
+    padding: 0 !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;" align="center" bgcolor="#4d6b82"
+       border="0" cellpadding="0"
+       cellspacing="0">
+    <tbody>
+    <tr>
+        <td style="cursor: default;
+    padding: 1em 0.5em;">
+            <prm-logo style="height: 66px;"></prm-logo>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- BODY -->
+<table style="width: 600px;
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+    border-spacing: 0 !important;
+    padding: 0 !important;" align="center" border="0" cellpadding="0"
+       cellspacing="0">
+    <tr>
+        <td>
+            <div translate="nui.email.institutionNote"></div>
+        </td>
+    </tr>
+    <tr>
+        <!--<td></td>-->
+        <td style="display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+    padding: 0 !important;" bgcolor="#f3f3f3">
+
+            <div style=" padding: 0 !important;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;">
+                <table style="width: 600px;
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+    border-spacing: 0 !important;
+    padding: 0 !important;">
+                    <tr ng-if="$ctrl.parentCtrl.note">
+                        <td style="padding: 15px 10px;
+    font-style: italic;">
+                            <b translate="email.note"></b> {{$ctrl.parentCtrl.note}} 
+                        </td>
+                    </tr>
+                </table>
+                <table id="email-template-items" style="background-color: #f3f3f3; width: 100%;">
+                    <tr ng-if="$ctrl.parentCtrl.fullViewLoaded"
+                        ng-repeat="item in $ctrl.parentCtrl.delayedItems">
+                        <td style="padding: 10px 15px; margin: 2px; cursor: default; width: 100%;"
+                            bgcolor="white">
+                            <prm-brief-result-container style="width: 100%;"
+                                                        [item]="item"
+                                                        display-mode="email"
+                                                        (load-email-template-event)="$ctrl.parentCtrl.popItem()">
+                            </prm-brief-result-container>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /content -->
+
+        </td>
+        <!--<td></td>-->
+    </tr>
+</table>
+<!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td></td>
+    </tr>
+</table>
+<!-- /FOOTER -->
+
+<!-- DISCLAIMER MESSAGE -->
+<table style="width: 600px;
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+    border-spacing: 0 !important;
+    padding: 0 !important;
+    border: 2px solid red;" align="center" border="0" cellpadding="0"
+   cellspacing="0">
+    <tbody>
+    <tr>
+        <td align="center">
+            <p style="margin: 0.5em;" translate="nui.email.disclaimer"></p>
+        </td>
+    </tr>
+    </tbody>
+</table>
