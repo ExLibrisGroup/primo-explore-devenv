@@ -2,7 +2,7 @@
   "use strict";
   'use strict';
   
-  var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
+  var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'googleAnalytics']);
   
   "use strict";
   'use strict';
