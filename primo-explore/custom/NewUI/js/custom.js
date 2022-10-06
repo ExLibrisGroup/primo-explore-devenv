@@ -182,9 +182,8 @@
           this.prmFacetCtrl = controller;
         },
         addExtSearch: function addExtSearch() {
-//          var xx = this;
+          var xx = this;
           var checkExist = setInterval(function () {
-            var xx = this;
   
             if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name !="External Search") {
               if (xx.prmFacetCtrl.facetService.results.name !== 'External Search') {
