@@ -181,7 +181,22 @@
         set controller(controller) {
           this.prmFacetCtrl = controller;
         },
-        addExtSearch: function addExtSearch() {
+        addExtSearch: function addExtSearch(ctrl) {
+          if ( !ctrl ) ctrl = this.prmFacetCtrl;
+          if ( 
+            ctrl.facets.length < 1 ||
+            ctrl.facets[0].name !== 'External Search' 
+            ) {
+            ctrl.facets.unshift({
+              name: 'External Search',
+              displayedType: 'exact',
+              limitCount: 0,
+              facetGroupCollapsed: false,
+              values: []
+            });
+          }
+        }
+        /*addExtSearch: function addExtSearch() {
           var xx = this;
           var checkExist = setInterval(function () {
   
@@ -198,7 +213,7 @@
               clearInterval(checkExist);
             }
           }, 100);
-        }
+        }*/
       };
     });
     app.value('searchTargets', [{
