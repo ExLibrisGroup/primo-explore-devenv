@@ -152,6 +152,7 @@
     });
   
     //Add External Search from WSU -- revised JMcWilliams 20180619
+    //Modified 10/2022 to function within AngularJS 1.8 migration 
     angular
     .module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
