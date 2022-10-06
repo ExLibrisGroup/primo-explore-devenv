@@ -229,7 +229,7 @@
       }
     }, {
       "name": "Google Scholar",
-      "url": "https://scholar.google.com/scholar?q=",
+      "url": "https://scholar.google.com/scholar?inst=6485013114777526331&q=",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png",
       "alt": "Google Scholar Logo",
       mapping: function mapping(queries, filters) {
