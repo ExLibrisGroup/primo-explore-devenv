@@ -183,7 +183,7 @@
         },
         addExtSearch: function addExtSearch() {
           var xx = this;
-          //var checkExist = setInterval(function () {
+          var checkExist = setInterval(function () {
   
             if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name !="External Search") {
               if (xx.prmFacetCtrl.facetService.results.name !== 'External Search') {
@@ -197,7 +197,7 @@
               }
               clearInterval(checkExist);
             }
-          //}, 100);
+          }, 100);
         }
       };
     });
