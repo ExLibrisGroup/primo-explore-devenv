@@ -181,27 +181,9 @@
         set controller(controller) {
           this.prmFacetCtrl = controller;
         },
-        addExtSearch: function addExtSearch(ctrl) {
-          var checkExist = setInterval(function () {
-          if ( !ctrl ) ctrl = this.prmFacetCtrl;
-          if ( 
-            ctrl.facets.length < 1 ||
-            ctrl.facets[0].name !== 'External Search' 
-            ) {
-            ctrl.facets.unshift({
-              name: 'External Search',
-              displayedType: 'exact',
-              limitCount: 0,
-              facetGroupCollapsed: false,
-              values: []
-            });
-            clearInterval(checkExist);
-          }
-        }, 100);
-      };
-        /*addExtSearch: function addExtSearch() {
+        addExtSearch: function addExtSearch() {
         var checkExist = setInterval(function () {
-          var xx = this;
+            var xx = this;
   
             if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name !="External Search") {
               if (xx.prmFacetCtrl.facetService.results.name !== 'External Search') {
@@ -217,7 +199,7 @@
             }
           }, 100);
         }
-      };*/
+      };
     });
     app.value('searchTargets', [{
       "name": "Worldcat",
