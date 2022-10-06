@@ -175,10 +175,10 @@
       }]
     }).factory('externalSearchService', function () {
       return {
-        getcontroller: function () {
+        get controller() {
           return this.prmFacetCtrl || false;
         },
-        setcontroller: function (controller) {
+        set controller(controller) {
           this.prmFacetCtrl = controller;
         },
         addExtSearch: function addExtSearch() {
