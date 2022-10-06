@@ -155,23 +155,32 @@
     angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
       controller: ['externalSearchService', function (externalSearchService) {
-        externalSearchService.controller = this.parentCtrl;
+        //externalSearchService.controller = this.parentCtrl;
+        externalSearchService.setController(this.parentCtrl)
         externalSearchService.addExtSearch();
+        $scope.$watch('$ctrl.parentCtrl.facets', function(){
+          externalSearch.addExtSearch()});
       }]
     }).component('prmPageNavMenuAfterAppStoreGenerated', {
       controller: ['externalSearchService', function (externalSearchService) {
-        if (externalSearchService.controller) externalSearchService.addExtSearch();
+        this.$onInit = function () {
+        if (externalSearchService.getController()) externalSearchService.addExtSearch()
+        }
       }]
     }).component('prmFacetExactAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
       template: '\n      <div ng-if="name === \'External Search\'">\n          <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n              <div class="section-content animate-max-height-variable">\n                  <div class="md-chips md-chips-wrap">\n                      <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n                          <div class="md-chip-content layout-row" role="button" tabindex="0">\n                              <strong dir="auto" title="{{ target.name }}">\n                                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                                      <img ng-src="{{ target.img }}" width="22" height="22" alt="{{ target.alt }}" style="vertical-align:middle;"> {{ target.name }}\n                                  </a>\n                              </strong>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div>',
       controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
-        $scope.name = this.parentCtrl.facetGroup.name;
-        $scope.targets = searchTargets;
-        var query = $location.search().query;
-        var filter = $location.search().pfilter;
-        $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
-        $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+        this.$onInit = function () {
+          $scope.name = this.parentCtrl.facetGroup.name;
+          $scope.targets = searchTargets;
+          var query = $location.search().query;
+          var filter = $location.search().pfilter;
+          /*$scope.queries = Array.isArray(query) ? query : query ? [query] : false;
+          $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;*/
+          $scope.queries = Object.prototype.toString.call(query) === '[object Array]' ? query : query ? [query] : false
+          $scope.filters = Object.prototype.toString.call(filter) === '[object Array]' ? filter : filter ? [filter] : false
+        }
       }]
     }).factory('externalSearchService', function () {
       return {
