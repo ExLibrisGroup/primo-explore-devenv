@@ -195,7 +195,7 @@
                   values: undefined
                 });
               }
-              clearInterval(checkExist);
+              //clearInterval(checkExist);
             }
           //}, 100);
         }
