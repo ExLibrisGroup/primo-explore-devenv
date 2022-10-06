@@ -137,17 +137,21 @@
     //written on 2/4/20 by Joe Ferguson from the University of Tennessee, Knoxville
     app.component('prmLocationItemsAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
-      controller: function controller($scope) {
-        var myVar = setInterval(activateFilter, 1000);
-        function activateFilter() {
-          if ($("span:contains('Filters')").length) {
-            clearInterval(myVar);
-            return;
+      controller: function($scope) {
+        this.$onInit = function(){
+          {
+            var myVar = setInterval(activateFilter, 1000);
+            function activateFilter() {
+              if ($("span:contains('Filters')").length) {
+                clearInterval(myVar);
+                return;
+              }
+              if ($("[id^='filter']").length) {
+                $("[id^='filter']").parent().click();
+              }
+            }
           }
-          if ($("[id^='filter']").length) {
-            $("[id^='filter']").parent().click();
-          }
-        }
+        };
       }
     });
   
@@ -295,8 +299,12 @@
     browzine.script.src = "https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js";
     document.head.appendChild(browzine.script);
   
-    app.controller('prmSearchResultAvailabilityLineAfterAppStoreGeneratedControllerAppStoreGeneratedAppStoreGenerated', function ($scope) {
-      window.browzine.primo.searchResult($scope);
+    app.controller('prmSearchResultAvailabilityLineAfterAppStoreGeneratedControllerAppStoreGeneratedAppStoreGenerated', function($scope) {
+      this.$onInit = function(){
+        {
+          window.browzine.primo.searchResult($scope);
+        }
+      };
     });
   
     app.component('prmSearchResultAvailabilityLineAfterAppStoreGenerated', {
@@ -353,8 +361,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('FacetAfterController', [function () {
+  app.controller('FacetAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmFacetAfter', {
@@ -371,8 +383,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('FacetExactAfterController', [function () {
+  app.controller('FacetExactAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmFacetExactAfter', {
@@ -389,8 +405,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('LocationItemsAfterController', [function () {
+  app.controller('LocationItemsAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmLocationItemsAfter', {
@@ -407,8 +427,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('PageNavMenuAfterController', [function () {
+  app.controller('PageNavMenuAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmPageNavMenuAfter', {
@@ -425,8 +449,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('SearchBarAfterController', [function () {
+  app.controller('SearchBarAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmSearchBarAfter', {
@@ -443,8 +471,12 @@
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
       e.g: for hook prmSearchBarAfter (in html prm-search-bar-after) it should be given "SearchBarAfter"
    */
-  app.controller('SearchResultAvailabilityLineAfterController', [function () {
+  app.controller('SearchResultAvailabilityLineAfterController', [function() {
     var vm = this;
+
+    this.$onInit = function(){
+      {}
+    };
   }]);
   
   app.component('prmSearchResultAvailabilityLineAfter', {
