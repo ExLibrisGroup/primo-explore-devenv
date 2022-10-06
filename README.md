@@ -72,6 +72,7 @@ Note: If you are not the Administrator of your machine, you might get into probl
    - For Primo VE customers, add the --ve flag :
       `gulp run --view <the VIEW_CODE folder> --ve`
       (For example, running `gulp run --view testview  --ve`)
+
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
    - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-institution-code:your-view-code`
 

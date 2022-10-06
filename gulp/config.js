@@ -129,30 +129,30 @@ function customNpmModuleRootDir() {
 }
 
 function customNpmJsCustomPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.js`;
+    return `primo-explore/custom/${view}/node_modules/discovery*/js/custom.js`;
 }
 
 function customNpmJsModulePath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.module.js`;
+    return `primo-explore/custom/${view}/node_modules/discovery*/js/custom.module.js`;
 }
 
 
 function customNpmJsPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/js/*.js`;
+    return `primo-explore/custom/${view}/node_modules/discovery*/js/*.js`;
 }
 
 function customNpmDistPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
+    return `primo-explore/custom/${view}/node_modules/discovery*/dist/*.js`;
 }
 
 
 function customNpmCssPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
+    return `primo-explore/custom/${view}/node_modules/discovery*/css/*.css`;
 }
 
 function customNpmHtmlPath() {
-    return `primo-explore/custom/${view}/node_modules/primo-explore*/html/*.html`;
-}
+    return `primo-explore/custom/${view}/node_modules/discovery*/html/*.html`;
+} 
 
 var SERVERS = {
     local: 'http://localhost:8002'
@@ -166,7 +166,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://your-server:your-port';
+var PROXY_SERVER = 'https://k-state-psb.primo.exlibrisgroup.com:443';
 
 
 let buildParams = {
