@@ -152,11 +152,12 @@
     });
   
     //Add External Search from WSU -- revised JMcWilliams 20180619
-    angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
+    angular
+    .module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
       controller: ['externalSearchService', function (externalSearchService) {
         this.$onInit = function () {
-        externalSearchService.controller(this.parentCtrl);
+        externalSearchService.setController(this.parentCtrl);
         externalSearchService.addExtSearch();
         }
       }]
