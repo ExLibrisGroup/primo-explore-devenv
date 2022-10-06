@@ -195,6 +195,7 @@
               facetGroupCollapsed: false,
               values: []
             });
+            clearInterval(checkExist);
           }
         }, 100);
       };
