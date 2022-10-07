@@ -46,7 +46,7 @@ w[l] = w[l] || [];w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js'
 //START - Google Analytics
 
 var googleAnalyticsUrl = document.createElement('script');
-googleAnalyticsUrl.src = "https://www.googletagmanager.com/gtag/js?id=G-336164211";
+googleAnalyticsUrl.src = "https://www.googletagmanager.com/gtag/js?id=G-3FH4SMNV5M";
 googleAnalyticsUrl.type = 'text/javascript';
 googleAnalyticsUrl.async = true;
 document.head.appendChild(googleAnalyticsUrl);
@@ -55,9 +55,9 @@ var googleAnalyticsCode = document.createElement('script');
 googleAnalyticsCode.innerHTML = `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-336164211',{ 'debug_mode':true });`;
+gtag('config', 'G-3FH4SMNV5M',{ 'debug_mode':true });`;
 document.head.appendChild(googleAnalyticsCode);
-//gtag('config', 'G-336164211');
+//gtag('config', 'G-3FH4SMNV5M');
 //END - Google Analytics
   
     /* StackMap: Start */
