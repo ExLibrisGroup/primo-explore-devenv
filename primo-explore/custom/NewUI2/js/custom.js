@@ -337,7 +337,7 @@ document.head.appendChild(googleAnalyticsCode);*/
     /*---------------LibraryH3lp code ends here---------------*/
   
      
-  })();
+  //})();
   
   //Auto generated code by primo app store DO NOT DELETE!!! -START-
   /*
