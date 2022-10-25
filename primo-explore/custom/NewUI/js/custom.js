@@ -160,16 +160,19 @@
     angular
     .module('externalSearch', []).value('searchTargets', []).component('prmFacetAfterAppStoreGenerated', {
       bindings: { parentCtrl: '<' },
-      controller: ['externalSearchService', function (externalSearchService) {
+      //controller: ['externalSearchService', function (externalSearchService) {
+      controller: ['externalSearchService', '$scope', function (externalSearchService, $scope) {
         this.$onInit = function () {
         externalSearchService.setController(this.parentCtrl);
         externalSearchService.addExtSearch();
+        $scope.$watch('$ctrl.parentCtrl.facets', function(){
+          externalSearch.addExtSearch()});
         }
       }]
     }).component('prmPageNavMenuAfterAppStoreGenerated', {
       controller: ['externalSearchService', function (externalSearchService) {
         this.$onInit = function () {
-        if (externalSearchService.controller) externalSearchService.addExtSearch();
+        if (externalSearchService.getController()) externalSearchService.addExtSearch();
         }
       }]
     }).component('prmFacetExactAfterAppStoreGenerated', {
@@ -181,8 +184,10 @@
         $scope.targets = searchTargets;
         var query = $location.search().query;
         var filter = $location.search().pfilter;
-        $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
-        $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+        //$scope.queries = Array.isArray(query) ? query : query ? [query] : false;
+        //$scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+        $scope.queries = Object.prototype.toString.call(query) === '[object Array]' ? query : query ? [query] : false
+        $scope.filters = Object.prototype.toString.call(filter) === '[object Array]' ? filter : filter ? [filter] : false
         }
       }]
     }).factory('externalSearchService', function () {
