@@ -167,6 +167,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
 var PROXY_SERVER = 'https://k-state.primo.exlibrisgroup.com:443';
+//var PROXY_SERVER = 'https://k-state-psb.primo.exlibrisgroup.com:443';
 
 
 let buildParams = {
