@@ -2,7 +2,7 @@
   "use strict";
   'use strict';
   
-  var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
+  var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'googleAnalytics']);
   
   "use strict";
   'use strict';
@@ -94,6 +94,71 @@ document.head.appendChild(googleAnalyticsCode);
         template: '<md-card class="alert-bar"><md-card-content class="alert-bar-content"><p>Most K-State Libraries buildings are currently open with limited capacity. Please visit <a href="https://www.lib.k-state.edu/continuation">our continuation of services webpage</a> for updates related to COVID-19. <br> To request help, you can visit <a href="https://www.lib.k-state.edu/ask">with a librarian. </a></p></md-card-content></md-card>'
     });
     */
+
+        /* Start of Google Analytics */
+  
+angular.module('googleAnalytics', []);
+  
+angular.module('googleAnalytics').run(function ($rootScope, $interval, analyticsOptions) {
+
+  if (analyticsOptions.hasOwnProperty("enabled") && analyticsOptions.enabled) {
+
+    if (analyticsOptions.hasOwnProperty("siteId") && analyticsOptions.siteId != '') {
+
+      if (typeof ga === 'undefined') {
+
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
+
+            (i[r].q = i[r].q || []).push(arguments);
+          }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', analyticsOptions.siteId, { 'alwaysSendReferrer': true });
+
+        ga('set', 'anonymizeIp', true);
+      }
+    }
+
+    $rootScope.$on('$locationChangeSuccess', function (event, toState, fromState) {
+
+      if (analyticsOptions.hasOwnProperty("defaultTitle")) {
+
+        var documentTitle = analyticsOptions.defaultTitle;
+
+        var interval = $interval(function () {
+
+          if (document.title !== '') documentTitle = document.title;
+
+          if (window.location.pathname.indexOf('openurl') !== -1 || window.location.pathname.indexOf('fulldisplay') !== -1) if (angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).length === 0) return;else documentTitle = angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).text();
+
+          if (typeof ga !== 'undefined') {
+
+            if (fromState != toState) ga('set', 'referrer', fromState);
+
+            ga('set', 'location', toState);
+
+            ga('set', 'title', documentTitle);
+
+            ga('send', 'pageview');
+          }
+
+          $interval.cancel(interval);
+        }, 0);
+      }
+    });
+  }
+});
+
+angular.module('googleAnalytics').value('analyticsOptions', {
+
+  enabled: true,
+
+  siteId: 'UA-40575926-3',
+
+  defaultTitle: 'Search It'
+
+});
   
     //Auto activates the filter for items in full display
     //written on 2/4/20 by Joe Ferguson from the University of Tennessee, Knoxville
@@ -214,7 +279,9 @@ document.head.appendChild(googleAnalyticsCode);
       mapping: function mapping(queries, filters) {
         try {
           return queries.map(function (part) {
-            return part.split(",")[2] || "";
+           var terms = part.split(/^(any\,contains\,)/)[2];
+           var termed = terms.split(/(\,AND)$/)[0];
+           return termed.replace(/~2F/, "%2F");
           }).join(' ');
         } catch (e) {
           return '';
@@ -222,9 +289,20 @@ document.head.appendChild(googleAnalyticsCode);
       }
     }, {
       "name": "EBSCO",
-      "url": "http://er.lib.ksu.edu/login?url=http://search.ebscohost.com/login.aspx?authtype=ip&profile=ehost",
+      "url": "http://er.lib.ksu.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&scope=site&type=1&site=ehost-live&db=27h,aph,gnh,agr,awh,ahl,h9h,h9i,h9j,h9k,h9m,ant,asa,aax,aft,ndh,n4h,n9h,n8h,buh,ufh,cph,c9h,e872sww,cja,eric,eax,eft,hev,zbh,funk,8gh,hxh,hch,e871sww,khh,hjh,fqh,lgh,lxh,llf,lii,e870sww,lfh,e865sww,ulh,cmedm,kah,mzh,e864sww,f5h,msn,lth,mmt,e866sww,mih,mth,mah,n5h,nsm,ddu,24h,pix,e867sww,prh,tfh,pbh,rft,rgr,bwh,rlh,sph,b9h,tth,trh,tdh,voh,nmr,fzh,nlebk,e001mww&lang=en&authtype=ip&bquery=",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/EBSCO_Information_Services_20xx_logo.svg/200px-EBSCO_Information_Services_20xx_logo.svg.png",
-      "alt": "EBSCO Logo"
+      "alt": "EBSCO Logo",
+      mapping: function mapping(queries, filters) {
+        try {
+          return queries.map(function (part) {
+           var terms = part.split(/^(any\,contains\,)/)[2];
+           var termed = terms.split(/(\,AND)$/)[0];
+           return termed.replace(/~2F/, "%2F");
+          }).join(' ');
+        } catch (e) {
+          return '';
+        }
+      }
     }]);
   
     /****************************************************************************************************/
