@@ -4,7 +4,7 @@
 # The Primo New UI Customization Workflow Development Environment
 
 
-## Structure
+## Structure -
 
 - <b>gulp directory</b> : holds the various build scripts for the environment and the  <b>config.js</b> configuration file in which your target proxy-server must be defined.
 
