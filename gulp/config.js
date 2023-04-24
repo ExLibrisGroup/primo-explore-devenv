@@ -159,7 +159,7 @@ var SERVERS = {
 };
 
 /**
- * The URL to your sandbox or production Primo instance.
+ * The URL to your production Primo instance.
  * For SSL environments (https), the port number (443) must be included.
  *
  * Examples:
