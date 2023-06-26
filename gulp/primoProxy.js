@@ -187,6 +187,7 @@ module.exports.proxy_function = function () {
     var loginRewriteFlags = (config.getSaml() || config.getCas()) ? 'RL' : 'PL';
 
     return modRewrite([
+        '/view/action/(.*) ' + proxyServer + '/view/action/$1 [PL]',
         '/primo_library/libweb/webservices/rest/(.*) ' + proxyServer + '/primo_library/libweb/webservices/rest/$1 [PL]',
         '/primaws/rest/(.*) ' + proxyServer + '/primaws/rest/$1 [PL]',
         '/primo_library/libweb/primoExploreLogin ' + proxyServer + '/primo_library/libweb/primoExploreLogin [' + loginRewriteFlags + ']',
