@@ -41,6 +41,7 @@
     "gulp-sourcemaps": "2.6.5",
     "gulp-streamify": "1.0.2",
     "gulp-template": "5.0.0",
+    "gulp-touch-cmd": "0.0.1",
     "gulp-uglify": "3.0.2",
     "gulp-util": "3.0.8",
     "gulp-wrap": "^0.15.0",

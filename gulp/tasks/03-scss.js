@@ -28,6 +28,7 @@ let  fs = require('fs');
 let del = require('del');
 let lodashMerge = require('lodash/merge');
 let gutil = require('gulp-util');
+let touch = require('gulp-touch-cmd');
 
 gulp.task('cleanup',()=> del(['www']));
 
@@ -138,7 +139,8 @@ gulp.task("custom-scss", gulp.series('select-view', (cb) => {
 				cascade: false
 		}))
 		.pipe(rename("custom-scss-compiled.css"))
-		.pipe(gulp.dest(config.viewCssDir()));
+		.pipe(gulp.dest(config.viewCssDir()))
+		.pipe(touch());
 
 	gutil.log("End Creating custom CSS from custom SCSS");
     cb();
