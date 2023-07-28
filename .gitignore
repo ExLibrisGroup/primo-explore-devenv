@@ -1,4 +1,4 @@
-primo-explore/custom/
+primo-explore/custom/*/*/*
 primo-explore/tmp/
 
 !primo-explore/custom/.gitignore

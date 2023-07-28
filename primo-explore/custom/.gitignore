@@ -1,1 +1,10 @@
-# Add entries to prefixed with '!' to unhide your view files
+*.*
+# Add entries to prefixed with '!' to unhide your view files:
+# Eg:
+# !*/css/**
+# !*/html/**
+# !*/img/**
+# !*/js/**
+
+
+
